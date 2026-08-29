@@ -69,7 +69,7 @@ func (h *DebtHandler) CreateDebt(w http.ResponseWriter, r *http.Request) {
 //	@Tags			debts
 //	@Produce		json
 //	@Security		BearerAuth
-//	@Success		200	{array}		debt.Debt
+//	@Success		200	{object}	GetDebtsResponse
 //	@Failure		401	{object}	ErrorResponse
 //	@Failure		500	{object}	ErrorResponse
 //	@Router			/debts [get]
@@ -84,5 +84,18 @@ func (h *DebtHandler) GetDebts(w http.ResponseWriter, r *http.Request) {
 		writeServiceError(w, err)
 		return
 	}
-	writeJSON(w, http.StatusOK, debts)
+	var total int32
+	for _, d := range debts {
+		total += d.Amount
+	}
+
+	writeJSON(w, http.StatusOK, GetDebtsResponse{
+		Total: total,
+		Debts: debts,
+	})
+}
+
+type GetDebtsResponse struct {
+	Debts []debt.Debt
+	Total int32
 }
