@@ -33,3 +33,34 @@ func (q *Queries) CreateDebt(ctx context.Context, arg CreateDebtParams) (Debt, e
 	)
 	return i, err
 }
+
+const getDebtsByBorrowerID = `-- name: GetDebtsByBorrowerID :many
+SELECT id, lender, borrower, amount, created_at FROM debts
+WHERE borrower = $1
+`
+
+func (q *Queries) GetDebtsByBorrowerID(ctx context.Context, borrower int32) ([]Debt, error) {
+	rows, err := q.db.Query(ctx, getDebtsByBorrowerID, borrower)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Debt
+	for rows.Next() {
+		var i Debt
+		if err := rows.Scan(
+			&i.ID,
+			&i.Lender,
+			&i.Borrower,
+			&i.Amount,
+			&i.CreatedAt,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}

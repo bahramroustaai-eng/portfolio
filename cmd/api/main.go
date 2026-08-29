@@ -14,8 +14,16 @@ import (
 	"portfolio/internal/user"
 	"syscall"
 	"time"
+
+	_ "portfolio/docs"
 )
 
+// @title 			Portfolio
+// @version         1.0
+// @BasePath        /api/v1
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
 func main() {
 	cfg, err := config.Load()
 	if err != nil {

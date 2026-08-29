@@ -1,0 +1,200 @@
+basePath: /api/v1
+definitions:
+  debt.Debt:
+    properties:
+      amount:
+        format: int32
+        type: integer
+      borrower:
+        format: int32
+        type: integer
+      id:
+        format: int32
+        type: integer
+      lender:
+        format: int32
+        type: integer
+    type: object
+  transport.CreateDebtRequest:
+    properties:
+      amount:
+        type: integer
+      borrower:
+        type: string
+      lender:
+        type: string
+    type: object
+  transport.CreateDebtResponse:
+    properties:
+      id:
+        type: integer
+    type: object
+  transport.CreateUserRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  transport.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  transport.LoginRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  transport.LoginResponse:
+    properties:
+      access_token:
+        type: string
+      id:
+        type: integer
+      username:
+        type: string
+    type: object
+info:
+  contact: {}
+  title: Portfolio
+  version: "1.0"
+paths:
+  /debt:
+    post:
+      consumes:
+      - application/json
+      description: Records a debt between a lender and a borrower
+      parameters:
+      - description: debt payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/transport.CreateDebtRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/transport.CreateDebtResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a debt
+      tags:
+      - debts
+  /debts:
+    get:
+      description: Lists debts where the authenticated user is the borrower
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/debt.Debt'
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List debts
+      tags:
+      - debts
+  /login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: user payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/transport.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.LoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Login a user
+      tags:
+      - users
+  /user:
+    post:
+      consumes:
+      - application/json
+      description: Registers a new user with a username and password
+      parameters:
+      - description: user payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/transport.CreateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.LoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Create a user
+      tags:
+      - users
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

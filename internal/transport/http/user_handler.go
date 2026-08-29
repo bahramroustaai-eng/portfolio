@@ -43,6 +43,19 @@ func (in CreateUserRequest) Validate() error {
 	return nil
 }
 
+// CreateUser godoc
+//
+//	@Summary		Create a user
+//	@Description	Registers a new user with a username and password
+//	@Tags			users
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		CreateUserRequest	true	"user payload"
+//	@Success		200		{object}	LoginResponse
+//	@Failure		400		{object}	ErrorResponse
+//	@Failure		409		{object}	ErrorResponse
+//	@Failure		500		{object}	ErrorResponse
+//	@Router			/user [post]
 func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 
 	var req CreateUserRequest
@@ -63,7 +76,7 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	token, err := user.CreateToken(created.UserName)
+	token, err := user.CreateToken(created.UserName, created.ID)
 	if err != nil {
 		slog.Error("create token", "error", err)
 		writeError(w, http.StatusInternalServerError, "internal server error")
@@ -88,6 +101,18 @@ type LoginResponse struct {
 	AccessToken string `json:"access_token"`
 }
 
+// Login godoc
+//
+//	@Summary		Login a user
+//	@Tags			users
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		LoginRequest	true	"user payload"
+//	@Success		200		{object}	LoginResponse
+//	@Failure		400		{object}	ErrorResponse
+//	@Failure		401		{object}	ErrorResponse
+//	@Failure		500		{object}	ErrorResponse
+//	@Router			/login [post]
 func (h *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
 	var req LoginRequest
 	dec := json.NewDecoder(r.Body)
@@ -103,7 +128,7 @@ func (h *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	token, err := user.CreateToken(loggedIn.UserName)
+	token, err := user.CreateToken(loggedIn.UserName, loggedIn.ID)
 	if err != nil {
 		slog.Error("create token", "error", err)
 		writeError(w, http.StatusInternalServerError, "internal server error")

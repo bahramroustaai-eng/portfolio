@@ -29,6 +29,18 @@ func (r *Repository) CreateDebt(lender int32, borrower int32, amount int32) (Deb
 	return r.toDomain(debt), nil
 }
 
+func (r *Repository) GetDebtsByBorrowerID(ctx context.Context, borrowerID int32) ([]Debt, error) {
+	rows, err := r.q.GetDebtsByBorrowerID(ctx, borrowerID)
+	if err != nil {
+		return nil, fmt.Errorf("get debts: %w", err)
+	}
+	debts := make([]Debt, 0, len(rows))
+	for _, row := range rows {
+		debts = append(debts, r.toDomain(row))
+	}
+	return debts, nil
+}
+
 func (r *Repository) toDomain(debt db.Debt) Debt {
 	return Debt{
 		ID:       debt.ID,

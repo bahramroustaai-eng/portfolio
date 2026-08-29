@@ -1,7 +1,7 @@
 include .env
 export
 
-.PHONY: up down migrate-status migrate-up migrate-down migrate-new sqlc test
+.PHONY: up down migrate-status migrate-up migrate-down migrate-new sqlc swag test
 
 up:
 	docker compose up -d
@@ -23,6 +23,9 @@ migrate-status:
 
 sqlc:
 	sqlc generate
+
+swag:
+	swag init -g cmd/api/main.go -o docs
 
 test:
 	go test ./... -race

@@ -39,3 +39,11 @@ func (s *Service) CreateDebt(ctx context.Context, lender string, borrower string
 
 	return created, nil
 }
+
+func (s *Service) ListDebt(ctx context.Context, userID int32) ([]Debt, error) {
+	debts, err := s.repo.GetDebtsByBorrowerID(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+	return debts, nil
+}

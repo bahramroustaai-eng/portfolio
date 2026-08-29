@@ -17,8 +17,12 @@ func writeJSON(w http.ResponseWriter, statusCode int, payload any) {
 	}
 }
 
+type ErrorResponse struct {
+	Error string `json:"error"`
+}
+
 func writeError(w http.ResponseWriter, statusCode int, msg string) {
-	writeJSON(w, statusCode, map[string]string{"error": msg})
+	writeJSON(w, statusCode, ErrorResponse{Error: msg})
 }
 
 func writeServiceError(w http.ResponseWriter, err error) {
