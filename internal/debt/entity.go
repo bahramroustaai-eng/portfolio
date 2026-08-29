@@ -8,8 +8,10 @@ var (
 )
 
 type Debt struct {
-	ID       int32
-	Borrower int32
-	Amount   int32
-	Lender   int32
+	ID               int32  `json:"id"`
+	BorrowerID       int32  `json:"borrower_id"`
+	BorrowerUsername string `json:"borrower_username"`
+	LenderID         int32  `json:"lender_id"`
+	LenderUsername   string `json:"lender_username"`
+	Amount           int32  `json:"amount"`
 }

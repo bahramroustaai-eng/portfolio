@@ -9,11 +9,11 @@ import (
 )
 
 type Debt struct {
-	ID        int32
-	Lender    int32
-	Borrower  int32
-	Amount    int32
-	CreatedAt time.Time
+	ID         int32
+	LenderID   int32
+	BorrowerID int32
+	Amount     int32
+	CreatedAt  time.Time
 }
 
 type User struct {

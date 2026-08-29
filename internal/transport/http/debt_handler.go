@@ -118,7 +118,7 @@ func (h *DebtHandler) GetDebts(w http.ResponseWriter, r *http.Request) {
 	var totalAmount int32
 	for _, d := range debts {
 		totalAmount += d.Amount
-		debtByLender[string(d.Lender)] += d.Amount
+		debtByLender[d.LenderUsername] += d.Amount
 	}
 
 	writeJSON(w, http.StatusOK, GetDebtsResponse{

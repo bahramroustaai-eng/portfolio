@@ -7,39 +7,40 @@ package db
 
 import (
 	"context"
+	"time"
 )
 
 const countDebtsByBorrowerID = `-- name: CountDebtsByBorrowerID :one
 SELECT count(*) FROM debts
-WHERE borrower = $1
+WHERE borrower_id = $1
 `
 
-func (q *Queries) CountDebtsByBorrowerID(ctx context.Context, borrower int32) (int64, error) {
-	row := q.db.QueryRow(ctx, countDebtsByBorrowerID, borrower)
+func (q *Queries) CountDebtsByBorrowerID(ctx context.Context, borrowerID int32) (int64, error) {
+	row := q.db.QueryRow(ctx, countDebtsByBorrowerID, borrowerID)
 	var count int64
 	err := row.Scan(&count)
 	return count, err
 }
 
 const createDebt = `-- name: CreateDebt :one
-INSERT INTO debts (lender, borrower, amount)
+INSERT INTO debts (lender_id, borrower_id, amount)
 VALUES ($1, $2, $3)
-RETURNING id, lender, borrower, amount, created_at
+RETURNING id, lender_id, borrower_id, amount, created_at
 `
 
 type CreateDebtParams struct {
-	Lender   int32
-	Borrower int32
-	Amount   int32
+	LenderID   int32
+	BorrowerID int32
+	Amount     int32
 }
 
 func (q *Queries) CreateDebt(ctx context.Context, arg CreateDebtParams) (Debt, error) {
-	row := q.db.QueryRow(ctx, createDebt, arg.Lender, arg.Borrower, arg.Amount)
+	row := q.db.QueryRow(ctx, createDebt, arg.LenderID, arg.BorrowerID, arg.Amount)
 	var i Debt
 	err := row.Scan(
 		&i.ID,
-		&i.Lender,
-		&i.Borrower,
+		&i.LenderID,
+		&i.BorrowerID,
 		&i.Amount,
 		&i.CreatedAt,
 	)
@@ -47,33 +48,51 @@ func (q *Queries) CreateDebt(ctx context.Context, arg CreateDebtParams) (Debt, e
 }
 
 const getDebtsByBorrowerID = `-- name: GetDebtsByBorrowerID :many
-SELECT id, lender, borrower, amount, created_at FROM debts
-WHERE borrower = $1
-ORDER BY created_at DESC
+SELECT
+    d.id, d.amount, d.created_at,
+    d.lender_id, lu.user_name AS lender_username,
+    d.borrower_id, bu.user_name AS borrower_username
+FROM debts d
+         JOIN users lu ON lu.id = d.lender_id
+         JOIN users bu ON bu.id = d.borrower_id
+WHERE d.borrower_id = $1
+ORDER BY d.created_at DESC
 LIMIT $2 OFFSET $3
 `
 
 type GetDebtsByBorrowerIDParams struct {
-	Borrower int32
-	Limit    int32
-	Offset   int32
+	BorrowerID int32
+	Limit      int32
+	Offset     int32
 }
 
-func (q *Queries) GetDebtsByBorrowerID(ctx context.Context, arg GetDebtsByBorrowerIDParams) ([]Debt, error) {
-	rows, err := q.db.Query(ctx, getDebtsByBorrowerID, arg.Borrower, arg.Limit, arg.Offset)
+type GetDebtsByBorrowerIDRow struct {
+	ID               int32
+	Amount           int32
+	CreatedAt        time.Time
+	LenderID         int32
+	LenderUsername   string
+	BorrowerID       int32
+	BorrowerUsername string
+}
+
+func (q *Queries) GetDebtsByBorrowerID(ctx context.Context, arg GetDebtsByBorrowerIDParams) ([]GetDebtsByBorrowerIDRow, error) {
+	rows, err := q.db.Query(ctx, getDebtsByBorrowerID, arg.BorrowerID, arg.Limit, arg.Offset)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	var items []Debt
+	var items []GetDebtsByBorrowerIDRow
 	for rows.Next() {
-		var i Debt
+		var i GetDebtsByBorrowerIDRow
 		if err := rows.Scan(
 			&i.ID,
-			&i.Lender,
-			&i.Borrower,
 			&i.Amount,
 			&i.CreatedAt,
+			&i.LenderID,
+			&i.LenderUsername,
+			&i.BorrowerID,
+			&i.BorrowerUsername,
 		); err != nil {
 			return nil, err
 		}
