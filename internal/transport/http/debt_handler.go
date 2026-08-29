@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"portfolio/internal/debt"
+	"strconv"
 )
 
 type DebtHandler struct {
@@ -79,23 +80,62 @@ func (h *DebtHandler) GetDebts(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusUnauthorized, "invalid token")
 		return
 	}
-	debts, err := h.svc.ListDebt(r.Context(), userID)
+
+	const (
+		defaultLimit = 20
+		maxLimit     = 100
+	)
+
+	limit := int32(defaultLimit)
+	if v := r.URL.Query().Get("limit"); v != "" {
+		parsed, err := strconv.ParseInt(v, 10, 32)
+		if err != nil || parsed <= 0 {
+			writeError(w, http.StatusBadRequest, "invalid limit")
+			return
+		}
+		limit = int32(parsed)
+		if limit > maxLimit {
+			limit = maxLimit
+		}
+	}
+
+	offset := int32(0)
+	if v := r.URL.Query().Get("offset"); v != "" {
+		parsed, err := strconv.ParseInt(v, 10, 32)
+		if err != nil || parsed < 0 {
+			writeError(w, http.StatusBadRequest, "invalid offset")
+			return
+		}
+		offset = int32(parsed)
+	}
+
+	debts, totalCount, err := h.svc.ListDebt(r.Context(), userID, limit, offset)
 	if err != nil {
 		writeServiceError(w, err)
 		return
 	}
-	var total int32
+	debtByLender := make(map[string]int32)
+	var totalAmount int32
 	for _, d := range debts {
-		total += d.Amount
+		totalAmount += d.Amount
+		debtByLender[string(d.Lender)] += d.Amount
 	}
 
 	writeJSON(w, http.StatusOK, GetDebtsResponse{
-		Total: total,
-		Debts: debts,
+		Debts:        debts,
+		TotalAmount:  totalAmount,
+		DebtByLender: debtByLender,
+		Limit:        limit,
+		Offset:       offset,
+		TotalCount:   totalCount,
 	})
 }
 
 type GetDebtsResponse struct {
-	Debts []debt.Debt
-	Total int32
+	Debts        []debt.Debt      `json:"debts"`
+	DebtByLender map[string]int32 `json:"debt_by_lender"`
+	TotalAmount  int32            `json:"total_amount"`
+	Limit        int32            `json:"limit"`
+	Offset       int32            `json:"offset"`
+	TotalCount   int32            `json:"total_count"`
 }

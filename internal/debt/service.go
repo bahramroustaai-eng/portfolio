@@ -40,10 +40,16 @@ func (s *Service) CreateDebt(ctx context.Context, lender string, borrower string
 	return created, nil
 }
 
-func (s *Service) ListDebt(ctx context.Context, userID int32) ([]Debt, error) {
-	debts, err := s.repo.GetDebtsByBorrowerID(ctx, userID)
+func (s *Service) ListDebt(ctx context.Context, userID int32, limit int32, offset int32) ([]Debt, int32, error) {
+	debts, err := s.repo.GetDebtsByBorrowerID(ctx, userID, limit, offset)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
-	return debts, nil
+
+	totalCount, err := s.repo.CountDebtsByBorrowerID(ctx, userID)
+	if err != nil {
+		return nil, 0, err
+	}
+
+	return debts, totalCount, nil
 }

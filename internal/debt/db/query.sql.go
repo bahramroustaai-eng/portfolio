@@ -9,6 +9,18 @@ import (
 	"context"
 )
 
+const countDebtsByBorrowerID = `-- name: CountDebtsByBorrowerID :one
+SELECT count(*) FROM debts
+WHERE borrower = $1
+`
+
+func (q *Queries) CountDebtsByBorrowerID(ctx context.Context, borrower int32) (int64, error) {
+	row := q.db.QueryRow(ctx, countDebtsByBorrowerID, borrower)
+	var count int64
+	err := row.Scan(&count)
+	return count, err
+}
+
 const createDebt = `-- name: CreateDebt :one
 INSERT INTO debts (lender, borrower, amount)
 VALUES ($1, $2, $3)
@@ -37,10 +49,18 @@ func (q *Queries) CreateDebt(ctx context.Context, arg CreateDebtParams) (Debt, e
 const getDebtsByBorrowerID = `-- name: GetDebtsByBorrowerID :many
 SELECT id, lender, borrower, amount, created_at FROM debts
 WHERE borrower = $1
+ORDER BY created_at DESC
+LIMIT $2 OFFSET $3
 `
 
-func (q *Queries) GetDebtsByBorrowerID(ctx context.Context, borrower int32) ([]Debt, error) {
-	rows, err := q.db.Query(ctx, getDebtsByBorrowerID, borrower)
+type GetDebtsByBorrowerIDParams struct {
+	Borrower int32
+	Limit    int32
+	Offset   int32
+}
+
+func (q *Queries) GetDebtsByBorrowerID(ctx context.Context, arg GetDebtsByBorrowerIDParams) ([]Debt, error) {
+	rows, err := q.db.Query(ctx, getDebtsByBorrowerID, arg.Borrower, arg.Limit, arg.Offset)
 	if err != nil {
 		return nil, err
 	}
