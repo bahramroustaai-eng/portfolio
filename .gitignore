@@ -1,0 +1,40 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+dist/
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of `go build`
+/portfolio
+/cmd/**/main
+!/cmd/**/main.go
+
+# Coverage
+*.out
+coverage.html
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+.qodo/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
