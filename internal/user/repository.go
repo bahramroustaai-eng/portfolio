@@ -12,16 +12,16 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-type UserRepository struct {
+type Repository struct {
 	pool *pgxpool.Pool
 	q    *db.Queries
 }
 
-func NewUserRepository(pool *pgxpool.Pool) *UserRepository {
-	return &UserRepository{pool: pool, q: db.New(pool)}
+func NewUserRepository(pool *pgxpool.Pool) *Repository {
+	return &Repository{pool: pool, q: db.New(pool)}
 }
 
-func (r *UserRepository) CreateUser(ctx context.Context, username string, password string) (User, error) {
+func (r *Repository) CreateUser(ctx context.Context, username string, password string) (User, error) {
 	row, err := r.q.CreateUser(ctx, db.CreateUserParams{
 		UserName: username,
 		Password: password,
@@ -37,7 +37,7 @@ func (r *UserRepository) CreateUser(ctx context.Context, username string, passwo
 	return toDomain(row), nil
 }
 
-func (r *UserRepository) GetUserByUsername(ctx context.Context, username string) (User, error) {
+func (r *Repository) GetUserByUsername(ctx context.Context, username string) (User, error) {
 	row, err := r.q.GetUserByUsername(ctx, username)
 	if err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {

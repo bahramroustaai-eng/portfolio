@@ -7,10 +7,10 @@ import (
 
 type Service struct {
 	repo     *Repository
-	userRepo *user.UserRepository
+	userRepo *user.Repository
 }
 
-func NewService(repo *Repository, userRepo *user.UserRepository) *Service {
+func NewService(repo *Repository, userRepo *user.Repository) *Service {
 	return &Service{repo: repo, userRepo: userRepo}
 }
 
