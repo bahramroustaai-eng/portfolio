@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
 	"golang.org/x/crypto/bcrypt"
@@ -25,6 +26,21 @@ func (s *Service) CreateUser(ctx context.Context, input CreateInput) (User, erro
 	user, err := s.repo.CreateUser(ctx, input.UserName, string(hash))
 	if err != nil {
 		return User{}, err
+	}
+	return user, nil
+}
+
+func (s *Service) Login(ctx context.Context, username, password string) (User, error) {
+	user, err := s.repo.GetUserByUsername(ctx, username)
+	if err != nil {
+		if errors.Is(err, ErrNotFound) {
+			return User{}, ErrInvalidCredentials
+		}
+		return User{}, err
+	}
+
+	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
+		return User{}, ErrInvalidCredentials
 	}
 	return user, nil
 }

@@ -6,20 +6,7 @@ package db
 
 import (
 	"time"
-
-	"github.com/google/uuid"
 )
-
-type Notification struct {
-	ID        uuid.UUID
-	UserID    string
-	Channel   string
-	Payload   []byte
-	Status    string
-	Attempts  int32
-	CreatedAt time.Time
-	SentAt    *time.Time
-}
 
 type User struct {
 	ID        int32

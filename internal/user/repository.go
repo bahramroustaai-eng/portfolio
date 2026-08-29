@@ -7,6 +7,7 @@ import (
 
 	"portfolio/internal/user/db"
 
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
@@ -32,6 +33,17 @@ func (r *UserRepository) CreateUser(ctx context.Context, username string, passwo
 			return User{}, ErrUserNameConflict
 		}
 		return User{}, fmt.Errorf("could not create user: %w", err)
+	}
+	return toDomain(row), nil
+}
+
+func (r *UserRepository) GetUserByUsername(ctx context.Context, username string) (User, error) {
+	row, err := r.q.GetUserByUsername(ctx, username)
+	if err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return User{}, ErrNotFound
+		}
+		return User{}, fmt.Errorf("could not get user: %w", err)
 	}
 	return toDomain(row), nil
 }

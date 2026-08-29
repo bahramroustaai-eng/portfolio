@@ -58,10 +58,57 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	writeJSON(w, http.StatusCreated, CreateUserResponse{
-		ID:        created.ID,
-		Username:  created.UserName,
-		CreatedAt: created.CreatedAt,
+	token, err := user.CreateToken(created.UserName)
+	if err != nil {
+		slog.Error("create token", "error", err)
+		writeError(w, http.StatusInternalServerError, "internal server error")
+		return
+	}
+
+	writeJSON(w, http.StatusOK, LoginResponse{
+		ID:          created.ID,
+		Username:    created.UserName,
+		AccessToken: token,
+	})
+}
+
+type LoginRequest struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type LoginResponse struct {
+	ID          int32  `json:"id"`
+	Username    string `json:"username"`
+	AccessToken string `json:"access_token"`
+}
+
+func (h *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
+	var req LoginRequest
+	dec := json.NewDecoder(r.Body)
+
+	if err := dec.Decode(&req); err != nil {
+		writeError(w, http.StatusBadRequest, "invalid request body")
+		return
+	}
+
+	loggedIn, err := h.svc.Login(r.Context(), req.Username, req.Password)
+	if err != nil {
+		writeServiceError(w, err)
+		return
+	}
+
+	token, err := user.CreateToken(loggedIn.UserName)
+	if err != nil {
+		slog.Error("create token", "error", err)
+		writeError(w, http.StatusInternalServerError, "internal server error")
+		return
+	}
+
+	writeJSON(w, http.StatusOK, LoginResponse{
+		ID:          loggedIn.ID,
+		Username:    loggedIn.UserName,
+		AccessToken: token,
 	})
 }
 
@@ -83,6 +130,8 @@ func writeServiceError(w http.ResponseWriter, err error) {
 		writeError(w, http.StatusBadRequest, err.Error())
 	case errors.Is(err, user.ErrUserNameConflict):
 		writeError(w, http.StatusBadRequest, "username already exists")
+	case errors.Is(err, user.ErrInvalidCredentials):
+		writeError(w, http.StatusUnauthorized, "invalid username or password")
 	default:
 		slog.Error("unhandled error", "error", err)
 		writeError(w, http.StatusInternalServerError, "internal server error")
