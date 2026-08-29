@@ -2,11 +2,16 @@ package transport
 
 import "net/http"
 
-func NewRouter(h *UserHandler) http.Handler {
+type Module interface {
+	RegisterRoutes(mux *http.ServeMux)
+}
+
+func NewRouter(mods ...Module) http.Handler {
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("POST /api/v1/user", h.CreateUser)
-	mux.HandleFunc("POST /api/v1/login", h.Login)
+	for _, m := range mods {
+		m.RegisterRoutes(mux)
+	}
 	mux.Handle("/", http.FileServer(http.Dir("web/static")))
 	return Logging(mux)
 }

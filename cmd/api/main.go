@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"portfolio/internal/debt"
 	"portfolio/internal/platform/config"
 	"portfolio/internal/platform/postgres"
 	transport "portfolio/internal/transport/http"
@@ -30,10 +31,15 @@ func main() {
 	}
 	defer pool.Close()
 
-	userrepo := user.NewUserRepository(pool)
-	usersvc := user.NewUserService(userrepo)
-	handler := transport.NewUserHandler(usersvc)
-	router := transport.NewRouter(handler)
+	userRepo := user.NewUserRepository(pool)
+	userSvc := user.NewUserService(userRepo)
+	userHandler := transport.NewUserHandler(userSvc)
+
+	debtRepo := debt.NewRepository(pool)
+	debtSvc := debt.NewService(debtRepo, userRepo)
+	debtHandler := transport.NewDebtHandler(debtSvc)
+
+	router := transport.NewRouter(userHandler, debtHandler)
 
 	srv := http.Server{
 		Addr:         cfg.Addr,

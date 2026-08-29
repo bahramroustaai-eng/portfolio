@@ -1,15 +1,16 @@
 package user
 
 import (
-	"errors"
 	"time"
+
+	"portfolio/internal/apperr"
 )
 
 var (
-	ErrUserNameConflict   = errors.New("user name already exists")
-	ErrNotFound           = errors.New("user not found")
-	ErrInvalidInput       = errors.New("invalid input")
-	ErrInvalidCredentials = errors.New("invalid username or password")
+	ErrUserNameConflict   = apperr.New(apperr.CodeConflict, "user name already exists")
+	ErrNotFound           = apperr.New(apperr.CodeNotFound, "user not found")
+	ErrInvalidInput       = apperr.New(apperr.CodeInvalid, "invalid input")
+	ErrInvalidCredentials = apperr.New(apperr.CodeUnauthorized, "invalid username or password")
 )
 
 type User struct {

@@ -2,7 +2,6 @@ package transport
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"log/slog"
 	"net/http"
@@ -16,6 +15,11 @@ type UserHandler struct {
 
 func NewUserHandler(svc *user.Service) *UserHandler {
 	return &UserHandler{svc: svc}
+}
+
+func (h *UserHandler) RegisterRoutes(mux *http.ServeMux) {
+	mux.HandleFunc("POST /api/v1/user", h.CreateUser)
+	mux.HandleFunc("POST /api/v1/login", h.Login)
 }
 
 type CreateUserRequest struct {
@@ -48,6 +52,7 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, "invalid request body")
 		return
 	}
+	defer r.Body.Close()
 
 	created, err := h.svc.CreateUser(r.Context(), user.CreateInput{
 		UserName: req.Username,
@@ -110,30 +115,4 @@ func (h *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
 		Username:    loggedIn.UserName,
 		AccessToken: token,
 	})
-}
-
-func writeJSON(w http.ResponseWriter, statusCode int, payload any) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(statusCode)
-	if err := json.NewEncoder(w).Encode(payload); err != nil {
-		slog.Error("failed to write response", "error", err)
-	}
-}
-
-func writeError(w http.ResponseWriter, statusCode int, msg string) {
-	writeJSON(w, statusCode, map[string]string{"error": msg})
-}
-
-func writeServiceError(w http.ResponseWriter, err error) {
-	switch {
-	case errors.Is(err, user.ErrInvalidInput):
-		writeError(w, http.StatusBadRequest, err.Error())
-	case errors.Is(err, user.ErrUserNameConflict):
-		writeError(w, http.StatusBadRequest, "username already exists")
-	case errors.Is(err, user.ErrInvalidCredentials):
-		writeError(w, http.StatusUnauthorized, "invalid username or password")
-	default:
-		slog.Error("unhandled error", "error", err)
-		writeError(w, http.StatusInternalServerError, "internal server error")
-	}
 }
