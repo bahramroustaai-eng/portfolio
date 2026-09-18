@@ -16,12 +16,11 @@ func NewDebtHandler(svc *debt.Service) *DebtHandler {
 }
 
 func (h *DebtHandler) RegisterRoutes(mux *http.ServeMux) {
-	mux.HandleFunc("POST /api/v1/debt", h.CreateDebt)
+	mux.Handle("POST /api/v1/debt", RequireAuth(http.HandlerFunc(h.CreateDebt)))
 	mux.Handle("GET /api/v1/debts", RequireAuth(http.HandlerFunc(h.GetDebts)))
 }
 
 type CreateDebtRequest struct {
-	Lender   string `json:"lender"`
 	Borrower string `json:"borrower"`
 	Amount   int32  `json:"amount"`
 }
@@ -45,6 +44,12 @@ type CreateDebtResponse struct {
 //	@Failure		500		{object}	ErrorResponse
 //	@Router			/debt [post]
 func (h *DebtHandler) CreateDebt(w http.ResponseWriter, r *http.Request) {
+	userName, ok := UserNameFromContext(r.Context())
+	if !ok {
+		writeError(w, http.StatusUnauthorized, "invalid token")
+		return
+	}
+
 	var req CreateDebtRequest
 	decoder := json.NewDecoder(r.Body)
 
@@ -54,7 +59,7 @@ func (h *DebtHandler) CreateDebt(w http.ResponseWriter, r *http.Request) {
 	}
 	defer r.Body.Close()
 
-	created, err := h.svc.CreateDebt(r.Context(), req.Lender, req.Borrower, req.Amount)
+	created, err := h.svc.CreateDebt(r.Context(), userName, req.Borrower, req.Amount)
 	if err != nil {
 		writeServiceError(w, err)
 		return

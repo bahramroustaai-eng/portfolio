@@ -48,9 +48,30 @@ func (r *Repository) GetUserByUsername(ctx context.Context, username string) (Us
 	return toDomain(row), nil
 }
 
+func (r *Repository) GetUsers(ctx context.Context) ([]User, error) {
+	rows, err := r.q.GetUsers(ctx)
+	if err != nil {
+		return []User{}, fmt.Errorf("could not get users: %w", err)
+	}
+	var users []User
+
+	for _, row := range rows {
+		users = append(users, toDomainGetUsers(row))
+	}
+	return users, nil
+}
+
+func toDomainGetUsers(i db.User) User {
+	return User{
+		ID:       i.ID,
+		UserName: i.UserName,
+	}
+}
+
 func toDomain(i db.User) User {
 	return User{
 		ID:       i.ID,
 		UserName: i.UserName,
-		Password: i.Password}
+		Password: i.Password,
+	}
 }

@@ -7,9 +7,12 @@ import (
 	"strings"
 )
 
-type ctxKey int
+type ctxKey string
 
-const userIDKey ctxKey = 0
+const (
+	userIDKey   ctxKey = "user_id"
+	userNameKey ctxKey = "username"
+)
 
 func RequireAuth(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -24,7 +27,20 @@ func RequireAuth(next http.Handler) http.Handler {
 			writeError(w, http.StatusUnauthorized, "invalid token")
 			return
 		}
+		userID := claims.UserID
+		if userID <= 0 {
+			writeError(w, http.StatusUnauthorized, "invalid token")
+			return
+		}
+
+		userName := claims.Username
+		if userName == "" {
+			writeError(w, http.StatusUnauthorized, "invalid token")
+			return
+		}
+
 		ctx := context.WithValue(r.Context(), userIDKey, claims.UserID)
+		ctx = context.WithValue(ctx, userNameKey, claims.Username)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
@@ -32,4 +48,9 @@ func RequireAuth(next http.Handler) http.Handler {
 func UserIDFromContext(ctx context.Context) (int32, bool) {
 	id, ok := ctx.Value(userIDKey).(int32)
 	return id, ok
+}
+
+func UserNameFromContext(ctx context.Context) (string, bool) {
+	username, ok := ctx.Value(userNameKey).(string)
+	return username, ok
 }

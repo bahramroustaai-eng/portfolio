@@ -44,3 +44,11 @@ func (s *Service) Login(ctx context.Context, username, password string) (User, e
 	}
 	return user, nil
 }
+
+func (s *Service) GetUsersList(ctx context.Context) ([]User, error) {
+	users, err := s.repo.GetUsers(ctx)
+	if err != nil {
+		return []User{}, err
+	}
+	return users, nil
+}

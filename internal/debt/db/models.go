@@ -5,8 +5,53 @@
 package db
 
 import (
+	"database/sql/driver"
+	"fmt"
 	"time"
 )
+
+type RiskLevel string
+
+const (
+	RiskLevelLow    RiskLevel = "low"
+	RiskLevelMedium RiskLevel = "medium"
+	RiskLevelHigh   RiskLevel = "high"
+)
+
+func (e *RiskLevel) Scan(src interface{}) error {
+	switch s := src.(type) {
+	case []byte:
+		*e = RiskLevel(s)
+	case string:
+		*e = RiskLevel(s)
+	default:
+		return fmt.Errorf("unsupported scan type for RiskLevel: %T", src)
+	}
+	return nil
+}
+
+type NullRiskLevel struct {
+	RiskLevel RiskLevel
+	Valid     bool // Valid is true if RiskLevel is not NULL
+}
+
+// Scan implements the Scanner interface.
+func (ns *NullRiskLevel) Scan(value interface{}) error {
+	if value == nil {
+		ns.RiskLevel, ns.Valid = "", false
+		return nil
+	}
+	ns.Valid = true
+	return ns.RiskLevel.Scan(value)
+}
+
+// Value implements the driver Valuer interface.
+func (ns NullRiskLevel) Value() (driver.Value, error) {
+	if !ns.Valid {
+		return nil, nil
+	}
+	return string(ns.RiskLevel), nil
+}
 
 type Debt struct {
 	ID         int32
@@ -14,6 +59,23 @@ type Debt struct {
 	BorrowerID int32
 	Amount     int32
 	CreatedAt  time.Time
+}
+
+type Item struct {
+	ID           int32
+	Name         string
+	TypeID       *int32
+	TotalCost    int32
+	Unit         int32
+	Ticker       *string
+	AffectProfit *bool
+	RiskLevel    RiskLevel
+	CreatedAt    time.Time
+}
+
+type ItemType struct {
+	ID   int32
+	Name string
 }
 
 type User struct {

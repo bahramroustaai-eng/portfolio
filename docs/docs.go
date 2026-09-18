@@ -92,10 +92,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/debt.Debt"
-                            }
+                            "$ref": "#/definitions/transport.GetDebtsResponse"
                         }
                     },
                     "401": {
@@ -215,6 +212,46 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/users": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get users",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/transport.LoginResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ErrorResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -222,20 +259,22 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "amount": {
-                    "type": "integer",
-                    "format": "int32"
+                    "type": "integer"
                 },
-                "borrower": {
-                    "type": "integer",
-                    "format": "int32"
+                "borrower_id": {
+                    "type": "integer"
+                },
+                "borrower_username": {
+                    "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "format": "int32"
+                    "type": "integer"
                 },
-                "lender": {
-                    "type": "integer",
-                    "format": "int32"
+                "lender_id": {
+                    "type": "integer"
+                },
+                "lender_username": {
+                    "type": "string"
                 }
             }
         },
@@ -246,9 +285,6 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "borrower": {
-                    "type": "string"
-                },
-                "lender": {
                     "type": "string"
                 }
             }
@@ -277,6 +313,36 @@ const docTemplate = `{
             "properties": {
                 "error": {
                     "type": "string"
+                }
+            }
+        },
+        "transport.GetDebtsResponse": {
+            "type": "object",
+            "properties": {
+                "debt_by_lender": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "debts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/debt.Debt"
+                    }
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "total_amount": {
+                    "type": "integer"
+                },
+                "total_count": {
+                    "type": "integer"
                 }
             }
         },
@@ -325,8 +391,8 @@ var SwaggerInfo = &swag.Spec{
 	Description:      "",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
-	//LeftDelim:        "{{",
-	//RightDelim:       "}}",
+	LeftDelim:        "{{",
+	RightDelim:       "}}",
 }
 
 func init() {

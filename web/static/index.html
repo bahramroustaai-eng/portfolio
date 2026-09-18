@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portfolio</title>
+<title>پرتفولیو</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     color-scheme: light;
@@ -25,7 +26,7 @@
   }
   * { box-sizing: border-box; }
   body {
-    font-family: 'Manrope', system-ui, sans-serif;
+    font-family: 'Vazirmatn', 'Manrope', system-ui, sans-serif;
     margin: 0;
     background: var(--bg);
     color: var(--text);
@@ -93,7 +94,7 @@
   form.auth-form.active { display: flex; }
   .field { display: flex; flex-direction: column; gap: 7px; }
   .field label { font-size: 13px; font-weight: 600; color: oklch(30% 0.01 90); }
-  .field input {
+  .field input, .field select {
     padding: 12px 14px; font-size: 15px; border: 1px solid var(--border); border-radius: 10px; background: #fff; color: var(--text);
   }
   .btn-primary {
@@ -154,7 +155,7 @@
   .debt-form { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
   .debt-form .field { flex: 1; min-width: 140px; }
   .debt-form .field.amount { width: 130px; flex: none; }
-  .debt-form .field input { padding: 10px 12px; font-size: 14px; }
+  .debt-form .field input, .debt-form .field select { padding: 10px 12px; font-size: 14px; }
   .debt-form .btn-primary { padding: 10px 18px; font-size: 14px; white-space: nowrap; flex: none; }
 
   .list-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
@@ -185,25 +186,25 @@
             <rect x="13.5" y="0" width="3.5" height="17" rx="1" fill="white"/>
           </svg>
         </div>
-        <span>Portfolio</span>
+        <span>پرتفولیو</span>
       </div>
 
       <div>
-        <h1>One place for what you owe — and who to.</h1>
+        <h1>همه بدهی‌ها و طلب‌هایتان، یک‌جا</h1>
         <div class="brand-features">
           <div>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;">
               <circle cx="9" cy="9" r="8" stroke="white" stroke-opacity="0.5"/>
               <path d="M5.5 9.3 L7.8 11.6 L12.5 6.4" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>Track every debt, in and out</span>
+            <span>همه بدهی‌ها و طلب‌ها را ثبت کنید</span>
           </div>
           <div>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;">
               <circle cx="9" cy="9" r="8" stroke="white" stroke-opacity="0.5"/>
               <path d="M5.5 9.3 L7.8 11.6 L12.5 6.4" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>See your total exposure at a glance</span>
+            <span>مجموع تعهدات خود را یک‌جا ببینید</span>
           </div>
         </div>
       </div>
@@ -213,42 +214,42 @@
           <polyline points="0,40 30,30 60,34 90,16 120,22 150,8 180,14 220,4" stroke="white" stroke-opacity="0.5" stroke-width="1.5" fill="none"/>
           <circle cx="220" cy="4" r="3" fill="white" fill-opacity="0.8"/>
         </svg>
-        <div class="brand-footer">Built for tracking who owes what.</div>
+        <div class="brand-footer">برای مدیریت بدهی‌ها و طلب‌ها</div>
       </div>
     </div>
 
     <div class="auth-form-area">
       <div class="auth-form-inner">
         <div class="tabs">
-          <div class="tab active" data-tab="login">Log in</div>
-          <div class="tab" data-tab="signup">Sign up</div>
+          <div class="tab active" data-tab="login">ورود</div>
+          <div class="tab" data-tab="signup">ثبت‌نام</div>
         </div>
 
         <form id="login-form" class="auth-form active">
-          <h2 class="sr-title hidden">Welcome back</h2>
+          <h2 class="sr-title hidden">خوش آمدید</h2>
           <div class="field">
-            <label for="login-username">Username</label>
-            <input id="login-username" name="username" placeholder="e.g. sara.ahmadi" required autocomplete="username">
+            <label for="login-username">نام کاربری</label>
+            <input id="login-username" name="username" placeholder="مثلاً sara.ahmadi" required autocomplete="username" dir="ltr">
           </div>
           <div class="field">
-            <label for="login-password">Password</label>
+            <label for="login-password">رمز عبور</label>
             <input id="login-password" name="password" type="password" placeholder="••••••••" required autocomplete="current-password">
           </div>
-          <button type="submit" class="btn-primary">Log in</button>
-          <div class="switch-line">New to Portfolio? <a href="#" data-switch="signup">Create an account</a></div>
+          <button type="submit" class="btn-primary">ورود</button>
+          <div class="switch-line">تازه به پرتفولیو پیوسته‌اید؟ <a href="#" data-switch="signup">حساب کاربری بسازید</a></div>
         </form>
 
         <form id="signup-form" class="auth-form">
           <div class="field">
-            <label for="signup-username">Username</label>
-            <input id="signup-username" name="username" placeholder="3–32 characters" required autocomplete="username" minlength="3" maxlength="32">
+            <label for="signup-username">نام کاربری</label>
+            <input id="signup-username" name="username" placeholder="۳ تا ۳۲ نویسه" required autocomplete="username" minlength="3" maxlength="32" dir="ltr">
           </div>
           <div class="field">
-            <label for="signup-password">Password</label>
-            <input id="signup-password" name="password" type="password" placeholder="At least 8 characters" required autocomplete="new-password" minlength="8">
+            <label for="signup-password">رمز عبور</label>
+            <input id="signup-password" name="password" type="password" placeholder="حداقل ۸ نویسه" required autocomplete="new-password" minlength="8" dir="ltr">
           </div>
-          <button type="submit" class="btn-primary">Create account</button>
-          <div class="switch-line">Already have an account? <a href="#" data-switch="login">Log in</a></div>
+          <button type="submit" class="btn-primary">ساخت حساب کاربری</button>
+          <div class="switch-line">قبلاً حساب ساخته‌اید؟ <a href="#" data-switch="login">وارد شوید</a></div>
         </form>
 
         <div id="auth-msg" class="msg" style="margin-top: 14px;"></div>
@@ -267,61 +268,59 @@
             <rect x="13.5" y="0" width="3.5" height="17" rx="1" fill="white"/>
           </svg>
         </div>
-        <span>Portfolio</span>
+        <span>پرتفولیو</span>
       </div>
       <div class="nav-right">
         <div class="whoami">
           <div class="avatar" id="nav-avatar"></div>
           <span id="nav-username"></span>
         </div>
-        <button type="button" class="btn-secondary" id="logout-btn">Log out</button>
+        <button type="button" class="btn-secondary" id="logout-btn">خروج</button>
       </div>
     </div>
 
     <div class="dashboard-body">
       <div class="page-header">
-        <h1>Debts</h1>
-        <p>Debts where you're the borrower</p>
+        <h1>بدهی‌ها</h1>
+        <p>بدهی‌هایی که شما وام‌گیرنده آن هستید</p>
       </div>
 
       <div class="stats-row">
         <div class="stat-card">
-          <span class="label">TOTAL YOU OWE</span>
-          <span class="value accent" id="stat-total">$0</span>
+          <span class="label">مجموع بدهی شما</span>
+          <span class="value accent" id="stat-total">۰</span>
         </div>
         <div class="stat-card">
-          <span class="label">OPEN DEBTS</span>
+          <span class="label">بدهی‌های باز</span>
           <span class="value" id="stat-count">0</span>
         </div>
         <div class="card-by-lender">
-          <span class="label">BY LENDER</span>
+          <span class="label">به تفکیک طلبکار</span>
           <div id="by-lender-list"></div>
         </div>
       </div>
 
       <div class="card">
-        <h3>Add a debt</h3>
+        <h3>افزودن بدهی</h3>
         <form id="debt-form" class="debt-form">
           <div class="field">
-            <label for="debt-lender">Lender</label>
-            <input id="debt-lender" name="lender" placeholder="who you borrowed from" required>
-          </div>
-          <div class="field">
-            <label for="debt-borrower">Borrower</label>
-            <input id="debt-borrower" name="borrower" placeholder="your username" required>
+            <label for="debt-borrower">بدهکار</label>
+            <select id="debt-borrower" name="borrower" required>
+              <option value="">در حال بارگذاری کاربران…</option>
+            </select>
           </div>
           <div class="field amount">
-            <label for="debt-amount">Amount</label>
+            <label for="debt-amount">مبلغ</label>
             <input id="debt-amount" name="amount" type="number" min="1" step="1" placeholder="0" required>
           </div>
-          <button type="submit" class="btn-primary">Add debt</button>
+          <button type="submit" class="btn-primary">افزودن بدهی</button>
         </form>
         <div id="debt-msg" class="msg" style="margin-top: 10px;"></div>
       </div>
 
       <div class="list-card">
         <div class="list-header">
-          <span>All debts</span>
+          <span>همه بدهی‌ها</span>
           <span id="list-count"></span>
         </div>
         <div id="debts-list"></div>
@@ -343,6 +342,7 @@
   const statTotal = document.getElementById('stat-total');
   const statCount = document.getElementById('stat-count');
   const byLenderList = document.getElementById('by-lender-list');
+  const borrowerSelect = document.getElementById('debt-borrower');
 
   function switchTab(name) {
     tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
@@ -384,10 +384,10 @@
     if (res.status === 401 && token) {
       // an authenticated request was rejected — the session itself is invalid/expired
       logout();
-      throw new Error('session expired, please log in again');
+      throw new Error('نشست شما منقضی شده است؛ لطفاً دوباره وارد شوید');
     }
 
-    if (!res.ok) throw new Error(data.error || 'request failed');
+    if (!res.ok) throw new Error(data.error || 'درخواست ناموفق بود');
     return data;
   }
 
@@ -397,7 +397,7 @@
     dashboardScreen.classList.remove('hidden');
     navUsername.textContent = username;
     navAvatar.textContent = initials(username);
-    document.getElementById('debt-borrower').value = username;
+    loadUsers(username);
     loadDebts();
   }
 
@@ -439,22 +439,46 @@
 
   document.getElementById('debt-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const lender = document.getElementById('debt-lender').value;
-    const borrower = document.getElementById('debt-borrower').value;
+    const borrower = borrowerSelect.value;
     const amount = Number(document.getElementById('debt-amount').value);
     try {
-      await api('POST', '/api/v1/debt', { lender, borrower, amount });
-      document.getElementById('debt-lender').value = '';
+      await api('POST', '/api/v1/debt', { borrower, amount });
+      borrowerSelect.value = '';
       document.getElementById('debt-amount').value = '';
-      showMsg(debtMsg, 'Debt added.', true);
+      showMsg(debtMsg, 'بدهی با موفقیت اضافه شد.', true);
       loadDebts();
     } catch (err) {
       showMsg(debtMsg, err.message, false);
     }
   });
 
+  async function loadUsers(currentUsername) {
+    borrowerSelect.disabled = true;
+    borrowerSelect.innerHTML = '<option value="">در حال بارگذاری کاربران…</option>';
+    try {
+      const users = await api('GET', '/api/v1/users');
+      const userList = Array.isArray(users) ? users : [];
+      const otherUsers = userList.filter(user => user.username !== currentUsername);
+      borrowerSelect.innerHTML = '<option value="">بدهکار را انتخاب کنید</option>';
+      otherUsers.forEach(user => {
+        const option = document.createElement('option');
+        option.value = user.username;
+        option.textContent = user.username;
+        borrowerSelect.appendChild(option);
+      });
+      if (!otherUsers.length) {
+        borrowerSelect.innerHTML = '<option value="">کاربر دیگری پیدا نشد</option>';
+      }
+    } catch (err) {
+      borrowerSelect.innerHTML = '<option value="">بارگذاری کاربران ناموفق بود</option>';
+      showMsg(debtMsg, err.message, false);
+    } finally {
+      borrowerSelect.disabled = false;
+    }
+  }
+
   async function loadDebts() {
-    debtsList.innerHTML = '<div class="list-loading">Loading…</div>';
+    debtsList.innerHTML = '<div class="list-loading">در حال بارگذاری…</div>';
     listCount.textContent = '';
     try {
       const data = await api('GET', '/api/v1/debts');
@@ -471,18 +495,18 @@
     const totalCount = data.total_count ?? debts.length;
     const byLender = data.debt_by_lender || {};
 
-    statTotal.textContent = '$' + totalAmount.toLocaleString();
-    statCount.textContent = totalCount;
-    listCount.textContent = totalCount + (totalCount === 1 ? ' debt' : ' debts');
+    statTotal.textContent = totalAmount.toLocaleString('fa-IR');
+    statCount.textContent = totalCount.toLocaleString('fa-IR');
+    listCount.textContent = totalCount.toLocaleString('fa-IR') + ' بدهی';
 
     const lenderEntries = Object.entries(byLender);
     byLenderList.innerHTML = lenderEntries.length
       ? lenderEntries.map(([name, amt]) => `
           <div class="lender-row">
             <span>${escapeHtml(name)}</span>
-            <span>$${Number(amt).toLocaleString()}</span>
+            <span>${Number(amt).toLocaleString('fa-IR')}</span>
           </div>`).join('')
-      : '<div class="by-lender-empty">Nothing yet</div>';
+      : '<div class="by-lender-empty">هنوز موردی ثبت نشده است</div>';
 
     debtsList.innerHTML = debts.length
       ? debts.map(d => `
@@ -490,11 +514,11 @@
             <div class="avatar">${initials(d.lender_username)}</div>
             <div class="who">
               <div class="name">${escapeHtml(d.lender_username)}</div>
-              <div class="sub">lent to you</div>
+              <div class="sub">به شما قرض داده است</div>
             </div>
-            <div class="amount">$${Number(d.amount).toLocaleString()}</div>
+            <div class="amount">${Number(d.amount).toLocaleString('fa-IR')}</div>
           </div>`).join('')
-      : '<div class="list-empty">No debts yet — add your first one above.</div>';
+      : '<div class="list-empty">هنوز بدهی‌ای ثبت نشده است؛ اولین بدهی خود را در بالا اضافه کنید.</div>';
   }
 
   function escapeHtml(str) {

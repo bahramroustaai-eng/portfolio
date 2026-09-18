@@ -3,25 +3,23 @@ definitions:
   debt.Debt:
     properties:
       amount:
-        format: int32
         type: integer
-      borrower:
-        format: int32
+      borrower_id:
         type: integer
+      borrower_username:
+        type: string
       id:
-        format: int32
         type: integer
-      lender:
-        format: int32
+      lender_id:
         type: integer
+      lender_username:
+        type: string
     type: object
   transport.CreateDebtRequest:
     properties:
       amount:
         type: integer
       borrower:
-        type: string
-      lender:
         type: string
     type: object
   transport.CreateDebtResponse:
@@ -40,6 +38,26 @@ definitions:
     properties:
       error:
         type: string
+    type: object
+  transport.GetDebtsResponse:
+    properties:
+      debt_by_lender:
+        additionalProperties:
+          format: int32
+          type: integer
+        type: object
+      debts:
+        items:
+          $ref: '#/definitions/debt.Debt'
+        type: array
+      limit:
+        type: integer
+      offset:
+        type: integer
+      total_amount:
+        type: integer
+      total_count:
+        type: integer
     type: object
   transport.LoginRequest:
     properties:
@@ -109,9 +127,7 @@ paths:
         "200":
           description: OK
           schema:
-            items:
-              $ref: '#/definitions/debt.Debt'
-            type: array
+            $ref: '#/definitions/transport.GetDebtsResponse'
         "401":
           description: Unauthorized
           schema:
@@ -190,6 +206,32 @@ paths:
           schema:
             $ref: '#/definitions/transport.ErrorResponse'
       summary: Create a user
+      tags:
+      - users
+  /users:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.LoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      summary: Get users
       tags:
       - users
 securityDefinitions:

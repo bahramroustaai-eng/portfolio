@@ -20,6 +20,7 @@ func NewUserHandler(svc *user.Service) *UserHandler {
 func (h *UserHandler) RegisterRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("POST /api/v1/user", h.CreateUser)
 	mux.HandleFunc("POST /api/v1/login", h.Login)
+	mux.Handle("GET /api/v1/users", RequireAuth(http.HandlerFunc(h.GetUserList)))
 }
 
 type CreateUserRequest struct {
@@ -140,4 +141,36 @@ func (h *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
 		Username:    loggedIn.UserName,
 		AccessToken: token,
 	})
+}
+
+// GetUserList godoc
+//
+//	@Summary		Get users
+//	@Tags			users
+//	@Produce		json
+//	@Security		BearerAuth
+//	@Success		200		{array}		GetUsersResponse
+//	@Failure		401		{object}	ErrorResponse
+//	@Failure		500		{object}	ErrorResponse
+//	@Router			/users [get]
+func (h *UserHandler) GetUserList(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	users, err := h.svc.GetUsersList(ctx)
+	if err != nil {
+		writeServiceError(w, err)
+		return
+	}
+	response := make([]GetUsersResponse, 0, len(users))
+	for _, u := range users {
+		response = append(response, GetUsersResponse{
+			ID:       u.ID,
+			Username: u.UserName,
+		})
+	}
+	writeJSON(w, http.StatusOK, response)
+}
+
+type GetUsersResponse struct {
+	ID       int32  `json:"id"`
+	Username string `json:"username"`
 }
