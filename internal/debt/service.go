@@ -5,12 +5,23 @@ import (
 	"portfolio/internal/user"
 )
 
-type Service struct {
-	repo     *Repository
-	userRepo *user.Repository
+type DebtRepository interface {
+	CreateDebt(ctx context.Context, lenderID, borrowerID, amount int32) (Debt, error)
+	GetDebtsByBorrowerID(ctx context.Context, borrowerID, limit, offset int32) ([]Debt, error)
+	CountDebtsByBorrowerID(ctx context.Context, borrowerID int32) (int32, error)
+	PayDebt(ctx context.Context, payerID, debtID, amount int32, note *string) (DebtPayment, error)
 }
 
-func NewService(repo *Repository, userRepo *user.Repository) *Service {
+type UserReader interface {
+	GetUserByUsername(ctx context.Context, username string) (user.User, error)
+}
+
+type Service struct {
+	repo     DebtRepository
+	userRepo UserReader
+}
+
+func NewDebtService(repo DebtRepository, userRepo UserReader) *Service {
 	return &Service{repo: repo, userRepo: userRepo}
 }
 
@@ -32,7 +43,7 @@ func (s *Service) CreateDebt(ctx context.Context, lender string, borrower string
 		return Debt{}, ErrConflictDebtLenderAndBorrower
 	}
 
-	created, err := s.repo.CreateDebt(l.ID, b.ID, amount)
+	created, err := s.repo.CreateDebt(ctx, l.ID, b.ID, amount)
 	if err != nil {
 		return Debt{}, err
 	}

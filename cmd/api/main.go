@@ -44,7 +44,7 @@ func main() {
 	userHandler := transport.NewUserHandler(userSvc)
 
 	debtRepo := debt.NewRepository(pool)
-	debtSvc := debt.NewService(debtRepo, userRepo)
+	debtSvc := debt.NewDebtService(debtRepo, userRepo)
 	debtHandler := transport.NewDebtHandler(debtSvc)
 
 	router := transport.NewRouter(userHandler, debtHandler)

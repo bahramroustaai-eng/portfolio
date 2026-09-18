@@ -6,7 +6,6 @@ import (
 	"log/slog"
 	"net/http"
 	"portfolio/internal/user"
-	"time"
 )
 
 type UserHandler struct {
@@ -18,20 +17,9 @@ func NewUserHandler(svc *user.Service) *UserHandler {
 }
 
 func (h *UserHandler) RegisterRoutes(mux *http.ServeMux) {
-	mux.HandleFunc("POST /api/v1/user", h.CreateUser)
-	mux.HandleFunc("POST /api/v1/login", h.Login)
-	mux.Handle("GET /api/v1/users", RequireAuth(http.HandlerFunc(h.GetUserList)))
-}
-
-type CreateUserRequest struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
-type CreateUserResponse struct {
-	ID        int32     `json:"id"`
-	Username  string    `json:"username"`
-	CreatedAt time.Time `json:"created_at"`
+	mux.HandleFunc("POST /user", h.CreateUser)
+	mux.HandleFunc("POST /login", h.Login)
+	mux.Handle("GET /users", RequireAuth(http.HandlerFunc(h.GetUserList)))
 }
 
 func (in CreateUserRequest) Validate() error {
@@ -89,17 +77,6 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 		Username:    created.UserName,
 		AccessToken: token,
 	})
-}
-
-type LoginRequest struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
-type LoginResponse struct {
-	ID          int32  `json:"id"`
-	Username    string `json:"username"`
-	AccessToken string `json:"access_token"`
 }
 
 // Login godoc
@@ -168,9 +145,4 @@ func (h *UserHandler) GetUserList(w http.ResponseWriter, r *http.Request) {
 		})
 	}
 	writeJSON(w, http.StatusOK, response)
-}
-
-type GetUsersResponse struct {
-	ID       int32  `json:"id"`
-	Username string `json:"username"`
 }

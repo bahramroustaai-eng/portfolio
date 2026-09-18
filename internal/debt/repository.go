@@ -15,12 +15,14 @@ type Repository struct {
 	q    *db.Queries
 }
 
+var _ DebtRepository = (*Repository)(nil)
+
 func NewRepository(pool *pgxpool.Pool) *Repository {
 	return &Repository{pool: pool, q: db.New(pool)}
 }
 
-func (r *Repository) CreateDebt(lender int32, borrower int32, amount int32) (Debt, error) {
-	debt, err := r.q.CreateDebt(context.Background(), db.CreateDebtParams{
+func (r *Repository) CreateDebt(ctx context.Context, lender int32, borrower int32, amount int32) (Debt, error) {
+	debt, err := r.q.CreateDebt(ctx, db.CreateDebtParams{
 		LenderID:   lender,
 		BorrowerID: borrower,
 		Amount:     amount,
@@ -74,6 +76,9 @@ func (r *Repository) toDomain(debt db.Debt) Debt {
 func (r *Repository) GetDebtByID(ctx context.Context, debtID int32) (Debt, error) {
 	row, err := r.q.GetDebtByID(ctx, debtID)
 	if err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return Debt{}, ErrDebtNotFound
+		}
 		return Debt{}, fmt.Errorf("get debt: %w", err)
 	}
 	return r.toDomain(row), nil

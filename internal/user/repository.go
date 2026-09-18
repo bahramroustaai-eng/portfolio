@@ -17,6 +17,8 @@ type Repository struct {
 	q    *db.Queries
 }
 
+var _ UserRepository = (*Repository)(nil)
+
 func NewUserRepository(pool *pgxpool.Pool) *Repository {
 	return &Repository{pool: pool, q: db.New(pool)}
 }
@@ -53,7 +55,7 @@ func (r *Repository) GetUsers(ctx context.Context) ([]User, error) {
 	if err != nil {
 		return []User{}, fmt.Errorf("could not get users: %w", err)
 	}
-	var users []User
+	users := make([]User, 0, len(rows))
 
 	for _, row := range rows {
 		users = append(users, toDomainGetUsers(row))

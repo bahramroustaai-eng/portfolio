@@ -8,11 +8,17 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-type Service struct {
-	repo *Repository
+type UserRepository interface {
+	CreateUser(ctx context.Context, username, password string) (User, error)
+	GetUserByUsername(ctx context.Context, username string) (User, error)
+	GetUsers(ctx context.Context) ([]User, error)
 }
 
-func NewUserService(repo *Repository) *Service {
+type Service struct {
+	repo UserRepository
+}
+
+func NewUserService(repo UserRepository) *Service {
 	return &Service{repo: repo}
 }
 
