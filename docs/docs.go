@@ -110,21 +110,24 @@ const docTemplate = `{
                 }
             }
         },
-        "/debts/{debt_id}/payments/": {
+        "/debts/{debt_id}/payments": {
             "post": {
                 "security": [
                     {
                         "BearerAuth": []
                     }
                 ],
-                "description": "Creates a payment for the specified debt.",
+                "description": "Creates a partial or full payment for the specified debt.",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "debts"
                 ],
-                "summary": "Debt payments",
+                "summary": "Record a debt payment",
                 "parameters": [
                     {
                         "type": "integer",
@@ -133,11 +136,20 @@ const docTemplate = `{
                         "name": "debt_id",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "description": "payment payload",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/transport.PayDebtRequest"
+                        }
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "201": {
+                        "description": "Created",
                         "schema": {
                             "$ref": "#/definitions/transport.DebtPaymentResponse"
                         }
@@ -150,6 +162,12 @@ const docTemplate = `{
                     },
                     "401": {
                         "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
                         "schema": {
                             "$ref": "#/definitions/transport.ErrorResponse"
                         }
@@ -327,8 +345,30 @@ const docTemplate = `{
                 },
                 "lender_username": {
                     "type": "string"
+                },
+                "paid_amount": {
+                    "type": "integer"
+                },
+                "remaining_amount": {
+                    "type": "integer"
+                },
+                "status": {
+                    "$ref": "#/definitions/debt.DebtStatus"
                 }
             }
+        },
+        "debt.DebtStatus": {
+            "type": "string",
+            "enum": [
+                "pending",
+                "paid",
+                "canceled"
+            ],
+            "x-enum-varnames": [
+                "Pending",
+                "Paid",
+                "Canceled"
+            ]
         },
         "transport.CreateDebtRequest": {
             "type": "object",
@@ -459,6 +499,17 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "transport.PayDebtRequest": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "note": {
                     "type": "string"
                 }
             }

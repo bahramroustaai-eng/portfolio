@@ -2,9 +2,11 @@ package debt
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"portfolio/internal/debt/db"
 
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -43,6 +45,9 @@ func (r *Repository) GetDebtsByBorrowerID(ctx context.Context, borrowerID int32,
 			BorrowerUsername: row.BorrowerUsername,
 			BorrowerID:       row.BorrowerID,
 			Amount:           row.Amount,
+			PaidAmount:       row.PaidAmount,
+			RemainingAmount:  row.RemainingAmount,
+			Status:           DebtStatus(row.Status),
 		})
 	}
 	return debts, nil
@@ -62,6 +67,7 @@ func (r *Repository) toDomain(debt db.Debt) Debt {
 		LenderID:   debt.LenderID,
 		BorrowerID: debt.BorrowerID,
 		Amount:     debt.Amount,
+		Status:     DebtStatus(debt.Status),
 	}
 }
 
@@ -73,11 +79,40 @@ func (r *Repository) GetDebtByID(ctx context.Context, debtID int32) (Debt, error
 	return r.toDomain(row), nil
 }
 
-func (r *Repository) CreateDebtPayment(ctx context.Context, payerID int64, receiverID int64, debtID int64, amount int64, note *string) (DebtPayment, error) {
+func (r *Repository) PayDebt(ctx context.Context, payerID, debtID, amount int32, note *string) (DebtPayment, error) {
+	tx, err := r.pool.Begin(ctx)
+	if err != nil {
+		return DebtPayment{}, fmt.Errorf("begin payment transaction: %w", err)
+	}
+	defer tx.Rollback(ctx)
 
-	payment, err := r.q.CreateDebtPayment(ctx, db.CreateDebtPaymentParams{
+	q := r.q.WithTx(tx)
+	debt, err := q.GetDebtForUpdate(ctx, debtID)
+	if err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return DebtPayment{}, ErrDebtNotFound
+		}
+		return DebtPayment{}, fmt.Errorf("get debt for payment: %w", err)
+	}
+	if debt.BorrowerID != payerID {
+		return DebtPayment{}, ErrDebtPaymentUnauthorized
+	}
+	if DebtStatus(debt.Status) == Canceled {
+		return DebtPayment{}, ErrDebtCanceled
+	}
+
+	paidAmount, err := q.GetPaidAmountByDebtID(ctx, debtID)
+	if err != nil {
+		return DebtPayment{}, fmt.Errorf("get paid amount: %w", err)
+	}
+	remainingAmount := debt.Amount - paidAmount
+	if amount > remainingAmount {
+		return DebtPayment{}, ErrPaymentExceedsRemaining
+	}
+
+	payment, err := q.CreateDebtPayment(ctx, db.CreateDebtPaymentParams{
 		PayerID:    payerID,
-		ReceiverID: receiverID,
+		ReceiverID: debt.LenderID,
 		DebtID:     debtID,
 		Amount:     amount,
 		Note:       note,
@@ -85,23 +120,23 @@ func (r *Repository) CreateDebtPayment(ctx context.Context, payerID int64, recei
 	if err != nil {
 		return DebtPayment{}, fmt.Errorf("create debt payment: %w", err)
 	}
+	if amount == remainingAmount {
+		if err := q.MarkDebtPaid(ctx, debtID); err != nil {
+			return DebtPayment{}, fmt.Errorf("mark debt paid: %w", err)
+		}
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return DebtPayment{}, fmt.Errorf("commit payment transaction: %w", err)
+	}
+
 	return DebtPayment{
 		ID:         payment.ID,
+		Amount:     payment.Amount,
 		PayerID:    payment.PayerID,
 		ReceiverID: payment.ReceiverID,
 		Note:       payment.Note,
 		DebtID:     payment.DebtID,
+		PaidAt:     payment.PaidAt,
+		CreatedAt:  payment.CreatedAt,
 	}, nil
-}
-
-func (r *Repository) UpdateDebt(ctx context.Context, debtID int32, fromStatus, toStatus DebtStatus) (Debt, error) {
-	debt, err := r.GetDebtByID(ctx, debtID)
-	if err != nil {
-		return Debt{}, fmt.Errorf("get debt: %w", err)
-	}
-	row, err := r.q.UpdateDebt(ctx, fromStatus, toStatus)
-	if err != nil {
-		return Debt{}, fmt.Errorf("update debt: %w", err)
-	}
-	return r.toDomain(row), nil
 }

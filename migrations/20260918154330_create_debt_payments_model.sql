@@ -2,10 +2,10 @@
 CREATE TABLE debt_payments
 (
     id          SERIAL PRIMARY KEY,
-    debt_id     BIGINT      NOT NULL,
-    payer_id    BIGINT      NOT NULL,
-    receiver_id BIGINT      NOT NULL,
-    amount      BIGINT      NOT NULL,
+    debt_id     INT         NOT NULL,
+    payer_id    INT         NOT NULL,
+    receiver_id INT         NOT NULL,
+    amount      INT         NOT NULL,
     note        TEXT,
     paid_at     TIMESTAMPTZ NOT NULL DEFAULT now(),
     created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
@@ -15,13 +15,13 @@ CREATE TABLE debt_payments
         CHECK ( amount > 0 ),
     CONSTRAINT fk_debts_payments_debt
         FOREIGN KEY (debt_id)
-            REFERENCES debts,
+            REFERENCES debts (id),
     CONSTRAINT fk_debts_payments_payer_id
         FOREIGN KEY (payer_id)
-            REFERENCES users,
+            REFERENCES users (id),
     CONSTRAINT fk_debts_payments_receiver_id
         FOREIGN KEY (receiver_id)
-            REFERENCES users
+            REFERENCES users (id)
 );
 
 ALTER TABLE debts

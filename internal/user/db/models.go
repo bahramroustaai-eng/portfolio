@@ -10,6 +10,49 @@ import (
 	"time"
 )
 
+type DebtStatus string
+
+const (
+	DebtStatusPending  DebtStatus = "pending"
+	DebtStatusPaid     DebtStatus = "paid"
+	DebtStatusCanceled DebtStatus = "canceled"
+)
+
+func (e *DebtStatus) Scan(src interface{}) error {
+	switch s := src.(type) {
+	case []byte:
+		*e = DebtStatus(s)
+	case string:
+		*e = DebtStatus(s)
+	default:
+		return fmt.Errorf("unsupported scan type for DebtStatus: %T", src)
+	}
+	return nil
+}
+
+type NullDebtStatus struct {
+	DebtStatus DebtStatus
+	Valid      bool // Valid is true if DebtStatus is not NULL
+}
+
+// Scan implements the Scanner interface.
+func (ns *NullDebtStatus) Scan(value interface{}) error {
+	if value == nil {
+		ns.DebtStatus, ns.Valid = "", false
+		return nil
+	}
+	ns.Valid = true
+	return ns.DebtStatus.Scan(value)
+}
+
+// Value implements the driver Valuer interface.
+func (ns NullDebtStatus) Value() (driver.Value, error) {
+	if !ns.Valid {
+		return nil, nil
+	}
+	return string(ns.DebtStatus), nil
+}
+
 type RiskLevel string
 
 const (
@@ -60,14 +103,15 @@ type Debt struct {
 	Amount      int32
 	CreatedAt   time.Time
 	Description *string
+	Status      DebtStatus
 }
 
 type DebtPayment struct {
 	ID         int32
-	DebtID     int64
-	PayerID    int64
-	ReceiverID int64
-	Amount     int64
+	DebtID     int32
+	PayerID    int32
+	ReceiverID int32
+	Amount     int32
 	Note       *string
 	PaidAt     time.Time
 	CreatedAt  time.Time

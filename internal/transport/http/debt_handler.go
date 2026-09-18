@@ -20,7 +20,7 @@ func NewDebtHandler(svc *debt.Service) *DebtHandler {
 func (h *DebtHandler) RegisterRoutes(mux *http.ServeMux) {
 	mux.Handle("POST /api/v1/debts", RequireAuth(http.HandlerFunc(h.CreateDebt)))
 	mux.Handle("GET /api/v1/debts", RequireAuth(http.HandlerFunc(h.GetDebts)))
-	mux.Handle("POST /api/v1/debts/{debt_id}/payments/", RequireAuth(http.HandlerFunc(h.PayDebt)))
+	mux.Handle("POST /api/v1/debts/{debt_id}/payments", RequireAuth(http.HandlerFunc(h.PayDebt)))
 }
 
 type CreateDebtRequest struct {
@@ -125,8 +125,8 @@ func (h *DebtHandler) GetDebts(w http.ResponseWriter, r *http.Request) {
 	debtByLender := make(map[string]int32)
 	var totalAmount int32
 	for _, d := range debts {
-		totalAmount += d.Amount
-		debtByLender[d.LenderUsername] += d.Amount
+		totalAmount += d.RemainingAmount
+		debtByLender[d.LenderUsername] += d.RemainingAmount
 	}
 
 	writeJSON(w, http.StatusOK, GetDebtsResponse{
@@ -148,49 +148,61 @@ type GetDebtsResponse struct {
 	TotalCount   int32            `json:"total_count"`
 }
 
-// PayDebt PayDebt
+// PayDebt godoc
 //
-//		@Summary		Debt payments
-//		@Description	Creates a payment for the specified debt.
-//		@Tags			debts
-//		@Produce		json
-//		@Security		BearerAuth
-//	 	@Param			debt_id path int32 true "Debt ID"
-//		@Success		200	{object}	DebtPaymentResponse
-//		@Failure		400	{object}	ErrorResponse
-//		@Failure		401	{object}	ErrorResponse
-//		@Failure		500	{object}	ErrorResponse
-//		@Router			/debts/{debt_id}/payments/ [post]
+//	@Summary		Record a debt payment
+//	@Description	Creates a partial or full payment for the specified debt.
+//	@Tags			debts
+//	@Accept			json
+//	@Produce		json
+//	@Security		BearerAuth
+//	@Param			debt_id	path	int32	true	"Debt ID"
+//	@Param			request	body	PayDebtRequest	true	"payment payload"
+//	@Success		201	{object}	DebtPaymentResponse
+//	@Failure		400	{object}	ErrorResponse
+//	@Failure		401	{object}	ErrorResponse
+//	@Failure		404	{object}	ErrorResponse
+//	@Failure		500	{object}	ErrorResponse
+//	@Router			/debts/{debt_id}/payments [post]
 func (h *DebtHandler) PayDebt(w http.ResponseWriter, r *http.Request) {
 	userID, ok := UserIDFromContext(r.Context())
 	if !ok {
 		writeError(w, http.StatusUnauthorized, "unauthorized user")
 		return
 	}
+
 	debtID := strings.TrimSpace(r.PathValue("debt_id"))
 
 	parsedDebtID, err := strconv.ParseInt(debtID, 10, 32)
 	if err != nil || parsedDebtID <= 0 {
-		writeError(w, http.StatusBadRequest, "invalid payDebt id")
+		writeError(w, http.StatusBadRequest, "invalid debt id")
 		return
 	}
 
-	note := "hello world"
-	payDebt, err := h.svc.PayDebt(r.Context(), userID, int32(parsedDebtID), &note)
+	var req PayDebtRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeError(w, http.StatusBadRequest, "invalid request body")
+		return
+	}
+	debtPayment, err := h.svc.PayDebt(r.Context(), userID, int32(parsedDebtID), req.Amount, req.Note)
 	if err != nil {
 		writeServiceError(w, err)
 		return
 	}
-	writeJSON(w, http.StatusOK, payDebt)
-	return
+	writeJSON(w, http.StatusCreated, DebtPaymentResponse(debtPayment))
+}
+
+type PayDebtRequest struct {
+	Amount int32   `json:"amount"`
+	Note   *string `json:"note"`
 }
 
 type DebtPaymentResponse struct {
 	ID         int32     `json:"id"`
-	Amount     int64     `json:"amount"`
-	DebtID     int64     `json:"debt_id"`
-	PayerID    int64     `json:"payer_id"`
-	ReceiverID int64     `json:"receiver_id"`
+	Amount     int32     `json:"amount"`
+	DebtID     int32     `json:"debt_id"`
+	PayerID    int32     `json:"payer_id"`
+	ReceiverID int32     `json:"receiver_id"`
 	Note       *string   `json:"note"`
 	PaidAt     time.Time `json:"paid_at"`
 	CreatedAt  time.Time `json:"created_at"`

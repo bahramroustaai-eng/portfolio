@@ -11,7 +11,8 @@ import (
 )
 
 const countDebtsByBorrowerID = `-- name: CountDebtsByBorrowerID :one
-SELECT count(*) FROM debts
+SELECT count(*)
+FROM debts
 WHERE borrower_id = $1
 `
 
@@ -25,7 +26,7 @@ func (q *Queries) CountDebtsByBorrowerID(ctx context.Context, borrowerID int32) 
 const createDebt = `-- name: CreateDebt :one
 INSERT INTO debts (lender_id, borrower_id, amount)
 VALUES ($1, $2, $3)
-RETURNING id, lender_id, borrower_id, amount, created_at, description
+RETURNING id, lender_id, borrower_id, amount, created_at, description, status
 `
 
 type CreateDebtParams struct {
@@ -44,6 +45,7 @@ func (q *Queries) CreateDebt(ctx context.Context, arg CreateDebtParams) (Debt, e
 		&i.Amount,
 		&i.CreatedAt,
 		&i.Description,
+		&i.Status,
 	)
 	return i, err
 }
@@ -55,10 +57,10 @@ RETURNING id, debt_id, payer_id, receiver_id, amount, note, paid_at, created_at
 `
 
 type CreateDebtPaymentParams struct {
-	PayerID    int64
-	ReceiverID int64
-	DebtID     int64
-	Amount     int64
+	PayerID    int32
+	ReceiverID int32
+	DebtID     int32
+	Amount     int32
 	Note       *string
 }
 
@@ -85,7 +87,8 @@ func (q *Queries) CreateDebtPayment(ctx context.Context, arg CreateDebtPaymentPa
 }
 
 const getDebtByID = `-- name: GetDebtByID :one
-SELECT id, lender_id, borrower_id, amount, created_at, description FROM debts
+SELECT id, lender_id, borrower_id, amount, created_at, description, status
+FROM debts
 WHERE id = $1
 `
 
@@ -99,19 +102,50 @@ func (q *Queries) GetDebtByID(ctx context.Context, id int32) (Debt, error) {
 		&i.Amount,
 		&i.CreatedAt,
 		&i.Description,
+		&i.Status,
+	)
+	return i, err
+}
+
+const getDebtForUpdate = `-- name: GetDebtForUpdate :one
+SELECT id, lender_id, borrower_id, amount, created_at, description, status
+FROM debts
+WHERE id = $1
+FOR UPDATE
+`
+
+func (q *Queries) GetDebtForUpdate(ctx context.Context, id int32) (Debt, error) {
+	row := q.db.QueryRow(ctx, getDebtForUpdate, id)
+	var i Debt
+	err := row.Scan(
+		&i.ID,
+		&i.LenderID,
+		&i.BorrowerID,
+		&i.Amount,
+		&i.CreatedAt,
+		&i.Description,
+		&i.Status,
 	)
 	return i, err
 }
 
 const getDebtsByBorrowerID = `-- name: GetDebtsByBorrowerID :many
-SELECT
-    d.id, d.amount, d.created_at,
-    d.lender_id, lu.user_name AS lender_username,
-    d.borrower_id, bu.user_name AS borrower_username
+SELECT d.id,
+       d.amount,
+       COALESCE(SUM(p.amount), 0)::int AS paid_amount,
+       d.amount - COALESCE(SUM(p.amount), 0)::int AS remaining_amount,
+       d.created_at,
+       d.status,
+       d.lender_id,
+       lu.user_name AS lender_username,
+       d.borrower_id,
+       bu.user_name AS borrower_username
 FROM debts d
+         LEFT JOIN debt_payments p ON p.debt_id = d.id
          JOIN users lu ON lu.id = d.lender_id
          JOIN users bu ON bu.id = d.borrower_id
 WHERE d.borrower_id = $1
+GROUP BY d.id, d.amount, d.created_at, d.status, d.lender_id, lu.user_name, d.borrower_id, bu.user_name
 ORDER BY d.created_at DESC
 LIMIT $2 OFFSET $3
 `
@@ -125,7 +159,10 @@ type GetDebtsByBorrowerIDParams struct {
 type GetDebtsByBorrowerIDRow struct {
 	ID               int32
 	Amount           int32
+	PaidAmount       int32
+	RemainingAmount  int32
 	CreatedAt        time.Time
+	Status           DebtStatus
 	LenderID         int32
 	LenderUsername   string
 	BorrowerID       int32
@@ -144,7 +181,10 @@ func (q *Queries) GetDebtsByBorrowerID(ctx context.Context, arg GetDebtsByBorrow
 		if err := rows.Scan(
 			&i.ID,
 			&i.Amount,
+			&i.PaidAmount,
+			&i.RemainingAmount,
 			&i.CreatedAt,
+			&i.Status,
 			&i.LenderID,
 			&i.LenderUsername,
 			&i.BorrowerID,
@@ -158,4 +198,28 @@ func (q *Queries) GetDebtsByBorrowerID(ctx context.Context, arg GetDebtsByBorrow
 		return nil, err
 	}
 	return items, nil
+}
+
+const getPaidAmountByDebtID = `-- name: GetPaidAmountByDebtID :one
+SELECT COALESCE(SUM(amount), 0)::int
+FROM debt_payments
+WHERE debt_id = $1
+`
+
+func (q *Queries) GetPaidAmountByDebtID(ctx context.Context, debtID int32) (int32, error) {
+	row := q.db.QueryRow(ctx, getPaidAmountByDebtID, debtID)
+	var column_1 int32
+	err := row.Scan(&column_1)
+	return column_1, err
+}
+
+const markDebtPaid = `-- name: MarkDebtPaid :exec
+UPDATE debts
+SET status = 'paid'
+WHERE id = $1
+`
+
+func (q *Queries) MarkDebtPaid(ctx context.Context, id int32) error {
+	_, err := q.db.Exec(ctx, markDebtPaid, id)
+	return err
 }

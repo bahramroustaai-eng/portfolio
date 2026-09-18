@@ -163,12 +163,19 @@
   .list-header span:first-child { font-size: 15px; font-weight: 700; }
   .list-header span:last-child { font-size: 13px; color: var(--text-muted); }
   .debt-row { padding: 14px 20px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 12px; }
+  .debt-row { flex-wrap: wrap; }
   .debt-row:last-child { border-bottom: none; }
   .debt-row .avatar { width: 32px; height: 32px; }
   .debt-row .who { flex: 1; }
   .debt-row .who .name { font-size: 14px; font-weight: 600; }
   .debt-row .who .sub { font-size: 12px; color: var(--text-faint); }
-  .debt-row .amount { font-size: 15px; font-weight: 700; }
+  .debt-row .amount { font-size: 15px; font-weight: 700; text-align: left; }
+  .debt-row .amount .remaining { display: block; color: var(--accent); }
+  .debt-row .amount .paid { display: block; color: var(--text-faint); font-size: 12px; font-weight: 500; }
+  .pay-form { display: flex; align-items: center; gap: 8px; width: 100%; padding-top: 4px; }
+  .pay-form input { flex: 1; min-width: 120px; padding: 8px 10px; font: inherit; font-size: 13px; border: 1px solid var(--border); border-radius: 8px; }
+  .pay-form button { padding: 8px 14px; font-size: 13px; }
+  .paid-label { width: 100%; color: var(--success); font-size: 13px; font-weight: 600; }
   .list-empty { padding: 40px 20px; text-align: center; color: var(--text-faint); font-size: 14px; }
   .list-loading { padding: 40px 20px; text-align: center; color: var(--text-faint); font-size: 14px; }
 </style>
@@ -291,7 +298,7 @@
           <span class="value accent" id="stat-total">۰</span>
         </div>
         <div class="stat-card">
-          <span class="label">بدهی‌های باز</span>
+          <span class="label">تعداد بدهی‌ها</span>
           <span class="value" id="stat-count">0</span>
         </div>
         <div class="card-by-lender">
@@ -452,6 +459,25 @@
     }
   });
 
+  debtsList.addEventListener('submit', async (e) => {
+    const form = e.target.closest('.pay-form');
+    if (!form) return;
+    e.preventDefault();
+
+    const debtId = form.dataset.debtId;
+    const amount = Number(form.elements.amount.value);
+    const button = form.querySelector('button');
+    button.disabled = true;
+    try {
+      await api('POST', `/api/v1/debts/${debtId}/payments`, { amount });
+      showMsg(debtMsg, 'پرداخت با موفقیت ثبت شد.', true);
+      loadDebts();
+    } catch (err) {
+      showMsg(debtMsg, err.message, false);
+      button.disabled = false;
+    }
+  });
+
   async function loadUsers(currentUsername) {
     borrowerSelect.disabled = true;
     borrowerSelect.innerHTML = '<option value="">در حال بارگذاری کاربران…</option>';
@@ -516,7 +542,15 @@
               <div class="name">${escapeHtml(d.lender_username)}</div>
               <div class="sub">به شما قرض داده است</div>
             </div>
-            <div class="amount">${Number(d.amount).toLocaleString('fa-IR')}</div>
+            <div class="amount">
+              <span class="remaining">مانده: ${Number(d.remaining_amount).toLocaleString('fa-IR')}</span>
+              <span class="paid">پرداخت‌شده: ${Number(d.paid_amount).toLocaleString('fa-IR')}</span>
+            </div>
+            ${d.remaining_amount > 0 ? `
+              <form class="pay-form" data-debt-id="${d.id}">
+                <input name="amount" type="number" min="1" max="${d.remaining_amount}" step="1" placeholder="مبلغ پرداخت" required>
+                <button type="submit" class="btn-primary">پرداخت</button>
+              </form>` : '<div class="paid-label">این بدهی تسویه شده است</div>'}
           </div>`).join('')
       : '<div class="list-empty">هنوز بدهی‌ای ثبت نشده است؛ اولین بدهی خود را در بالا اضافه کنید.</div>';
   }
