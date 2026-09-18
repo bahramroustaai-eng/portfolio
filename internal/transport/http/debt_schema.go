@@ -14,13 +14,18 @@ type CreateDebtResponse struct {
 	ID int32 `json:"id"`
 }
 
+type DebtGroupResponse struct {
+	Debts       []debt.Debt      `json:"debts"`
+	DebtByUser  map[string]int32 `json:"debt_by_user"`
+	TotalAmount int32            `json:"total_amount"`
+	TotalCount  int32            `json:"total_count"`
+}
+
 type GetDebtsResponse struct {
-	Debts        []debt.Debt      `json:"debts"`
-	DebtByLender map[string]int32 `json:"debt_by_lender"`
-	TotalAmount  int32            `json:"total_amount"`
-	Limit        int32            `json:"limit"`
-	Offset       int32            `json:"offset"`
-	TotalCount   int32            `json:"total_count"`
+	IOwe     DebtGroupResponse `json:"i_owe"`
+	OwedToMe DebtGroupResponse `json:"owed_to_me"`
+	Limit    int32             `json:"limit"`
+	Offset   int32             `json:"offset"`
 }
 
 type PayDebtRequest struct {

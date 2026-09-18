@@ -28,6 +28,31 @@ SELECT count(*)
 FROM debts
 WHERE borrower_id = $1;
 
+-- name: GetDebtsByLenderID :many
+SELECT d.id,
+       d.amount,
+       COALESCE(SUM(p.amount), 0)::int AS paid_amount,
+       d.amount - COALESCE(SUM(p.amount), 0)::int AS remaining_amount,
+       d.created_at,
+       d.status,
+       d.lender_id,
+       lu.user_name AS lender_username,
+       d.borrower_id,
+       bu.user_name AS borrower_username
+FROM debts d
+         LEFT JOIN debt_payments p ON p.debt_id = d.id
+         JOIN users lu ON lu.id = d.lender_id
+         JOIN users bu ON bu.id = d.borrower_id
+WHERE d.lender_id = $1
+GROUP BY d.id, d.amount, d.created_at, d.status, d.lender_id, lu.user_name, d.borrower_id, bu.user_name
+ORDER BY d.created_at DESC
+LIMIT $2 OFFSET $3;
+
+-- name: CountDebtsByLenderID :one
+SELECT count(*)
+FROM debts
+WHERE lender_id = $1;
+
 -- name: GetDebtByID :one
 SELECT *
 FROM debts

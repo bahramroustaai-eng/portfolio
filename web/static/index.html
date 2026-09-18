@@ -178,6 +178,11 @@
   .paid-label { width: 100%; color: var(--success); font-size: 13px; font-weight: 600; }
   .list-empty { padding: 40px 20px; text-align: center; color: var(--text-faint); font-size: 14px; }
   .list-loading { padding: 40px 20px; text-align: center; color: var(--text-faint); font-size: 14px; }
+  .debt-section + .debt-section { border-top: 1px solid var(--border); }
+  .debt-section-header { padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; background: var(--surface); font-size: 14px; font-weight: 700; }
+  .debt-section-header span:last-child { color: var(--text-muted); font-size: 12px; font-weight: 500; }
+  .debt-count-summary { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--text-muted); }
+  .debt-count-summary strong { color: var(--text); }
 </style>
 </head>
 <body>
@@ -232,7 +237,7 @@
           <div class="tab" data-tab="signup">ثبت‌نام</div>
         </div>
 
-        <form id="login-form" class="auth-form active">
+        <form id="login-form" class="auth-form active" method="post" action="/api/v1/login">
           <h2 class="sr-title hidden">خوش آمدید</h2>
           <div class="field">
             <label for="login-username">نام کاربری</label>
@@ -246,7 +251,7 @@
           <div class="switch-line">تازه به پرتفولیو پیوسته‌اید؟ <a href="#" data-switch="signup">حساب کاربری بسازید</a></div>
         </form>
 
-        <form id="signup-form" class="auth-form">
+        <form id="signup-form" class="auth-form" method="post" action="/api/v1/user">
           <div class="field">
             <label for="signup-username">نام کاربری</label>
             <input id="signup-username" name="username" placeholder="۳ تا ۳۲ نویسه" required autocomplete="username" minlength="3" maxlength="32" dir="ltr">
@@ -289,21 +294,24 @@
     <div class="dashboard-body">
       <div class="page-header">
         <h1>بدهی‌ها</h1>
-        <p>بدهی‌هایی که شما وام‌گیرنده آن هستید</p>
+        <p>بدهی‌ها و طلب‌های شما در یک صفحه</p>
       </div>
 
       <div class="stats-row">
         <div class="stat-card">
-          <span class="label">مجموع بدهی شما</span>
-          <span class="value accent" id="stat-total">۰</span>
+          <span class="label">مجموع بدهی من</span>
+          <span class="value accent" id="stat-i-owe-total">۰</span>
         </div>
         <div class="stat-card">
-          <span class="label">تعداد بدهی‌ها</span>
-          <span class="value" id="stat-count">0</span>
+          <span class="label">مجموع طلب من</span>
+          <span class="value" id="stat-owed-to-me-total">۰</span>
         </div>
         <div class="card-by-lender">
-          <span class="label">به تفکیک طلبکار</span>
-          <div id="by-lender-list"></div>
+          <span class="label">تعداد موارد</span>
+          <div class="debt-count-summary">
+            <span>بدهی من: <strong id="stat-i-owe-count">۰</strong></span>
+            <span>طلب من: <strong id="stat-owed-to-me-count">۰</strong></span>
+          </div>
         </div>
       </div>
 
@@ -325,12 +333,24 @@
         <div id="debt-msg" class="msg" style="margin-top: 10px;"></div>
       </div>
 
-      <div class="list-card">
+      <div class="list-card" id="debts-list">
         <div class="list-header">
-          <span>همه بدهی‌ها</span>
-          <span id="list-count"></span>
+          <span>وضعیت بدهی‌ها</span>
         </div>
-        <div id="debts-list"></div>
+        <div class="debt-section">
+          <div class="debt-section-header">
+            <span>من بدهکارم</span>
+            <span id="i-owe-count"></span>
+          </div>
+          <div id="i-owe-list"></div>
+        </div>
+        <div class="debt-section">
+          <div class="debt-section-header">
+            <span>به من بدهکارند</span>
+            <span id="owed-to-me-count"></span>
+          </div>
+          <div id="owed-to-me-list"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -345,10 +365,14 @@
   const navUsername = document.getElementById('nav-username');
   const navAvatar = document.getElementById('nav-avatar');
   const debtsList = document.getElementById('debts-list');
-  const listCount = document.getElementById('list-count');
-  const statTotal = document.getElementById('stat-total');
-  const statCount = document.getElementById('stat-count');
-  const byLenderList = document.getElementById('by-lender-list');
+  const iOweList = document.getElementById('i-owe-list');
+  const owedToMeList = document.getElementById('owed-to-me-list');
+  const iOweCount = document.getElementById('i-owe-count');
+  const owedToMeCount = document.getElementById('owed-to-me-count');
+  const statIOweTotal = document.getElementById('stat-i-owe-total');
+  const statOwedToMeTotal = document.getElementById('stat-owed-to-me-total');
+  const statIOweCount = document.getElementById('stat-i-owe-count');
+  const statOwedToMeCount = document.getElementById('stat-owed-to-me-count');
   const borrowerSelect = document.getElementById('debt-borrower');
 
   function switchTab(name) {
@@ -504,55 +528,64 @@
   }
 
   async function loadDebts() {
-    debtsList.innerHTML = '<div class="list-loading">در حال بارگذاری…</div>';
-    listCount.textContent = '';
+    iOweList.innerHTML = '<div class="list-loading">در حال بارگذاری…</div>';
+    owedToMeList.innerHTML = '<div class="list-loading">در حال بارگذاری…</div>';
     try {
       const data = await api('GET', '/api/v1/debts');
       renderDashboard(data);
     } catch (err) {
-      debtsList.innerHTML = '';
+      iOweList.innerHTML = '';
+      owedToMeList.innerHTML = '';
       showMsg(debtMsg, err.message, false);
     }
   }
 
   function renderDashboard(data) {
-    const debts = data.debts || [];
-    const totalAmount = data.total_amount || 0;
-    const totalCount = data.total_count ?? debts.length;
-    const byLender = data.debt_by_lender || {};
+    const iOwe = data.i_owe || { debts: [], total_amount: 0, total_count: 0 };
+    const owedToMe = data.owed_to_me || { debts: [], total_amount: 0, total_count: 0 };
 
-    statTotal.textContent = totalAmount.toLocaleString('fa-IR');
-    statCount.textContent = totalCount.toLocaleString('fa-IR');
-    listCount.textContent = totalCount.toLocaleString('fa-IR') + ' بدهی';
+    statIOweTotal.textContent = Number(iOwe.total_amount || 0).toLocaleString('fa-IR');
+    statOwedToMeTotal.textContent = Number(owedToMe.total_amount || 0).toLocaleString('fa-IR');
+    statIOweCount.textContent = Number(iOwe.total_count || 0).toLocaleString('fa-IR');
+    statOwedToMeCount.textContent = Number(owedToMe.total_count || 0).toLocaleString('fa-IR');
+    iOweCount.textContent = Number(iOwe.total_count || 0).toLocaleString('fa-IR') + ' مورد';
+    owedToMeCount.textContent = Number(owedToMe.total_count || 0).toLocaleString('fa-IR') + ' مورد';
 
-    const lenderEntries = Object.entries(byLender);
-    byLenderList.innerHTML = lenderEntries.length
-      ? lenderEntries.map(([name, amt]) => `
-          <div class="lender-row">
-            <span>${escapeHtml(name)}</span>
-            <span>${Number(amt).toLocaleString('fa-IR')}</span>
-          </div>`).join('')
-      : '<div class="by-lender-empty">هنوز موردی ثبت نشده است</div>';
+    renderDebtGroup(iOweList, iOwe, true);
+    renderDebtGroup(owedToMeList, owedToMe, false);
+  }
 
-    debtsList.innerHTML = debts.length
-      ? debts.map(d => `
+  function renderDebtGroup(container, group, canPay) {
+    const debts = group.debts || [];
+    container.innerHTML = debts.length
+      ? debts.map(d => {
+          const action = canPay
+            ? (d.remaining_amount > 0
+              ? `
+              <form class="pay-form" data-debt-id="${d.id}">
+                <input name="amount" type="number" min="1" max="${d.remaining_amount}" step="1" placeholder="مبلغ پرداخت" required>
+                <button type="submit" class="btn-primary">پرداخت</button>
+              </form>`
+              : '<div class="paid-label">این بدهی تسویه شده است</div>')
+            : (d.remaining_amount > 0
+              ? '<div class="paid-label">در انتظار پرداخت</div>'
+              : '<div class="paid-label">این بدهی تسویه شده است</div>');
+
+          return `
           <div class="debt-row">
-            <div class="avatar">${initials(d.lender_username)}</div>
+            <div class="avatar">${initials(canPay ? d.lender_username : d.borrower_username)}</div>
             <div class="who">
-              <div class="name">${escapeHtml(d.lender_username)}</div>
-              <div class="sub">به شما قرض داده است</div>
+              <div class="name">${escapeHtml(canPay ? d.lender_username : d.borrower_username)}</div>
+              <div class="sub">${canPay ? 'به شما قرض داده است' : 'از شما طلب دارد'}</div>
             </div>
             <div class="amount">
               <span class="remaining">مانده: ${Number(d.remaining_amount).toLocaleString('fa-IR')}</span>
               <span class="paid">پرداخت‌شده: ${Number(d.paid_amount).toLocaleString('fa-IR')}</span>
             </div>
-            ${d.remaining_amount > 0 ? `
-              <form class="pay-form" data-debt-id="${d.id}">
-                <input name="amount" type="number" min="1" max="${d.remaining_amount}" step="1" placeholder="مبلغ پرداخت" required>
-                <button type="submit" class="btn-primary">پرداخت</button>
-              </form>` : '<div class="paid-label">این بدهی تسویه شده است</div>'}
-          </div>`).join('')
-      : '<div class="list-empty">هنوز بدهی‌ای ثبت نشده است؛ اولین بدهی خود را در بالا اضافه کنید.</div>';
+            ${action}
+          </div>`;
+        }).join('')
+      : `<div class="list-empty">${canPay ? 'هنوز بدهی‌ای ثبت نشده است؛ اولین بدهی خود را در بالا اضافه کنید.' : 'هنوز طلبی از کاربران ثبت نشده است.'}</div>`;
   }
 
   function escapeHtml(str) {

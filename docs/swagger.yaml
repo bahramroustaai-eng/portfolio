@@ -50,6 +50,22 @@ definitions:
       username:
         type: string
     type: object
+  transport.DebtGroupResponse:
+    properties:
+      debt_by_user:
+        additionalProperties:
+          format: int32
+          type: integer
+        type: object
+      debts:
+        items:
+          $ref: '#/definitions/debt.Debt'
+        type: array
+      total_amount:
+        type: integer
+      total_count:
+        type: integer
+    type: object
   transport.DebtPaymentResponse:
     properties:
       amount:
@@ -76,23 +92,14 @@ definitions:
     type: object
   transport.GetDebtsResponse:
     properties:
-      debt_by_lender:
-        additionalProperties:
-          format: int32
-          type: integer
-        type: object
-      debts:
-        items:
-          $ref: '#/definitions/debt.Debt'
-        type: array
+      i_owe:
+        $ref: '#/definitions/transport.DebtGroupResponse'
       limit:
         type: integer
       offset:
         type: integer
-      total_amount:
-        type: integer
-      total_count:
-        type: integer
+      owed_to_me:
+        $ref: '#/definitions/transport.DebtGroupResponse'
     type: object
   transport.GetUsersResponse:
     properties:
@@ -169,7 +176,7 @@ paths:
       - debts
   /debts:
     get:
-      description: Lists debts where the authenticated user is the borrower
+      description: Lists debts where the authenticated user is the borrower and lender
       produces:
       - application/json
       responses:

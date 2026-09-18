@@ -23,6 +23,19 @@ func (q *Queries) CountDebtsByBorrowerID(ctx context.Context, borrowerID int32) 
 	return count, err
 }
 
+const countDebtsByLenderID = `-- name: CountDebtsByLenderID :one
+SELECT count(*)
+FROM debts
+WHERE lender_id = $1
+`
+
+func (q *Queries) CountDebtsByLenderID(ctx context.Context, lenderID int32) (int64, error) {
+	row := q.db.QueryRow(ctx, countDebtsByLenderID, lenderID)
+	var count int64
+	err := row.Scan(&count)
+	return count, err
+}
+
 const createDebt = `-- name: CreateDebt :one
 INSERT INTO debts (lender_id, borrower_id, amount)
 VALUES ($1, $2, $3)
@@ -178,6 +191,77 @@ func (q *Queries) GetDebtsByBorrowerID(ctx context.Context, arg GetDebtsByBorrow
 	var items []GetDebtsByBorrowerIDRow
 	for rows.Next() {
 		var i GetDebtsByBorrowerIDRow
+		if err := rows.Scan(
+			&i.ID,
+			&i.Amount,
+			&i.PaidAmount,
+			&i.RemainingAmount,
+			&i.CreatedAt,
+			&i.Status,
+			&i.LenderID,
+			&i.LenderUsername,
+			&i.BorrowerID,
+			&i.BorrowerUsername,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getDebtsByLenderID = `-- name: GetDebtsByLenderID :many
+SELECT d.id,
+       d.amount,
+       COALESCE(SUM(p.amount), 0)::int AS paid_amount,
+       d.amount - COALESCE(SUM(p.amount), 0)::int AS remaining_amount,
+       d.created_at,
+       d.status,
+       d.lender_id,
+       lu.user_name AS lender_username,
+       d.borrower_id,
+       bu.user_name AS borrower_username
+FROM debts d
+         LEFT JOIN debt_payments p ON p.debt_id = d.id
+         JOIN users lu ON lu.id = d.lender_id
+         JOIN users bu ON bu.id = d.borrower_id
+WHERE d.lender_id = $1
+GROUP BY d.id, d.amount, d.created_at, d.status, d.lender_id, lu.user_name, d.borrower_id, bu.user_name
+ORDER BY d.created_at DESC
+LIMIT $2 OFFSET $3
+`
+
+type GetDebtsByLenderIDParams struct {
+	LenderID int32
+	Limit    int32
+	Offset   int32
+}
+
+type GetDebtsByLenderIDRow struct {
+	ID               int32
+	Amount           int32
+	PaidAmount       int32
+	RemainingAmount  int32
+	CreatedAt        time.Time
+	Status           DebtStatus
+	LenderID         int32
+	LenderUsername   string
+	BorrowerID       int32
+	BorrowerUsername string
+}
+
+func (q *Queries) GetDebtsByLenderID(ctx context.Context, arg GetDebtsByLenderIDParams) ([]GetDebtsByLenderIDRow, error) {
+	rows, err := q.db.Query(ctx, getDebtsByLenderID, arg.LenderID, arg.Limit, arg.Offset)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []GetDebtsByLenderIDRow
+	for rows.Next() {
+		var i GetDebtsByLenderIDRow
 		if err := rows.Scan(
 			&i.ID,
 			&i.Amount,

@@ -8,12 +8,24 @@ import (
 type DebtRepository interface {
 	CreateDebt(ctx context.Context, lenderID, borrowerID, amount int32) (Debt, error)
 	GetDebtsByBorrowerID(ctx context.Context, borrowerID, limit, offset int32) ([]Debt, error)
+	GetDebtsByLenderID(ctx context.Context, lenderID, limit, offset int32) ([]Debt, error)
 	CountDebtsByBorrowerID(ctx context.Context, borrowerID int32) (int32, error)
+	CountDebtsByLenderID(ctx context.Context, lenderID int32) (int32, error)
 	PayDebt(ctx context.Context, payerID, debtID, amount int32, note *string) (DebtPayment, error)
 }
 
 type UserReader interface {
 	GetUserByUsername(ctx context.Context, username string) (user.User, error)
+}
+
+type DebtList struct {
+	Debts      []Debt
+	TotalCount int32
+}
+
+type DebtLists struct {
+	IOwe     DebtList
+	OwedToMe DebtList
 }
 
 type Service struct {
@@ -51,18 +63,47 @@ func (s *Service) CreateDebt(ctx context.Context, lender string, borrower string
 	return created, nil
 }
 
-func (s *Service) ListDebt(ctx context.Context, userID int32, limit int32, offset int32) ([]Debt, int32, error) {
-	debts, err := s.repo.GetDebtsByBorrowerID(ctx, userID, limit, offset)
+func (s *Service) ListDebts(ctx context.Context, userID int32, limit int32, offset int32) (DebtLists, error) {
+	iOwe, err := s.listDebts(
+		ctx,
+		userID,
+		limit,
+		offset,
+		s.repo.GetDebtsByBorrowerID,
+		s.repo.CountDebtsByBorrowerID,
+	)
 	if err != nil {
-		return nil, 0, err
+		return DebtLists{}, err
 	}
 
-	totalCount, err := s.repo.CountDebtsByBorrowerID(ctx, userID)
+	owedToMe, err := s.listDebts(
+		ctx,
+		userID,
+		limit,
+		offset,
+		s.repo.GetDebtsByLenderID,
+		s.repo.CountDebtsByLenderID,
+	)
 	if err != nil {
-		return nil, 0, err
+		return DebtLists{}, err
 	}
 
-	return debts, totalCount, nil
+	return DebtLists{IOwe: iOwe, OwedToMe: owedToMe}, nil
+}
+
+type listDebtsFunc func(context.Context, int32, int32, int32) ([]Debt, error)
+type countDebtsFunc func(context.Context, int32) (int32, error)
+
+func (s *Service) listDebts(ctx context.Context, userID, limit, offset int32, list listDebtsFunc, count countDebtsFunc) (DebtList, error) {
+	debts, err := list(ctx, userID, limit, offset)
+	if err != nil {
+		return DebtList{}, err
+	}
+	totalCount, err := count(ctx, userID)
+	if err != nil {
+		return DebtList{}, err
+	}
+	return DebtList{Debts: debts, TotalCount: totalCount}, nil
 }
 
 func (s *Service) PayDebt(ctx context.Context, userID int32, debtID int32, amount int32, note *string) (DebtPayment, error) {

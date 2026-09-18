@@ -55,8 +55,38 @@ func (r *Repository) GetDebtsByBorrowerID(ctx context.Context, borrowerID int32,
 	return debts, nil
 }
 
+func (r *Repository) GetDebtsByLenderID(ctx context.Context, lenderID int32, limit int32, offset int32) ([]Debt, error) {
+	rows, err := r.q.GetDebtsByLenderID(ctx, db.GetDebtsByLenderIDParams{LenderID: lenderID, Limit: limit, Offset: offset})
+	if err != nil {
+		return nil, fmt.Errorf("get debts: %w", err)
+	}
+	debts := make([]Debt, 0, len(rows))
+	for _, row := range rows {
+		debts = append(debts, Debt{
+			ID:               row.ID,
+			LenderID:         row.LenderID,
+			LenderUsername:   row.LenderUsername,
+			BorrowerUsername: row.BorrowerUsername,
+			BorrowerID:       row.BorrowerID,
+			Amount:           row.Amount,
+			PaidAmount:       row.PaidAmount,
+			RemainingAmount:  row.RemainingAmount,
+			Status:           DebtStatus(row.Status),
+		})
+	}
+	return debts, nil
+}
+
 func (r *Repository) CountDebtsByBorrowerID(ctx context.Context, borrowerID int32) (int32, error) {
 	count, err := r.q.CountDebtsByBorrowerID(ctx, borrowerID)
+	if err != nil {
+		return 0, fmt.Errorf("count debts: %w", err)
+	}
+	return int32(count), nil
+}
+
+func (r *Repository) CountDebtsByLenderID(ctx context.Context, lenderID int32) (int32, error) {
+	count, err := r.q.CountDebtsByLenderID(ctx, lenderID)
 	if err != nil {
 		return 0, fmt.Errorf("count debts: %w", err)
 	}

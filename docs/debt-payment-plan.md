@@ -155,8 +155,7 @@ The repository should accept a transaction-aware database handle or a transactio
 
 ```text
 POST /api/v1/debts
-GET  /api/v1/debts?role=i_owe
-GET  /api/v1/debts?role=owed_to_me
+GET  /api/v1/debts
 GET  /api/v1/debts/{debt_id}
 POST /api/v1/debts/{debt_id}/payments
 GET  /api/v1/debts/{debt_id}/payments
@@ -253,4 +252,3 @@ After implementation, review these areas:
 6. Are repository methods using the request context?
 7. Are generated sqlc files reproducible from the SQL source?
 8. Can every balance be recomputed from stored records?
-

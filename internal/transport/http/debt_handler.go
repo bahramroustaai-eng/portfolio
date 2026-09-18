@@ -64,7 +64,7 @@ func (h *DebtHandler) CreateDebt(w http.ResponseWriter, r *http.Request) {
 // GetDebts godoc
 //
 //	@Summary		List debts
-//	@Description	Lists debts where the authenticated user is the borrower
+//	@Description	Lists debts where the authenticated user is the borrower and lender
 //	@Tags			debts
 //	@Produce		json
 //	@Security		BearerAuth
@@ -107,26 +107,37 @@ func (h *DebtHandler) GetDebts(w http.ResponseWriter, r *http.Request) {
 		offset = int32(parsed)
 	}
 
-	debts, totalCount, err := h.svc.ListDebt(r.Context(), userID, limit, offset)
+	debts, err := h.svc.ListDebts(r.Context(), userID, limit, offset)
 	if err != nil {
 		writeServiceError(w, err)
 		return
 	}
-	debtByLender := make(map[string]int32)
-	var totalAmount int32
-	for _, d := range debts {
-		totalAmount += d.RemainingAmount
-		debtByLender[d.LenderUsername] += d.RemainingAmount
-	}
 
 	writeJSON(w, http.StatusOK, GetDebtsResponse{
-		Debts:        debts,
-		TotalAmount:  totalAmount,
-		DebtByLender: debtByLender,
-		Limit:        limit,
-		Offset:       offset,
-		TotalCount:   totalCount,
+		IOwe:     buildDebtGroupResponse(debts.IOwe.Debts, debts.IOwe.TotalCount, false),
+		OwedToMe: buildDebtGroupResponse(debts.OwedToMe.Debts, debts.OwedToMe.TotalCount, true),
+		Limit:    limit,
+		Offset:   offset,
 	})
+}
+
+func buildDebtGroupResponse(debts []debt.Debt, totalCount int32, owedToMe bool) DebtGroupResponse {
+	byUser := make(map[string]int32)
+	var totalAmount int32
+	for _, item := range debts {
+		totalAmount += item.RemainingAmount
+		counterparty := item.LenderUsername
+		if owedToMe {
+			counterparty = item.BorrowerUsername
+		}
+		byUser[counterparty] += item.RemainingAmount
+	}
+	return DebtGroupResponse{
+		Debts:       debts,
+		DebtByUser:  byUser,
+		TotalAmount: totalAmount,
+		TotalCount:  totalCount,
+	}
 }
 
 // PayDebt godoc

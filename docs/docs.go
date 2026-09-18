@@ -80,7 +80,7 @@ const docTemplate = `{
                         "BearerAuth": []
                     }
                 ],
-                "description": "Lists debts where the authenticated user is the borrower",
+                "description": "Lists debts where the authenticated user is the borrower and lender",
                 "produces": [
                     "application/json"
                 ],
@@ -400,6 +400,30 @@ const docTemplate = `{
                 }
             }
         },
+        "transport.DebtGroupResponse": {
+            "type": "object",
+            "properties": {
+                "debt_by_user": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "debts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/debt.Debt"
+                    }
+                },
+                "total_amount": {
+                    "type": "integer"
+                },
+                "total_count": {
+                    "type": "integer"
+                }
+            }
+        },
         "transport.DebtPaymentResponse": {
             "type": "object",
             "properties": {
@@ -440,18 +464,8 @@ const docTemplate = `{
         "transport.GetDebtsResponse": {
             "type": "object",
             "properties": {
-                "debt_by_lender": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "integer",
-                        "format": "int32"
-                    }
-                },
-                "debts": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/debt.Debt"
-                    }
+                "i_owe": {
+                    "$ref": "#/definitions/transport.DebtGroupResponse"
                 },
                 "limit": {
                     "type": "integer"
@@ -459,11 +473,8 @@ const docTemplate = `{
                 "offset": {
                     "type": "integer"
                 },
-                "total_amount": {
-                    "type": "integer"
-                },
-                "total_count": {
-                    "type": "integer"
+                "owed_to_me": {
+                    "$ref": "#/definitions/transport.DebtGroupResponse"
                 }
             }
         },
