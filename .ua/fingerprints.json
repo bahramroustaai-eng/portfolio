@@ -1,0 +1,1964 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "02baac0c88039cfe122675b546a7b88e9ca3f0f2",
+  "generatedAt": "2026-09-18T14:16:36.612Z",
+  "files": {
+    "cmd/api/main.go": {
+      "filePath": "cmd/api/main.go",
+      "contentHash": "d23f66f26f00c35aede5b9ea139332b05b103d586238766bd404591c6d8787c3",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": false,
+          "lineCount": 49
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "context",
+          "specifiers": [
+            "context"
+          ]
+        },
+        {
+          "source": "errors",
+          "specifiers": [
+            "errors"
+          ]
+        },
+        {
+          "source": "log/slog",
+          "specifiers": [
+            "slog"
+          ]
+        },
+        {
+          "source": "net/http",
+          "specifiers": [
+            "http"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "os/signal",
+          "specifiers": [
+            "signal"
+          ]
+        },
+        {
+          "source": "portfolio/internal/debt",
+          "specifiers": [
+            "debt"
+          ]
+        },
+        {
+          "source": "portfolio/internal/platform/config",
+          "specifiers": [
+            "config"
+          ]
+        },
+        {
+          "source": "portfolio/internal/platform/postgres",
+          "specifiers": [
+            "postgres"
+          ]
+        },
+        {
+          "source": "portfolio/internal/transport/http",
+          "specifiers": [
+            "transport"
+          ]
+        },
+        {
+          "source": "portfolio/internal/user",
+          "specifiers": [
+            "user"
+          ]
+        },
+        {
+          "source": "syscall",
+          "specifiers": [
+            "syscall"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "portfolio/docs",
+          "specifiers": [
+            "_"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 76,
+      "hasStructuralAnalysis": true
+    },
+    "docker-compose.yml": {
+      "filePath": "docker-compose.yml",
+      "contentHash": "50648372b8bc5c5c220608f549206b095f82851c5a8eceb119b566647578c347",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 18,
+      "hasStructuralAnalysis": true
+    },
+    "docs/docs.go": {
+      "filePath": "docs/docs.go",
+      "contentHash": "027eef7f555f2bc6263d3945cd7078cee3dc4d37c331fd7bccf0c66d988cf7f1",
+      "functions": [
+        {
+          "name": "init",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "github.com/swaggo/swag",
+          "specifiers": [
+            "swag"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 335,
+      "hasStructuralAnalysis": true
+    },
+    "docs/swagger.json": {
+      "filePath": "docs/swagger.json",
+      "contentHash": "149623b84334ee1d5a454917c2d3da29a0691bb7271e74323b901fcf9915af7d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 308,
+      "hasStructuralAnalysis": true
+    },
+    "docs/swagger.yaml": {
+      "filePath": "docs/swagger.yaml",
+      "contentHash": "40ea512cbcb7b6dd2cacc51f5f1862972afb9e3a3750403221ea981f96c61580",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 201,
+      "hasStructuralAnalysis": true
+    },
+    "go.mod": {
+      "filePath": "go.mod",
+      "contentHash": "714c3107643731f7c3057fca9196f824bae0cc2b647583af73cdd7d5fa658375",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": false
+    },
+    "go.sum": {
+      "filePath": "go.sum",
+      "contentHash": "c54b4be1234f39e7223de37760d0a4a2529bbed9d83343cfd057fad48bafce6e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 83,
+      "hasStructuralAnalysis": false
+    },
+    "internal/apperr/apperr.go": {
+      "filePath": "internal/apperr/apperr.go",
+      "contentHash": "4bf5b8a1ec61478dd9a2d28169634d5e57423d1c1c5f629653b54311fdc5eb0c",
+      "functions": [
+        {
+          "name": "Error",
+          "params": [],
+          "returnType": "string",
+          "exported": true,
+          "lineCount": 1
+        },
+        {
+          "name": "New",
+          "params": [
+            "code",
+            "msg"
+          ],
+          "returnType": "*Error",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [
+        {
+          "name": "Error",
+          "methods": [
+            "Error"
+          ],
+          "properties": [
+            "Code",
+            "Message"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [],
+      "exports": [
+        "Error",
+        "Error",
+        "New"
+      ],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "internal/debt/db/db.go": {
+      "filePath": "internal/debt/db/db.go",
+      "contentHash": "0c9302e79a855e76de414411e9c730a96b56c46782e65d19f7f4b919a7771799",
+      "functions": [
+        {
+          "name": "New",
+          "params": [
+            "db"
+          ],
+          "returnType": "*Queries",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "WithTx",
+          "params": [
+            "tx"
+          ],
+          "returnType": "*Queries",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [
+        {
+          "name": "DBTX",
+          "methods": [
+            "Exec",
+            "Query",
+            "QueryRow"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "Queries",
+          "methods": [
+            "WithTx"
+          ],
+          "properties": [
+            "db"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "imports": [
+        {
+          "source": "context",
+          "specifiers": [
+            "context"
+          ]
+        },
+        {
+          "source": "github.com/jackc/pgx/v5",
+          "specifiers": [
+            "v5"
+          ]
+        },
+        {
+          "source": "github.com/jackc/pgx/v5/pgconn",
+          "specifiers": [
+            "pgconn"
+          ]
+        }
+      ],
+      "exports": [
+        "DBTX",
+        "New",
+        "Queries",
+        "WithTx"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "internal/debt/db/models.go": {
+      "filePath": "internal/debt/db/models.go",
+      "contentHash": "6a0328094e09f45ab2f5e1f25d9ebfb82cf5fdf7e093c0439d27c7ec540e4050",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Debt",
+          "methods": [],
+          "properties": [
+            "ID",
+            "LenderID",
+            "BorrowerID",
+            "Amount",
+            "CreatedAt"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "User",
+          "methods": [],
+          "properties": [
+            "ID",
+            "UserName",
+            "Password",
+            "CreatedAt"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [
+        "Debt",
+        "User"
+      ],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "internal/debt/db/query.sql.go": {
+      "filePath": "internal/debt/db/query.sql.go",
+      "contentHash": "c61f8a5ee0ad878aa6ed699d197db667bafa45f4c4e545d7483789bce15ed8f2",
+      "functions": [
+        {
+          "name": "CountDebtsByBorrowerID",
+          "params": [
+            "ctx",
+            "borrowerID"
+          ],
+          "returnType": "(int64, error)",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "CreateDebt",
+          "params": [
+            "ctx",
+            "arg"
+          ],
+          "returnType": "(Debt, error)",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "GetDebtsByBorrowerID",
+          "params": [
+            "ctx",
+            "arg"
+          ],
+          "returnType": "([]GetDebtsByBorrowerIDRow, error)",
+          "exported": true,
+          "lineCount": 27
+        }
+      ],
+      "classes": [
+        {
+          "name": "CreateDebtParams",
+          "methods": [],
+          "properties": [
+            "LenderID",
+            "BorrowerID",
+            "Amount"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "GetDebtsByBorrowerIDParams",
+          "methods": [],
+          "properties": [
+            "BorrowerID",
+            "Limit",
+            "Offset"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "GetDebtsByBorrowerIDRow",
+          "methods": [],
+          "properties": [
+            "ID",
+            "Amount",
+            "CreatedAt",
+            "LenderID",
+            "LenderUsername",
+            "BorrowerID",
+            "BorrowerUsername"
+          ],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "imports": [
+        {
+          "source": "context",
+          "specifiers": [
+            "context"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [
+        "CountDebtsByBorrowerID",
+        "CreateDebtParams",
+        "CreateDebt",
+        "GetDebtsByBorrowerIDParams",
+        "GetDebtsByBorrowerIDRow",
+        "GetDebtsByBorrowerID"
+      ],
+      "totalLines": 106,
+      "hasStructuralAnalysis": true
+    },
+    "internal/debt/entity.go": {
+      "filePath": "internal/debt/entity.go",
+      "contentHash": "eb2301b83a9b245c693686cbc76e8893f6937f608bcf1102f13dd0c529cdd655",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Debt",
+          "methods": [],
+          "properties": [
+            "ID",
+            "BorrowerID",
+            "BorrowerUsername",
+            "LenderID",
+            "LenderUsername",
+            "Amount"
+          ],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "imports": [
+        {
+          "source": "portfolio/internal/apperr",
+          "specifiers": [
+            "apperr"
+          ]
+        }
+      ],
+      "exports": [
+        "Debt"
+      ],
+      "totalLines": 18,
+      "hasStructuralAnalysis": true
+    },
+    "internal/debt/query.sql": {
+      "filePath": "internal/debt/query.sql",
+      "contentHash": "384efbd17255a2fb5bc5c1b8b373b2adb81cf35e282bc34213048c77bc56d4cf",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "internal/debt/repository.go": {
+      "filePath": "internal/debt/repository.go",
+      "contentHash": "bbbcbe45290f1a8540050ddab5501d37fc4576ad9c5f15b8ad94ada6f05570da",
+      "functions": [
+        {
+          "name": "NewRepository",
+          "params": [
+            "pool"
+          ],
+          "returnType": "*Repository",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "CreateDebt",
+          "params": [
+            "lender",
+            "borrower",
+            "amount"
+          ],
+          "returnType": "(Debt, error)",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "GetDebtsByBorrowerID",
+          "params": [
+            "ctx",
+            "borrowerID",
+            "limit",
+            "offset"
+          ],
+          "returnType": "([]Debt, error)",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "CountDebtsByBorrowerID",
+          "params": [
+            "ctx",
+            "borrowerID"
+          ],
+          "returnType": "(int32, error)",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "toDomain",
+          "params": [
+            "debt"
+          ],
+          "returnType": "Debt",
+          "exported": false,
+          "lineCount": 8
+        }
+      ],
+      "classes": [
+        {
+          "name": "Repository",
+          "methods": [
+            "CreateDebt",
+            "GetDebtsByBorrowerID",
+            "CountDebtsByBorrowerID",
+            "toDomain"
+          ],
+          "properties": [
+            "pool",
+            "q"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "context",
+          "specifiers": [
+            "context"
+          ]
+        },
+        {
+          "source": "fmt",
+          "specifiers": [
+            "fmt"
+          ]
+        },
+        {
+          "source": "portfolio/internal/debt/db",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "github.com/jackc/pgx/v5/pgxpool",
+          "specifiers": [
+            "pgxpool"
+          ]
+        }
+      ],
+      "exports": [
+        "Repository",
+        "NewRepository",
+        "CreateDebt",
+        "GetDebtsByBorrowerID",
+        "CountDebtsByBorrowerID"
+      ],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "internal/debt/service.go": {
+      "filePath": "internal/debt/service.go",
+      "contentHash": "75b70bc0ddfd56c592b203da4040a4dd2d5b3811314beb5e468bb38992067709",
+      "functions": [
+        {
+          "name": "NewService",
+          "params": [
+            "repo",
+            "userRepo"
+          ],
+          "returnType": "*Service",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "CreateDebt",
+          "params": [
+            "ctx",
+            "lender",
+            "borrower",
+            "amount"
+          ],
+          "returnType": "(Debt, error)",
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "ListDebt",
+          "params": [
+            "ctx",
+            "userID",
+            "limit",
+            "offset"
+          ],
+          "returnType": "([]Debt, int32, error)",
+          "exported": true,
+          "lineCount": 13
+        }
+      ],
+      "classes": [
+        {
+          "name": "Service",
+          "methods": [
+            "CreateDebt",
+            "ListDebt"
+          ],
+          "properties": [
+            "repo",
+            "userRepo"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "context",
+          "specifiers": [
+            "context"
+          ]
+        },
+        {
+          "source": "portfolio/internal/user",
+          "specifiers": [
+            "user"
+          ]
+        }
+      ],
+      "exports": [
+        "Service",
+        "NewService",
+        "CreateDebt",
+        "ListDebt"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "internal/platform/config/config.go": {
+      "filePath": "internal/platform/config/config.go",
+      "contentHash": "a4d24efb04012bb2aa1e1a93ac2fc360027fe442e29cf3f02520f73589187182",
+      "functions": [
+        {
+          "name": "Load",
+          "params": [],
+          "returnType": "(Config, error)",
+          "exported": true,
+          "lineCount": 20
+        }
+      ],
+      "classes": [
+        {
+          "name": "Config",
+          "methods": [],
+          "properties": [
+            "DatabaseURL",
+            "Addr"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "errors",
+          "specifiers": [
+            "errors"
+          ]
+        },
+        {
+          "source": "fmt",
+          "specifiers": [
+            "fmt"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "github.com/joho/godotenv",
+          "specifiers": [
+            "godotenv"
+          ]
+        }
+      ],
+      "exports": [
+        "Config",
+        "Load"
+      ],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "internal/platform/postgres/postgres.go": {
+      "filePath": "internal/platform/postgres/postgres.go",
+      "contentHash": "1813795be097d76ac2f4b619009680d0e3c23390cc0f7204110ace9503e08072",
+      "functions": [
+        {
+          "name": "NewPool",
+          "params": [
+            "ctx",
+            "url"
+          ],
+          "returnType": "(*pgxpool.Pool, error)",
+          "exported": true,
+          "lineCount": 26
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "context",
+          "specifiers": [
+            "context"
+          ]
+        },
+        {
+          "source": "fmt",
+          "specifiers": [
+            "fmt"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "github.com/jackc/pgx/v5/pgxpool",
+          "specifiers": [
+            "pgxpool"
+          ]
+        }
+      ],
+      "exports": [
+        "NewPool"
+      ],
+      "totalLines": 37,
+      "hasStructuralAnalysis": true
+    },
+    "internal/transport/http/auth_middleware.go": {
+      "filePath": "internal/transport/http/auth_middleware.go",
+      "contentHash": "602f80b8b1ca0b4d5b229e82c31a70c1ea1ffe5ab4a5fc2adbb3d68a6c519a00",
+      "functions": [
+        {
+          "name": "RequireAuth",
+          "params": [
+            "next"
+          ],
+          "returnType": "http.Handler",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "UserIDFromContext",
+          "params": [
+            "ctx"
+          ],
+          "returnType": "(int32, bool)",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "context",
+          "specifiers": [
+            "context"
+          ]
+        },
+        {
+          "source": "net/http",
+          "specifiers": [
+            "http"
+          ]
+        },
+        {
+          "source": "portfolio/internal/user",
+          "specifiers": [
+            "user"
+          ]
+        },
+        {
+          "source": "strings",
+          "specifiers": [
+            "strings"
+          ]
+        }
+      ],
+      "exports": [
+        "RequireAuth",
+        "UserIDFromContext"
+      ],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "internal/transport/http/debt_handler.go": {
+      "filePath": "internal/transport/http/debt_handler.go",
+      "contentHash": "77ddb75569945906f1650c07347bd9324ed666267d9e81dba2446a66ed7765a4",
+      "functions": [
+        {
+          "name": "NewDebtHandler",
+          "params": [
+            "svc"
+          ],
+          "returnType": "*DebtHandler",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "RegisterRoutes",
+          "params": [
+            "mux"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "CreateDebt",
+          "params": [
+            "w",
+            "r"
+          ],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "GetDebts",
+          "params": [
+            "w",
+            "r"
+          ],
+          "exported": true,
+          "lineCount": 56
+        }
+      ],
+      "classes": [
+        {
+          "name": "DebtHandler",
+          "methods": [
+            "RegisterRoutes",
+            "CreateDebt",
+            "GetDebts"
+          ],
+          "properties": [
+            "svc"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "CreateDebtRequest",
+          "methods": [],
+          "properties": [
+            "Lender",
+            "Borrower",
+            "Amount"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "CreateDebtResponse",
+          "methods": [],
+          "properties": [
+            "ID"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "GetDebtsResponse",
+          "methods": [],
+          "properties": [
+            "Debts",
+            "DebtByLender",
+            "TotalAmount",
+            "Limit",
+            "Offset",
+            "TotalCount"
+          ],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "imports": [
+        {
+          "source": "encoding/json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "net/http",
+          "specifiers": [
+            "http"
+          ]
+        },
+        {
+          "source": "portfolio/internal/debt",
+          "specifiers": [
+            "debt"
+          ]
+        },
+        {
+          "source": "strconv",
+          "specifiers": [
+            "strconv"
+          ]
+        }
+      ],
+      "exports": [
+        "DebtHandler",
+        "NewDebtHandler",
+        "RegisterRoutes",
+        "CreateDebtRequest",
+        "CreateDebtResponse",
+        "CreateDebt",
+        "GetDebts",
+        "GetDebtsResponse"
+      ],
+      "totalLines": 142,
+      "hasStructuralAnalysis": true
+    },
+    "internal/transport/http/middleware.go": {
+      "filePath": "internal/transport/http/middleware.go",
+      "contentHash": "a9d10ff939f59f53dda94a06d2e8371af9d613e6fa08d9c8efec0a10b86a1cf8",
+      "functions": [
+        {
+          "name": "Logging",
+          "params": [
+            "next"
+          ],
+          "returnType": "http.Handler",
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "log/slog",
+          "specifiers": [
+            "slog"
+          ]
+        },
+        {
+          "source": "net/http",
+          "specifiers": [
+            "http"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [
+        "Logging"
+      ],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "internal/transport/http/porfto_handler.go": {
+      "filePath": "internal/transport/http/porfto_handler.go",
+      "contentHash": "1854dd2313f62602999b0bd1e2386c2fb7883bc53d6112289be212e1791c56d4",
+      "functions": [
+        {
+          "name": "NewPortfoHandler",
+          "params": [
+            "svc"
+          ],
+          "returnType": "*PortfoHandler",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "RegisterRoutes",
+          "params": [
+            "mux"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Item",
+          "params": [
+            "w",
+            "r"
+          ],
+          "exported": true,
+          "lineCount": 1
+        }
+      ],
+      "classes": [
+        {
+          "name": "PortfoHandler",
+          "methods": [
+            "RegisterRoutes",
+            "Item"
+          ],
+          "properties": [
+            "svc"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "imports": [
+        {
+          "source": "net/http",
+          "specifiers": [
+            "http"
+          ]
+        },
+        {
+          "source": "portfolio/internal/user",
+          "specifiers": [
+            "user"
+          ]
+        }
+      ],
+      "exports": [
+        "PortfoHandler",
+        "NewPortfoHandler",
+        "RegisterRoutes",
+        "Item"
+      ],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "internal/transport/http/response.go": {
+      "filePath": "internal/transport/http/response.go",
+      "contentHash": "6cf2c9316f781a0b4c84f346d5f70f26bfdf5c302896574bceeba69daddab81e",
+      "functions": [
+        {
+          "name": "writeJSON",
+          "params": [
+            "w",
+            "statusCode",
+            "payload"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "writeError",
+          "params": [
+            "w",
+            "statusCode",
+            "msg"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "writeServiceError",
+          "params": [
+            "w",
+            "err"
+          ],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "statusForCode",
+          "params": [
+            "c"
+          ],
+          "returnType": "int",
+          "exported": false,
+          "lineCount": 12
+        }
+      ],
+      "classes": [
+        {
+          "name": "ErrorResponse",
+          "methods": [],
+          "properties": [
+            "Error"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "imports": [
+        {
+          "source": "encoding/json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "errors",
+          "specifiers": [
+            "errors"
+          ]
+        },
+        {
+          "source": "log/slog",
+          "specifiers": [
+            "slog"
+          ]
+        },
+        {
+          "source": "net/http",
+          "specifiers": [
+            "http"
+          ]
+        },
+        {
+          "source": "portfolio/internal/apperr",
+          "specifiers": [
+            "apperr"
+          ]
+        }
+      ],
+      "exports": [
+        "ErrorResponse"
+      ],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "internal/transport/http/router.go": {
+      "filePath": "internal/transport/http/router.go",
+      "contentHash": "fcf3a60e50e23a0cb123b40ade3e067a00100d2a62b8d4edd28cd0092bfe3d6d",
+      "functions": [
+        {
+          "name": "NewRouter",
+          "params": [],
+          "returnType": "http.Handler",
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [
+        {
+          "name": "Module",
+          "methods": [
+            "RegisterRoutes"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "imports": [
+        {
+          "source": "net/http",
+          "specifiers": [
+            "http"
+          ]
+        },
+        {
+          "source": "github.com/swaggo/http-swagger/v2",
+          "specifiers": [
+            "httpSwagger"
+          ]
+        }
+      ],
+      "exports": [
+        "Module",
+        "NewRouter"
+      ],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "internal/transport/http/user_handler.go": {
+      "filePath": "internal/transport/http/user_handler.go",
+      "contentHash": "e1f0b3362ba54c065734d2a58ae0f0d1422c93e09201bb1acee0941a9fd8180e",
+      "functions": [
+        {
+          "name": "NewUserHandler",
+          "params": [
+            "svc"
+          ],
+          "returnType": "*UserHandler",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "RegisterRoutes",
+          "params": [
+            "mux"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Validate",
+          "params": [],
+          "returnType": "error",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "CreateUser",
+          "params": [
+            "w",
+            "r"
+          ],
+          "exported": true,
+          "lineCount": 33
+        },
+        {
+          "name": "Login",
+          "params": [
+            "w",
+            "r"
+          ],
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "classes": [
+        {
+          "name": "UserHandler",
+          "methods": [
+            "RegisterRoutes",
+            "CreateUser",
+            "Login"
+          ],
+          "properties": [
+            "svc"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "CreateUserRequest",
+          "methods": [
+            "Validate"
+          ],
+          "properties": [
+            "Username",
+            "Password"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "CreateUserResponse",
+          "methods": [],
+          "properties": [
+            "ID",
+            "Username",
+            "CreatedAt"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "LoginRequest",
+          "methods": [],
+          "properties": [
+            "Username",
+            "Password"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "LoginResponse",
+          "methods": [],
+          "properties": [
+            "ID",
+            "Username",
+            "AccessToken"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "encoding/json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "fmt",
+          "specifiers": [
+            "fmt"
+          ]
+        },
+        {
+          "source": "log/slog",
+          "specifiers": [
+            "slog"
+          ]
+        },
+        {
+          "source": "net/http",
+          "specifiers": [
+            "http"
+          ]
+        },
+        {
+          "source": "portfolio/internal/user",
+          "specifiers": [
+            "user"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [
+        "UserHandler",
+        "NewUserHandler",
+        "RegisterRoutes",
+        "CreateUserRequest",
+        "CreateUserResponse",
+        "Validate",
+        "CreateUser",
+        "LoginRequest",
+        "LoginResponse",
+        "Login"
+      ],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "internal/user/auth.go": {
+      "filePath": "internal/user/auth.go",
+      "contentHash": "7358268337984ea0a6ec617efdf9f561dec187e9924fdc93713717859756a5cf",
+      "functions": [
+        {
+          "name": "CreateToken",
+          "params": [
+            "username",
+            "userID"
+          ],
+          "returnType": "(string, error)",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "VerifyToken",
+          "params": [
+            "tokenString"
+          ],
+          "returnType": "(*Claims, error)",
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [
+        {
+          "name": "Claims",
+          "methods": [],
+          "properties": [
+            "UserID",
+            "Username"
+          ],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "fmt",
+          "specifiers": [
+            "fmt"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "github.com/golang-jwt/jwt/v5",
+          "specifiers": [
+            "v5"
+          ]
+        }
+      ],
+      "exports": [
+        "Claims",
+        "CreateToken",
+        "VerifyToken"
+      ],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "internal/user/db/db.go": {
+      "filePath": "internal/user/db/db.go",
+      "contentHash": "0c9302e79a855e76de414411e9c730a96b56c46782e65d19f7f4b919a7771799",
+      "functions": [
+        {
+          "name": "New",
+          "params": [
+            "db"
+          ],
+          "returnType": "*Queries",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "WithTx",
+          "params": [
+            "tx"
+          ],
+          "returnType": "*Queries",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [
+        {
+          "name": "DBTX",
+          "methods": [
+            "Exec",
+            "Query",
+            "QueryRow"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "Queries",
+          "methods": [
+            "WithTx"
+          ],
+          "properties": [
+            "db"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "imports": [
+        {
+          "source": "context",
+          "specifiers": [
+            "context"
+          ]
+        },
+        {
+          "source": "github.com/jackc/pgx/v5",
+          "specifiers": [
+            "v5"
+          ]
+        },
+        {
+          "source": "github.com/jackc/pgx/v5/pgconn",
+          "specifiers": [
+            "pgconn"
+          ]
+        }
+      ],
+      "exports": [
+        "DBTX",
+        "New",
+        "Queries",
+        "WithTx"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "internal/user/db/models.go": {
+      "filePath": "internal/user/db/models.go",
+      "contentHash": "6a0328094e09f45ab2f5e1f25d9ebfb82cf5fdf7e093c0439d27c7ec540e4050",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Debt",
+          "methods": [],
+          "properties": [
+            "ID",
+            "LenderID",
+            "BorrowerID",
+            "Amount",
+            "CreatedAt"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "User",
+          "methods": [],
+          "properties": [
+            "ID",
+            "UserName",
+            "Password",
+            "CreatedAt"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        }
+      ],
+      "exports": [
+        "Debt",
+        "User"
+      ],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "internal/user/db/query.sql.go": {
+      "filePath": "internal/user/db/query.sql.go",
+      "contentHash": "9fe07518e46dad48efeb53bbcbcf5bfd32b6fe7ad262ff519c14f19374838f93",
+      "functions": [
+        {
+          "name": "CreateUser",
+          "params": [
+            "ctx",
+            "arg"
+          ],
+          "returnType": "(User, error)",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "GetUserByID",
+          "params": [
+            "ctx",
+            "id"
+          ],
+          "returnType": "(User, error)",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "GetUserByUsername",
+          "params": [
+            "ctx",
+            "userName"
+          ],
+          "returnType": "(User, error)",
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [
+        {
+          "name": "CreateUserParams",
+          "methods": [],
+          "properties": [
+            "UserName",
+            "Password"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "context",
+          "specifiers": [
+            "context"
+          ]
+        }
+      ],
+      "exports": [
+        "CreateUserParams",
+        "CreateUser",
+        "GetUserByID",
+        "GetUserByUsername"
+      ],
+      "totalLines": 68,
+      "hasStructuralAnalysis": true
+    },
+    "internal/user/entity.go": {
+      "filePath": "internal/user/entity.go",
+      "contentHash": "cf484e316d1286a39d776cdab8df4bc68536dc6a83a74ddd11ce38d57d8b14ef",
+      "functions": [],
+      "classes": [
+        {
+          "name": "User",
+          "methods": [],
+          "properties": [
+            "ID",
+            "UserName",
+            "Password",
+            "CreatedAt"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "CreateInput",
+          "methods": [],
+          "properties": [
+            "UserName",
+            "Password"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "time",
+          "specifiers": [
+            "time"
+          ]
+        },
+        {
+          "source": "portfolio/internal/apperr",
+          "specifiers": [
+            "apperr"
+          ]
+        }
+      ],
+      "exports": [
+        "User",
+        "CreateInput"
+      ],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "internal/user/query.sql": {
+      "filePath": "internal/user/query.sql",
+      "contentHash": "4de86df6d01a0232eba5cfe323b128a96f14cdd13b125248d12743a2a380e703",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "internal/user/repository.go": {
+      "filePath": "internal/user/repository.go",
+      "contentHash": "c1c0915caae838b816c99bd5249637576dbc37b2f51e0b172ad983057e7496d4",
+      "functions": [
+        {
+          "name": "NewUserRepository",
+          "params": [
+            "pool"
+          ],
+          "returnType": "*Repository",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "CreateUser",
+          "params": [
+            "ctx",
+            "username",
+            "password"
+          ],
+          "returnType": "(User, error)",
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "GetUserByUsername",
+          "params": [
+            "ctx",
+            "username"
+          ],
+          "returnType": "(User, error)",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "toDomain",
+          "params": [
+            "i"
+          ],
+          "returnType": "User",
+          "exported": false,
+          "lineCount": 6
+        }
+      ],
+      "classes": [
+        {
+          "name": "Repository",
+          "methods": [
+            "CreateUser",
+            "GetUserByUsername"
+          ],
+          "properties": [
+            "pool",
+            "q"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "context",
+          "specifiers": [
+            "context"
+          ]
+        },
+        {
+          "source": "errors",
+          "specifiers": [
+            "errors"
+          ]
+        },
+        {
+          "source": "fmt",
+          "specifiers": [
+            "fmt"
+          ]
+        },
+        {
+          "source": "portfolio/internal/user/db",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "github.com/jackc/pgx/v5",
+          "specifiers": [
+            "v5"
+          ]
+        },
+        {
+          "source": "github.com/jackc/pgx/v5/pgconn",
+          "specifiers": [
+            "pgconn"
+          ]
+        },
+        {
+          "source": "github.com/jackc/pgx/v5/pgxpool",
+          "specifiers": [
+            "pgxpool"
+          ]
+        }
+      ],
+      "exports": [
+        "Repository",
+        "NewUserRepository",
+        "CreateUser",
+        "GetUserByUsername"
+      ],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "internal/user/service.go": {
+      "filePath": "internal/user/service.go",
+      "contentHash": "20cf323ced60495b508c46650849c2528c13c42ec3ed4b83630d0fc8dea93e3f",
+      "functions": [
+        {
+          "name": "NewUserService",
+          "params": [
+            "repo"
+          ],
+          "returnType": "*Service",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "CreateUser",
+          "params": [
+            "ctx",
+            "input"
+          ],
+          "returnType": "(User, error)",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "Login",
+          "params": [
+            "ctx",
+            "username",
+            "password"
+          ],
+          "returnType": "(User, error)",
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [
+        {
+          "name": "Service",
+          "methods": [
+            "CreateUser",
+            "Login"
+          ],
+          "properties": [
+            "repo"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "imports": [
+        {
+          "source": "context",
+          "specifiers": [
+            "context"
+          ]
+        },
+        {
+          "source": "errors",
+          "specifiers": [
+            "errors"
+          ]
+        },
+        {
+          "source": "fmt",
+          "specifiers": [
+            "fmt"
+          ]
+        },
+        {
+          "source": "golang.org/x/crypto/bcrypt",
+          "specifiers": [
+            "bcrypt"
+          ]
+        }
+      ],
+      "exports": [
+        "Service",
+        "NewUserService",
+        "CreateUser",
+        "Login"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "Makefile": {
+      "filePath": "Makefile",
+      "contentHash": "850d96b797113fd2b0fbfc55b4cdffbf6db158aa8f733986bad888f6c517b5c0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 31,
+      "hasStructuralAnalysis": true
+    },
+    "migrations/20260829095152_create_user_model.sql": {
+      "filePath": "migrations/20260829095152_create_user_model.sql",
+      "contentHash": "6917a200e1c460c623ac60a5021bbd797590879b83ce93d7b1cbf7075911943f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "migrations/20260829131729_create_debt_model.sql": {
+      "filePath": "migrations/20260829131729_create_debt_model.sql",
+      "contentHash": "e695fa5a47e0ae1310157c971189f231973b9655f6577ce03a4c204a9f114436",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "migrations/20260829223906_create_item_type_model.sql": {
+      "filePath": "migrations/20260829223906_create_item_type_model.sql",
+      "contentHash": "32c6675bc24539b708c3c4b8ab93acf5e251fd40097089a6138691b16b35fc40",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 10,
+      "hasStructuralAnalysis": true
+    },
+    "migrations/20260829224132_create_item_model.sql": {
+      "filePath": "migrations/20260829224132_create_item_model.sql",
+      "contentHash": "aa4f9337dde5bc2236d54f375dcdec9af07f7c678f5cd4e836f989f419c37a77",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "a7c84cee5cc8a64d0d694fcc3e6e2b8b6ac2c193071b8700571faa286ab5bbf6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 88,
+      "hasStructuralAnalysis": true
+    },
+    "sqlc.yaml": {
+      "filePath": "sqlc.yaml",
+      "contentHash": "28d49859c3a654eb1fdd5906038afd9eced5e10a13778c97bd54513fa248c83c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "web/static/index.html": {
+      "filePath": "web/static/index.html",
+      "contentHash": "860a066b44609b2ec76aa1f90a2bec7af3e6b3b9cbfa37b4ac6a19e38e66e2b1",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 512,
+      "hasStructuralAnalysis": false
+    }
+  }
+}

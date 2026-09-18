@@ -1,0 +1,106 @@
+{
+  "scriptCompleted": true,
+  "stats": {
+    "filesScanned": 40,
+    "filesWithImports": 11,
+    "totalEdges": 45
+  },
+  "importMap": {
+    "cmd/api/main.go": [
+      "docs/docs.go",
+      "internal/debt/entity.go",
+      "internal/debt/repository.go",
+      "internal/debt/service.go",
+      "internal/platform/config/config.go",
+      "internal/platform/postgres/postgres.go",
+      "internal/transport/http/auth_middleware.go",
+      "internal/transport/http/debt_handler.go",
+      "internal/transport/http/middleware.go",
+      "internal/transport/http/porfto_handler.go",
+      "internal/transport/http/response.go",
+      "internal/transport/http/router.go",
+      "internal/transport/http/user_handler.go",
+      "internal/user/auth.go",
+      "internal/user/entity.go",
+      "internal/user/repository.go",
+      "internal/user/service.go"
+    ],
+    "docker-compose.yml": [],
+    "docs/docs.go": [],
+    "docs/swagger.json": [],
+    "docs/swagger.yaml": [],
+    "go.mod": [],
+    "go.sum": [],
+    "internal/apperr/apperr.go": [],
+    "internal/debt/db/db.go": [],
+    "internal/debt/db/models.go": [],
+    "internal/debt/db/query.sql.go": [],
+    "internal/debt/entity.go": [
+      "internal/apperr/apperr.go"
+    ],
+    "internal/debt/query.sql": [],
+    "internal/debt/repository.go": [
+      "internal/debt/db/db.go",
+      "internal/debt/db/models.go",
+      "internal/debt/db/query.sql.go"
+    ],
+    "internal/debt/service.go": [
+      "internal/user/auth.go",
+      "internal/user/entity.go",
+      "internal/user/repository.go",
+      "internal/user/service.go"
+    ],
+    "internal/platform/config/config.go": [],
+    "internal/platform/postgres/postgres.go": [],
+    "internal/transport/http/auth_middleware.go": [
+      "internal/user/auth.go",
+      "internal/user/entity.go",
+      "internal/user/repository.go",
+      "internal/user/service.go"
+    ],
+    "internal/transport/http/debt_handler.go": [
+      "internal/debt/entity.go",
+      "internal/debt/repository.go",
+      "internal/debt/service.go"
+    ],
+    "internal/transport/http/middleware.go": [],
+    "internal/transport/http/porfto_handler.go": [
+      "internal/user/auth.go",
+      "internal/user/entity.go",
+      "internal/user/repository.go",
+      "internal/user/service.go"
+    ],
+    "internal/transport/http/response.go": [
+      "internal/apperr/apperr.go"
+    ],
+    "internal/transport/http/router.go": [],
+    "internal/transport/http/user_handler.go": [
+      "internal/user/auth.go",
+      "internal/user/entity.go",
+      "internal/user/repository.go",
+      "internal/user/service.go"
+    ],
+    "internal/user/auth.go": [],
+    "internal/user/db/db.go": [],
+    "internal/user/db/models.go": [],
+    "internal/user/db/query.sql.go": [],
+    "internal/user/entity.go": [
+      "internal/apperr/apperr.go"
+    ],
+    "internal/user/query.sql": [],
+    "internal/user/repository.go": [
+      "internal/user/db/db.go",
+      "internal/user/db/models.go",
+      "internal/user/db/query.sql.go"
+    ],
+    "internal/user/service.go": [],
+    "Makefile": [],
+    "migrations/20260829095152_create_user_model.sql": [],
+    "migrations/20260829131729_create_debt_model.sql": [],
+    "migrations/20260829223906_create_item_type_model.sql": [],
+    "migrations/20260829224132_create_item_model.sql": [],
+    "README.md": [],
+    "sqlc.yaml": [],
+    "web/static/index.html": []
+  }
+}

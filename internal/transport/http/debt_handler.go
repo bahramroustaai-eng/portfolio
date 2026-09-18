@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"portfolio/internal/debt"
 	"strconv"
+	"strings"
+	"time"
 )
 
 type DebtHandler struct {
@@ -16,8 +18,9 @@ func NewDebtHandler(svc *debt.Service) *DebtHandler {
 }
 
 func (h *DebtHandler) RegisterRoutes(mux *http.ServeMux) {
-	mux.Handle("POST /api/v1/debt", RequireAuth(http.HandlerFunc(h.CreateDebt)))
+	mux.Handle("POST /api/v1/debts", RequireAuth(http.HandlerFunc(h.CreateDebt)))
 	mux.Handle("GET /api/v1/debts", RequireAuth(http.HandlerFunc(h.GetDebts)))
+	mux.Handle("POST /api/v1/debts/{debt_id}/payments/", RequireAuth(http.HandlerFunc(h.PayDebt)))
 }
 
 type CreateDebtRequest struct {
@@ -143,4 +146,52 @@ type GetDebtsResponse struct {
 	Limit        int32            `json:"limit"`
 	Offset       int32            `json:"offset"`
 	TotalCount   int32            `json:"total_count"`
+}
+
+// PayDebt PayDebt
+//
+//		@Summary		Debt payments
+//		@Description	Creates a payment for the specified debt.
+//		@Tags			debts
+//		@Produce		json
+//		@Security		BearerAuth
+//	 	@Param			debt_id path int32 true "Debt ID"
+//		@Success		200	{object}	DebtPaymentResponse
+//		@Failure		400	{object}	ErrorResponse
+//		@Failure		401	{object}	ErrorResponse
+//		@Failure		500	{object}	ErrorResponse
+//		@Router			/debts/{debt_id}/payments/ [post]
+func (h *DebtHandler) PayDebt(w http.ResponseWriter, r *http.Request) {
+	userID, ok := UserIDFromContext(r.Context())
+	if !ok {
+		writeError(w, http.StatusUnauthorized, "unauthorized user")
+		return
+	}
+	debtID := strings.TrimSpace(r.PathValue("debt_id"))
+
+	parsedDebtID, err := strconv.ParseInt(debtID, 10, 32)
+	if err != nil || parsedDebtID <= 0 {
+		writeError(w, http.StatusBadRequest, "invalid payDebt id")
+		return
+	}
+
+	note := "hello world"
+	payDebt, err := h.svc.PayDebt(r.Context(), userID, int32(parsedDebtID), &note)
+	if err != nil {
+		writeServiceError(w, err)
+		return
+	}
+	writeJSON(w, http.StatusOK, payDebt)
+	return
+}
+
+type DebtPaymentResponse struct {
+	ID         int32     `json:"id"`
+	Amount     int64     `json:"amount"`
+	DebtID     int64     `json:"debt_id"`
+	PayerID    int64     `json:"payer_id"`
+	ReceiverID int64     `json:"receiver_id"`
+	Note       *string   `json:"note"`
+	PaidAt     time.Time `json:"paid_at"`
+	CreatedAt  time.Time `json:"created_at"`
 }

@@ -25,7 +25,7 @@ func (q *Queries) CountDebtsByBorrowerID(ctx context.Context, borrowerID int32) 
 const createDebt = `-- name: CreateDebt :one
 INSERT INTO debts (lender_id, borrower_id, amount)
 VALUES ($1, $2, $3)
-RETURNING id, lender_id, borrower_id, amount, created_at
+RETURNING id, lender_id, borrower_id, amount, created_at, description
 `
 
 type CreateDebtParams struct {
@@ -43,6 +43,62 @@ func (q *Queries) CreateDebt(ctx context.Context, arg CreateDebtParams) (Debt, e
 		&i.BorrowerID,
 		&i.Amount,
 		&i.CreatedAt,
+		&i.Description,
+	)
+	return i, err
+}
+
+const createDebtPayment = `-- name: CreateDebtPayment :one
+INSERT INTO debt_payments (payer_id, receiver_id, debt_id, amount, note)
+VALUES ($1, $2, $3, $4, $5)
+RETURNING id, debt_id, payer_id, receiver_id, amount, note, paid_at, created_at
+`
+
+type CreateDebtPaymentParams struct {
+	PayerID    int64
+	ReceiverID int64
+	DebtID     int64
+	Amount     int64
+	Note       *string
+}
+
+func (q *Queries) CreateDebtPayment(ctx context.Context, arg CreateDebtPaymentParams) (DebtPayment, error) {
+	row := q.db.QueryRow(ctx, createDebtPayment,
+		arg.PayerID,
+		arg.ReceiverID,
+		arg.DebtID,
+		arg.Amount,
+		arg.Note,
+	)
+	var i DebtPayment
+	err := row.Scan(
+		&i.ID,
+		&i.DebtID,
+		&i.PayerID,
+		&i.ReceiverID,
+		&i.Amount,
+		&i.Note,
+		&i.PaidAt,
+		&i.CreatedAt,
+	)
+	return i, err
+}
+
+const getDebtByID = `-- name: GetDebtByID :one
+SELECT id, lender_id, borrower_id, amount, created_at, description FROM debts
+WHERE id = $1
+`
+
+func (q *Queries) GetDebtByID(ctx context.Context, id int32) (Debt, error) {
+	row := q.db.QueryRow(ctx, getDebtByID, id)
+	var i Debt
+	err := row.Scan(
+		&i.ID,
+		&i.LenderID,
+		&i.BorrowerID,
+		&i.Amount,
+		&i.CreatedAt,
+		&i.Description,
 	)
 	return i, err
 }

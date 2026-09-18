@@ -64,3 +64,44 @@ func (r *Repository) toDomain(debt db.Debt) Debt {
 		Amount:     debt.Amount,
 	}
 }
+
+func (r *Repository) GetDebtByID(ctx context.Context, debtID int32) (Debt, error) {
+	row, err := r.q.GetDebtByID(ctx, debtID)
+	if err != nil {
+		return Debt{}, fmt.Errorf("get debt: %w", err)
+	}
+	return r.toDomain(row), nil
+}
+
+func (r *Repository) CreateDebtPayment(ctx context.Context, payerID int64, receiverID int64, debtID int64, amount int64, note *string) (DebtPayment, error) {
+
+	payment, err := r.q.CreateDebtPayment(ctx, db.CreateDebtPaymentParams{
+		PayerID:    payerID,
+		ReceiverID: receiverID,
+		DebtID:     debtID,
+		Amount:     amount,
+		Note:       note,
+	})
+	if err != nil {
+		return DebtPayment{}, fmt.Errorf("create debt payment: %w", err)
+	}
+	return DebtPayment{
+		ID:         payment.ID,
+		PayerID:    payment.PayerID,
+		ReceiverID: payment.ReceiverID,
+		Note:       payment.Note,
+		DebtID:     payment.DebtID,
+	}, nil
+}
+
+func (r *Repository) UpdateDebt(ctx context.Context, debtID int32, fromStatus, toStatus DebtStatus) (Debt, error) {
+	debt, err := r.GetDebtByID(ctx, debtID)
+	if err != nil {
+		return Debt{}, fmt.Errorf("get debt: %w", err)
+	}
+	row, err := r.q.UpdateDebt(ctx, fromStatus, toStatus)
+	if err != nil {
+		return Debt{}, fmt.Errorf("update debt: %w", err)
+	}
+	return r.toDomain(row), nil
+}

@@ -1,0 +1,933 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 40,
+  "totalBatches": 8,
+  "exportsByPath": {
+    "cmd/api/main.go": [],
+    "docs/docs.go": [],
+    "internal/apperr/apperr.go": [
+      "Error",
+      "Error",
+      "New"
+    ],
+    "internal/debt/db/db.go": [
+      "DBTX",
+      "New",
+      "Queries",
+      "WithTx"
+    ],
+    "internal/debt/db/models.go": [
+      "Debt",
+      "User"
+    ],
+    "internal/debt/db/query.sql.go": [
+      "CountDebtsByBorrowerID",
+      "CreateDebtParams",
+      "CreateDebt",
+      "GetDebtsByBorrowerIDParams",
+      "GetDebtsByBorrowerIDRow",
+      "GetDebtsByBorrowerID"
+    ],
+    "internal/debt/entity.go": [
+      "Debt"
+    ],
+    "internal/debt/repository.go": [
+      "Repository",
+      "NewRepository",
+      "CreateDebt",
+      "GetDebtsByBorrowerID",
+      "CountDebtsByBorrowerID"
+    ],
+    "internal/debt/service.go": [
+      "Service",
+      "NewService",
+      "CreateDebt",
+      "ListDebt"
+    ],
+    "internal/platform/config/config.go": [
+      "Config",
+      "Load"
+    ],
+    "internal/platform/postgres/postgres.go": [
+      "NewPool"
+    ],
+    "internal/transport/http/auth_middleware.go": [
+      "RequireAuth",
+      "UserIDFromContext"
+    ],
+    "internal/transport/http/debt_handler.go": [
+      "DebtHandler",
+      "NewDebtHandler",
+      "RegisterRoutes",
+      "CreateDebtRequest",
+      "CreateDebtResponse",
+      "CreateDebt",
+      "GetDebts",
+      "GetDebtsResponse"
+    ],
+    "internal/transport/http/middleware.go": [
+      "Logging"
+    ],
+    "internal/transport/http/porfto_handler.go": [
+      "PortfoHandler",
+      "NewPortfoHandler",
+      "RegisterRoutes",
+      "Item"
+    ],
+    "internal/transport/http/response.go": [
+      "ErrorResponse"
+    ],
+    "internal/transport/http/router.go": [
+      "Module",
+      "NewRouter"
+    ],
+    "internal/transport/http/user_handler.go": [
+      "UserHandler",
+      "NewUserHandler",
+      "RegisterRoutes",
+      "CreateUserRequest",
+      "CreateUserResponse",
+      "Validate",
+      "CreateUser",
+      "LoginRequest",
+      "LoginResponse",
+      "Login"
+    ],
+    "internal/user/auth.go": [
+      "Claims",
+      "CreateToken",
+      "VerifyToken"
+    ],
+    "internal/user/db/db.go": [
+      "DBTX",
+      "New",
+      "Queries",
+      "WithTx"
+    ],
+    "internal/user/db/models.go": [
+      "Debt",
+      "User"
+    ],
+    "internal/user/db/query.sql.go": [
+      "CreateUserParams",
+      "CreateUser",
+      "GetUserByID",
+      "GetUserByUsername"
+    ],
+    "internal/user/entity.go": [
+      "User",
+      "CreateInput"
+    ],
+    "internal/user/repository.go": [
+      "Repository",
+      "NewUserRepository",
+      "CreateUser",
+      "GetUserByUsername"
+    ],
+    "internal/user/service.go": [
+      "Service",
+      "NewUserService",
+      "CreateUser",
+      "Login"
+    ]
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "cmd/api/main.go",
+          "language": "go",
+          "sizeLines": 75,
+          "fileCategory": "code"
+        },
+        {
+          "path": "docs/docs.go",
+          "language": "go",
+          "sizeLines": 334,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/platform/config/config.go",
+          "language": "go",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/platform/postgres/postgres.go",
+          "language": "go",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/transport/http/middleware.go",
+          "language": "go",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/transport/http/router.go",
+          "language": "go",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "cmd/api/main.go": [
+          "docs/docs.go",
+          "internal/debt/entity.go",
+          "internal/debt/repository.go",
+          "internal/debt/service.go",
+          "internal/platform/config/config.go",
+          "internal/platform/postgres/postgres.go",
+          "internal/transport/http/auth_middleware.go",
+          "internal/transport/http/debt_handler.go",
+          "internal/transport/http/middleware.go",
+          "internal/transport/http/porfto_handler.go",
+          "internal/transport/http/response.go",
+          "internal/transport/http/router.go",
+          "internal/transport/http/user_handler.go",
+          "internal/user/auth.go",
+          "internal/user/entity.go",
+          "internal/user/repository.go",
+          "internal/user/service.go"
+        ],
+        "docs/docs.go": [],
+        "internal/platform/config/config.go": [],
+        "internal/platform/postgres/postgres.go": [],
+        "internal/transport/http/middleware.go": [],
+        "internal/transport/http/router.go": []
+      },
+      "neighborMap": {
+        "cmd/api/main.go": [
+          {
+            "path": "internal/debt/entity.go",
+            "batchIndex": 3,
+            "symbols": [
+              "Debt"
+            ]
+          },
+          {
+            "path": "internal/debt/repository.go",
+            "batchIndex": 4,
+            "symbols": [
+              "Repository",
+              "NewRepository",
+              "CreateDebt",
+              "GetDebtsByBorrowerID",
+              "CountDebtsByBorrowerID"
+            ]
+          },
+          {
+            "path": "internal/debt/service.go",
+            "batchIndex": 3,
+            "symbols": [
+              "Service",
+              "NewService",
+              "CreateDebt",
+              "ListDebt"
+            ]
+          },
+          {
+            "path": "internal/transport/http/auth_middleware.go",
+            "batchIndex": 2,
+            "symbols": [
+              "RequireAuth",
+              "UserIDFromContext"
+            ]
+          },
+          {
+            "path": "internal/transport/http/debt_handler.go",
+            "batchIndex": 3,
+            "symbols": [
+              "DebtHandler",
+              "NewDebtHandler",
+              "RegisterRoutes",
+              "CreateDebtRequest",
+              "CreateDebtResponse",
+              "CreateDebt",
+              "GetDebts",
+              "GetDebtsResponse"
+            ]
+          },
+          {
+            "path": "internal/transport/http/porfto_handler.go",
+            "batchIndex": 2,
+            "symbols": [
+              "PortfoHandler",
+              "NewPortfoHandler",
+              "RegisterRoutes",
+              "Item"
+            ]
+          },
+          {
+            "path": "internal/transport/http/response.go",
+            "batchIndex": 3,
+            "symbols": [
+              "ErrorResponse"
+            ]
+          },
+          {
+            "path": "internal/transport/http/user_handler.go",
+            "batchIndex": 2,
+            "symbols": [
+              "UserHandler",
+              "NewUserHandler",
+              "RegisterRoutes",
+              "CreateUserRequest",
+              "CreateUserResponse",
+              "Validate",
+              "CreateUser",
+              "LoginRequest",
+              "LoginResponse",
+              "Login"
+            ]
+          },
+          {
+            "path": "internal/user/auth.go",
+            "batchIndex": 2,
+            "symbols": [
+              "Claims",
+              "CreateToken",
+              "VerifyToken"
+            ]
+          },
+          {
+            "path": "internal/user/entity.go",
+            "batchIndex": 2,
+            "symbols": [
+              "User",
+              "CreateInput"
+            ]
+          },
+          {
+            "path": "internal/user/repository.go",
+            "batchIndex": 5,
+            "symbols": [
+              "Repository",
+              "NewUserRepository",
+              "CreateUser",
+              "GetUserByUsername"
+            ]
+          },
+          {
+            "path": "internal/user/service.go",
+            "batchIndex": 2,
+            "symbols": [
+              "Service",
+              "NewUserService",
+              "CreateUser",
+              "Login"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "internal/transport/http/auth_middleware.go",
+          "language": "go",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/transport/http/porfto_handler.go",
+          "language": "go",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/transport/http/user_handler.go",
+          "language": "go",
+          "sizeLines": 143,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/user/auth.go",
+          "language": "go",
+          "sizeLines": 53,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/user/entity.go",
+          "language": "go",
+          "sizeLines": 26,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/user/service.go",
+          "language": "go",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "internal/transport/http/auth_middleware.go": [
+          "internal/user/auth.go",
+          "internal/user/entity.go",
+          "internal/user/repository.go",
+          "internal/user/service.go"
+        ],
+        "internal/transport/http/porfto_handler.go": [
+          "internal/user/auth.go",
+          "internal/user/entity.go",
+          "internal/user/repository.go",
+          "internal/user/service.go"
+        ],
+        "internal/transport/http/user_handler.go": [
+          "internal/user/auth.go",
+          "internal/user/entity.go",
+          "internal/user/repository.go",
+          "internal/user/service.go"
+        ],
+        "internal/user/auth.go": [],
+        "internal/user/entity.go": [
+          "internal/apperr/apperr.go"
+        ],
+        "internal/user/service.go": []
+      },
+      "neighborMap": {
+        "internal/transport/http/auth_middleware.go": [
+          {
+            "path": "internal/user/repository.go",
+            "batchIndex": 5,
+            "symbols": [
+              "Repository",
+              "NewUserRepository",
+              "CreateUser",
+              "GetUserByUsername"
+            ]
+          },
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "internal/transport/http/porfto_handler.go": [
+          {
+            "path": "internal/user/repository.go",
+            "batchIndex": 5,
+            "symbols": [
+              "Repository",
+              "NewUserRepository",
+              "CreateUser",
+              "GetUserByUsername"
+            ]
+          },
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "internal/transport/http/user_handler.go": [
+          {
+            "path": "internal/user/repository.go",
+            "batchIndex": 5,
+            "symbols": [
+              "Repository",
+              "NewUserRepository",
+              "CreateUser",
+              "GetUserByUsername"
+            ]
+          },
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "internal/user/auth.go": [
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "internal/debt/service.go",
+            "batchIndex": 3,
+            "symbols": [
+              "Service",
+              "NewService",
+              "CreateDebt",
+              "ListDebt"
+            ]
+          }
+        ],
+        "internal/user/entity.go": [
+          {
+            "path": "internal/apperr/apperr.go",
+            "batchIndex": 3,
+            "symbols": [
+              "Error",
+              "Error",
+              "New"
+            ]
+          },
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "internal/debt/service.go",
+            "batchIndex": 3,
+            "symbols": [
+              "Service",
+              "NewService",
+              "CreateDebt",
+              "ListDebt"
+            ]
+          }
+        ],
+        "internal/user/service.go": [
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "internal/debt/service.go",
+            "batchIndex": 3,
+            "symbols": [
+              "Service",
+              "NewService",
+              "CreateDebt",
+              "ListDebt"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "internal/apperr/apperr.go",
+          "language": "go",
+          "sizeLines": 21,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/debt/entity.go",
+          "language": "go",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/debt/service.go",
+          "language": "go",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/transport/http/debt_handler.go",
+          "language": "go",
+          "sizeLines": 141,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/transport/http/response.go",
+          "language": "go",
+          "sizeLines": 49,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "internal/apperr/apperr.go": [],
+        "internal/debt/entity.go": [
+          "internal/apperr/apperr.go"
+        ],
+        "internal/debt/service.go": [
+          "internal/user/auth.go",
+          "internal/user/entity.go",
+          "internal/user/repository.go",
+          "internal/user/service.go"
+        ],
+        "internal/transport/http/debt_handler.go": [
+          "internal/debt/entity.go",
+          "internal/debt/repository.go",
+          "internal/debt/service.go"
+        ],
+        "internal/transport/http/response.go": [
+          "internal/apperr/apperr.go"
+        ]
+      },
+      "neighborMap": {
+        "internal/apperr/apperr.go": [
+          {
+            "path": "internal/user/entity.go",
+            "batchIndex": 2,
+            "symbols": [
+              "User",
+              "CreateInput"
+            ]
+          }
+        ],
+        "internal/debt/entity.go": [
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "internal/debt/service.go": [
+          {
+            "path": "internal/user/auth.go",
+            "batchIndex": 2,
+            "symbols": [
+              "Claims",
+              "CreateToken",
+              "VerifyToken"
+            ]
+          },
+          {
+            "path": "internal/user/entity.go",
+            "batchIndex": 2,
+            "symbols": [
+              "User",
+              "CreateInput"
+            ]
+          },
+          {
+            "path": "internal/user/repository.go",
+            "batchIndex": 5,
+            "symbols": [
+              "Repository",
+              "NewUserRepository",
+              "CreateUser",
+              "GetUserByUsername"
+            ]
+          },
+          {
+            "path": "internal/user/service.go",
+            "batchIndex": 2,
+            "symbols": [
+              "Service",
+              "NewUserService",
+              "CreateUser",
+              "Login"
+            ]
+          },
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "internal/transport/http/debt_handler.go": [
+          {
+            "path": "internal/debt/repository.go",
+            "batchIndex": 4,
+            "symbols": [
+              "Repository",
+              "NewRepository",
+              "CreateDebt",
+              "GetDebtsByBorrowerID",
+              "CountDebtsByBorrowerID"
+            ]
+          },
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ],
+        "internal/transport/http/response.go": [
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "internal/debt/db/db.go",
+          "language": "go",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/debt/db/models.go",
+          "language": "go",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/debt/db/query.sql.go",
+          "language": "go",
+          "sizeLines": 105,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/debt/repository.go",
+          "language": "go",
+          "sizeLines": 66,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "internal/debt/db/db.go": [],
+        "internal/debt/db/models.go": [],
+        "internal/debt/db/query.sql.go": [],
+        "internal/debt/repository.go": [
+          "internal/debt/db/db.go",
+          "internal/debt/db/models.go",
+          "internal/debt/db/query.sql.go"
+        ]
+      },
+      "neighborMap": {
+        "internal/debt/repository.go": [
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "internal/transport/http/debt_handler.go",
+            "batchIndex": 3,
+            "symbols": [
+              "DebtHandler",
+              "NewDebtHandler",
+              "RegisterRoutes",
+              "CreateDebtRequest",
+              "CreateDebtResponse",
+              "CreateDebt",
+              "GetDebts",
+              "GetDebtsResponse"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "internal/user/db/db.go",
+          "language": "go",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/user/db/models.go",
+          "language": "go",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/user/db/query.sql.go",
+          "language": "go",
+          "sizeLines": 67,
+          "fileCategory": "code"
+        },
+        {
+          "path": "internal/user/repository.go",
+          "language": "go",
+          "sizeLines": 56,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "internal/user/db/db.go": [],
+        "internal/user/db/models.go": [],
+        "internal/user/db/query.sql.go": [],
+        "internal/user/repository.go": [
+          "internal/user/db/db.go",
+          "internal/user/db/models.go",
+          "internal/user/db/query.sql.go"
+        ]
+      },
+      "neighborMap": {
+        "internal/user/repository.go": [
+          {
+            "path": "cmd/api/main.go",
+            "batchIndex": 1,
+            "symbols": []
+          },
+          {
+            "path": "internal/debt/service.go",
+            "batchIndex": 3,
+            "symbols": [
+              "Service",
+              "NewService",
+              "CreateDebt",
+              "ListDebt"
+            ]
+          },
+          {
+            "path": "internal/transport/http/auth_middleware.go",
+            "batchIndex": 2,
+            "symbols": [
+              "RequireAuth",
+              "UserIDFromContext"
+            ]
+          },
+          {
+            "path": "internal/transport/http/porfto_handler.go",
+            "batchIndex": 2,
+            "symbols": [
+              "PortfoHandler",
+              "NewPortfoHandler",
+              "RegisterRoutes",
+              "Item"
+            ]
+          },
+          {
+            "path": "internal/transport/http/user_handler.go",
+            "batchIndex": 2,
+            "symbols": [
+              "UserHandler",
+              "NewUserHandler",
+              "RegisterRoutes",
+              "CreateUserRequest",
+              "CreateUserResponse",
+              "Validate",
+              "CreateUser",
+              "LoginRequest",
+              "LoginResponse",
+              "Login"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": "migrations/20260829095152_create_user_model.sql",
+          "language": "sql",
+          "sizeLines": 10,
+          "fileCategory": "data"
+        },
+        {
+          "path": "migrations/20260829131729_create_debt_model.sql",
+          "language": "sql",
+          "sizeLines": 24,
+          "fileCategory": "data"
+        },
+        {
+          "path": "migrations/20260829223906_create_item_type_model.sql",
+          "language": "sql",
+          "sizeLines": 9,
+          "fileCategory": "data"
+        },
+        {
+          "path": "migrations/20260829224132_create_item_model.sql",
+          "language": "sql",
+          "sizeLines": 22,
+          "fileCategory": "data"
+        }
+      ],
+      "batchImportData": {
+        "migrations/20260829095152_create_user_model.sql": [],
+        "migrations/20260829131729_create_debt_model.sql": [],
+        "migrations/20260829223906_create_item_type_model.sql": [],
+        "migrations/20260829224132_create_item_model.sql": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": "Makefile",
+          "language": "makefile",
+          "sizeLines": 30,
+          "fileCategory": "infra"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 87,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docker-compose.yml",
+          "language": "yaml",
+          "sizeLines": 17,
+          "fileCategory": "infra"
+        },
+        {
+          "path": "go.mod",
+          "language": "mod",
+          "sizeLines": 32,
+          "fileCategory": "config"
+        },
+        {
+          "path": "go.sum",
+          "language": "sum",
+          "sizeLines": 82,
+          "fileCategory": "config"
+        },
+        {
+          "path": "sqlc.yaml",
+          "language": "yaml",
+          "sizeLines": 41,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "Makefile": [],
+        "README.md": [],
+        "docker-compose.yml": [],
+        "go.mod": [],
+        "go.sum": [],
+        "sqlc.yaml": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 8,
+      "files": [
+        {
+          "path": "docs/swagger.json",
+          "language": "json",
+          "sizeLines": 307,
+          "fileCategory": "config"
+        },
+        {
+          "path": "docs/swagger.yaml",
+          "language": "yaml",
+          "sizeLines": 200,
+          "fileCategory": "config"
+        },
+        {
+          "path": "internal/debt/query.sql",
+          "language": "sql",
+          "sizeLines": 19,
+          "fileCategory": "data"
+        },
+        {
+          "path": "internal/user/query.sql",
+          "language": "sql",
+          "sizeLines": 13,
+          "fileCategory": "data"
+        },
+        {
+          "path": "web/static/index.html",
+          "language": "html",
+          "sizeLines": 511,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "docs/swagger.json": [],
+        "docs/swagger.yaml": [],
+        "internal/debt/query.sql": [],
+        "internal/user/query.sql": [],
+        "web/static/index.html": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}

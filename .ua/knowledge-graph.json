@@ -1,0 +1,3494 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "portfolio",
+    "languages": [
+      "Go",
+      "SQL",
+      "YAML",
+      "JSON",
+      "Markdown",
+      "HTML",
+      "Makefile"
+    ],
+    "frameworks": [
+      "net/http",
+      "pgx/v5",
+      "sqlc",
+      "goose",
+      "PostgreSQL"
+    ],
+    "description": "Go service for tracking users, debt, and investment portfolios, with notification delivery.",
+    "analyzedAt": "2026-09-18T14:16:11.935Z",
+    "gitCommitHash": "02baac0c88039cfe122675b546a7b88e9ca3f0f2"
+  },
+  "nodes": [
+    {
+      "id": "file:cmd/api/main.go",
+      "type": "file",
+      "name": "main.go",
+      "filePath": "cmd/api/main.go",
+      "language": "go",
+      "summary": "Go source file in cmd/api; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "has-functions"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 17,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "id": "function:cmd/api/main.go:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "cmd/api/main.go",
+      "startLine": 27,
+      "endLine": 75,
+      "summary": "Function main in cmd/api/main.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/docs.go",
+      "type": "file",
+      "name": "docs.go",
+      "filePath": "docs/docs.go",
+      "language": "go",
+      "summary": "Go source file in docs; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "has-functions"
+      ],
+      "complexity": "complex",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "id": "function:docs/docs.go:init",
+      "type": "function",
+      "name": "init",
+      "filePath": "docs/docs.go",
+      "startLine": 332,
+      "endLine": 334,
+      "summary": "Function init in docs/docs.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/platform/config/config.go",
+      "type": "file",
+      "name": "config.go",
+      "filePath": "internal/platform/config/config.go",
+      "language": "go",
+      "summary": "Go source file in internal/platform/config; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/platform/config/config.go:Load",
+      "type": "function",
+      "name": "Load",
+      "filePath": "internal/platform/config/config.go",
+      "startLine": 16,
+      "endLine": 35,
+      "summary": "Function Load in internal/platform/config/config.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/platform/config/config.go:Config",
+      "type": "class",
+      "name": "Config",
+      "filePath": "internal/platform/config/config.go",
+      "startLine": 11,
+      "endLine": 14,
+      "summary": "Type Config defined in internal/platform/config/config.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/platform/postgres/postgres.go",
+      "type": "file",
+      "name": "postgres.go",
+      "filePath": "internal/platform/postgres/postgres.go",
+      "language": "go",
+      "summary": "Go source file in internal/platform/postgres; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "id": "function:internal/platform/postgres/postgres.go:NewPool",
+      "type": "function",
+      "name": "NewPool",
+      "filePath": "internal/platform/postgres/postgres.go",
+      "startLine": 11,
+      "endLine": 36,
+      "summary": "Function NewPool in internal/platform/postgres/postgres.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/transport/http/middleware.go",
+      "type": "file",
+      "name": "middleware.go",
+      "filePath": "internal/transport/http/middleware.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "id": "function:internal/transport/http/middleware.go:Logging",
+      "type": "function",
+      "name": "Logging",
+      "filePath": "internal/transport/http/middleware.go",
+      "startLine": 9,
+      "endLine": 19,
+      "summary": "Function Logging in internal/transport/http/middleware.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/transport/http/router.go",
+      "type": "file",
+      "name": "router.go",
+      "filePath": "internal/transport/http/router.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/transport/http/router.go:NewRouter",
+      "type": "function",
+      "name": "NewRouter",
+      "filePath": "internal/transport/http/router.go",
+      "startLine": 13,
+      "endLine": 22,
+      "summary": "Function NewRouter in internal/transport/http/router.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/router.go:Module",
+      "type": "class",
+      "name": "Module",
+      "filePath": "internal/transport/http/router.go",
+      "startLine": 9,
+      "endLine": 11,
+      "summary": "Type Module defined in internal/transport/http/router.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/transport/http/auth_middleware.go",
+      "type": "file",
+      "name": "auth_middleware.go",
+      "filePath": "internal/transport/http/auth_middleware.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "id": "function:internal/transport/http/auth_middleware.go:RequireAuth",
+      "type": "function",
+      "name": "RequireAuth",
+      "filePath": "internal/transport/http/auth_middleware.go",
+      "startLine": 14,
+      "endLine": 30,
+      "summary": "Function RequireAuth in internal/transport/http/auth_middleware.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/auth_middleware.go:UserIDFromContext",
+      "type": "function",
+      "name": "UserIDFromContext",
+      "filePath": "internal/transport/http/auth_middleware.go",
+      "startLine": 32,
+      "endLine": 35,
+      "summary": "Function UserIDFromContext in internal/transport/http/auth_middleware.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/transport/http/porfto_handler.go",
+      "type": "file",
+      "name": "porfto_handler.go",
+      "filePath": "internal/transport/http/porfto_handler.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/transport/http/porfto_handler.go:NewPortfoHandler",
+      "type": "function",
+      "name": "NewPortfoHandler",
+      "filePath": "internal/transport/http/porfto_handler.go",
+      "startLine": 12,
+      "endLine": 14,
+      "summary": "Function NewPortfoHandler in internal/transport/http/porfto_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/porfto_handler.go:RegisterRoutes",
+      "type": "function",
+      "name": "RegisterRoutes",
+      "filePath": "internal/transport/http/porfto_handler.go",
+      "startLine": 16,
+      "endLine": 18,
+      "summary": "Function RegisterRoutes in internal/transport/http/porfto_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/porfto_handler.go:Item",
+      "type": "function",
+      "name": "Item",
+      "filePath": "internal/transport/http/porfto_handler.go",
+      "startLine": 20,
+      "endLine": 20,
+      "summary": "Function Item in internal/transport/http/porfto_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/porfto_handler.go:PortfoHandler",
+      "type": "class",
+      "name": "PortfoHandler",
+      "filePath": "internal/transport/http/porfto_handler.go",
+      "startLine": 8,
+      "endLine": 10,
+      "summary": "Type PortfoHandler defined in internal/transport/http/porfto_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/transport/http/user_handler.go",
+      "type": "file",
+      "name": "user_handler.go",
+      "filePath": "internal/transport/http/user_handler.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 10,
+        "functionCount": 5,
+        "classCount": 5
+      }
+    },
+    {
+      "id": "function:internal/transport/http/user_handler.go:NewUserHandler",
+      "type": "function",
+      "name": "NewUserHandler",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 16,
+      "endLine": 18,
+      "summary": "Function NewUserHandler in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/user_handler.go:RegisterRoutes",
+      "type": "function",
+      "name": "RegisterRoutes",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 20,
+      "endLine": 23,
+      "summary": "Function RegisterRoutes in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/user_handler.go:Validate",
+      "type": "function",
+      "name": "Validate",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 36,
+      "endLine": 44,
+      "summary": "Function Validate in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/user_handler.go:CreateUser",
+      "type": "function",
+      "name": "CreateUser",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 59,
+      "endLine": 91,
+      "summary": "Function CreateUser in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/user_handler.go:Login",
+      "type": "function",
+      "name": "Login",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 116,
+      "endLine": 143,
+      "summary": "Function Login in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/user_handler.go:UserHandler",
+      "type": "class",
+      "name": "UserHandler",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 12,
+      "endLine": 14,
+      "summary": "Type UserHandler defined in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/user_handler.go:CreateUserRequest",
+      "type": "class",
+      "name": "CreateUserRequest",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 25,
+      "endLine": 28,
+      "summary": "Type CreateUserRequest defined in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/user_handler.go:CreateUserResponse",
+      "type": "class",
+      "name": "CreateUserResponse",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 30,
+      "endLine": 34,
+      "summary": "Type CreateUserResponse defined in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/user_handler.go:LoginRequest",
+      "type": "class",
+      "name": "LoginRequest",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 93,
+      "endLine": 96,
+      "summary": "Type LoginRequest defined in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/user_handler.go:LoginResponse",
+      "type": "class",
+      "name": "LoginResponse",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 98,
+      "endLine": 102,
+      "summary": "Type LoginResponse defined in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/user/auth.go",
+      "type": "file",
+      "name": "auth.go",
+      "filePath": "internal/user/auth.go",
+      "language": "go",
+      "summary": "Go source file in internal/user; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/user/auth.go:CreateToken",
+      "type": "function",
+      "name": "CreateToken",
+      "filePath": "internal/user/auth.go",
+      "startLine": 19,
+      "endLine": 35,
+      "summary": "Function CreateToken in internal/user/auth.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/user/auth.go:VerifyToken",
+      "type": "function",
+      "name": "VerifyToken",
+      "filePath": "internal/user/auth.go",
+      "startLine": 37,
+      "endLine": 53,
+      "summary": "Function VerifyToken in internal/user/auth.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/user/auth.go:Claims",
+      "type": "class",
+      "name": "Claims",
+      "filePath": "internal/user/auth.go",
+      "startLine": 13,
+      "endLine": 17,
+      "summary": "Type Claims defined in internal/user/auth.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/user/entity.go",
+      "type": "file",
+      "name": "entity.go",
+      "filePath": "internal/user/entity.go",
+      "language": "go",
+      "summary": "Go source file in internal/user; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "id": "class:internal/user/entity.go:User",
+      "type": "class",
+      "name": "User",
+      "filePath": "internal/user/entity.go",
+      "startLine": 16,
+      "endLine": 21,
+      "summary": "Type User defined in internal/user/entity.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/user/entity.go:CreateInput",
+      "type": "class",
+      "name": "CreateInput",
+      "filePath": "internal/user/entity.go",
+      "startLine": 23,
+      "endLine": 26,
+      "summary": "Type CreateInput defined in internal/user/entity.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/user/service.go",
+      "type": "file",
+      "name": "service.go",
+      "filePath": "internal/user/service.go",
+      "language": "go",
+      "summary": "Go source file in internal/user; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/user/service.go:NewUserService",
+      "type": "function",
+      "name": "NewUserService",
+      "filePath": "internal/user/service.go",
+      "startLine": 15,
+      "endLine": 17,
+      "summary": "Function NewUserService in internal/user/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/user/service.go:CreateUser",
+      "type": "function",
+      "name": "CreateUser",
+      "filePath": "internal/user/service.go",
+      "startLine": 19,
+      "endLine": 31,
+      "summary": "Function CreateUser in internal/user/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/user/service.go:Login",
+      "type": "function",
+      "name": "Login",
+      "filePath": "internal/user/service.go",
+      "startLine": 33,
+      "endLine": 46,
+      "summary": "Function Login in internal/user/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/user/service.go:Service",
+      "type": "class",
+      "name": "Service",
+      "filePath": "internal/user/service.go",
+      "startLine": 11,
+      "endLine": 13,
+      "summary": "Type Service defined in internal/user/service.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/apperr/apperr.go",
+      "type": "file",
+      "name": "apperr.go",
+      "filePath": "internal/apperr/apperr.go",
+      "language": "go",
+      "summary": "Go source file in internal/apperr; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/apperr/apperr.go:Error",
+      "type": "function",
+      "name": "Error",
+      "filePath": "internal/apperr/apperr.go",
+      "startLine": 17,
+      "endLine": 17,
+      "summary": "Function Error in internal/apperr/apperr.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/apperr/apperr.go:New",
+      "type": "function",
+      "name": "New",
+      "filePath": "internal/apperr/apperr.go",
+      "startLine": 19,
+      "endLine": 21,
+      "summary": "Function New in internal/apperr/apperr.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/apperr/apperr.go:Error",
+      "type": "class",
+      "name": "Error",
+      "filePath": "internal/apperr/apperr.go",
+      "startLine": 12,
+      "endLine": 15,
+      "summary": "Type Error defined in internal/apperr/apperr.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/debt/entity.go",
+      "type": "file",
+      "name": "entity.go",
+      "filePath": "internal/debt/entity.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "class:internal/debt/entity.go:Debt",
+      "type": "class",
+      "name": "Debt",
+      "filePath": "internal/debt/entity.go",
+      "startLine": 10,
+      "endLine": 17,
+      "summary": "Type Debt defined in internal/debt/entity.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/debt/service.go",
+      "type": "file",
+      "name": "service.go",
+      "filePath": "internal/debt/service.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/debt/service.go:NewService",
+      "type": "function",
+      "name": "NewService",
+      "filePath": "internal/debt/service.go",
+      "startLine": 13,
+      "endLine": 15,
+      "summary": "Function NewService in internal/debt/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/debt/service.go:CreateDebt",
+      "type": "function",
+      "name": "CreateDebt",
+      "filePath": "internal/debt/service.go",
+      "startLine": 17,
+      "endLine": 41,
+      "summary": "Function CreateDebt in internal/debt/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/debt/service.go:ListDebt",
+      "type": "function",
+      "name": "ListDebt",
+      "filePath": "internal/debt/service.go",
+      "startLine": 43,
+      "endLine": 55,
+      "summary": "Function ListDebt in internal/debt/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/debt/service.go:Service",
+      "type": "class",
+      "name": "Service",
+      "filePath": "internal/debt/service.go",
+      "startLine": 8,
+      "endLine": 11,
+      "summary": "Type Service defined in internal/debt/service.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/transport/http/debt_handler.go",
+      "type": "file",
+      "name": "debt_handler.go",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 8,
+        "functionCount": 4,
+        "classCount": 4
+      }
+    },
+    {
+      "id": "function:internal/transport/http/debt_handler.go:NewDebtHandler",
+      "type": "function",
+      "name": "NewDebtHandler",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 14,
+      "endLine": 16,
+      "summary": "Function NewDebtHandler in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/debt_handler.go:RegisterRoutes",
+      "type": "function",
+      "name": "RegisterRoutes",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 18,
+      "endLine": 21,
+      "summary": "Function RegisterRoutes in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/debt_handler.go:CreateDebt",
+      "type": "function",
+      "name": "CreateDebt",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 47,
+      "endLine": 64,
+      "summary": "Function CreateDebt in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "type": "function",
+      "name": "GetDebts",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 77,
+      "endLine": 132,
+      "summary": "Function GetDebts in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/debt_handler.go:DebtHandler",
+      "type": "class",
+      "name": "DebtHandler",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 10,
+      "endLine": 12,
+      "summary": "Type DebtHandler defined in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/debt_handler.go:CreateDebtRequest",
+      "type": "class",
+      "name": "CreateDebtRequest",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 23,
+      "endLine": 27,
+      "summary": "Type CreateDebtRequest defined in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/debt_handler.go:CreateDebtResponse",
+      "type": "class",
+      "name": "CreateDebtResponse",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 29,
+      "endLine": 31,
+      "summary": "Type CreateDebtResponse defined in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/debt_handler.go:GetDebtsResponse",
+      "type": "class",
+      "name": "GetDebtsResponse",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 134,
+      "endLine": 141,
+      "summary": "Type GetDebtsResponse defined in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/transport/http/response.go",
+      "type": "file",
+      "name": "response.go",
+      "filePath": "internal/transport/http/response.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/transport/http/response.go:writeJSON",
+      "type": "function",
+      "name": "writeJSON",
+      "filePath": "internal/transport/http/response.go",
+      "startLine": 12,
+      "endLine": 18,
+      "summary": "Function writeJSON in internal/transport/http/response.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/response.go:writeError",
+      "type": "function",
+      "name": "writeError",
+      "filePath": "internal/transport/http/response.go",
+      "startLine": 24,
+      "endLine": 26,
+      "summary": "Function writeError in internal/transport/http/response.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "function",
+      "name": "writeServiceError",
+      "filePath": "internal/transport/http/response.go",
+      "startLine": 28,
+      "endLine": 36,
+      "summary": "Function writeServiceError in internal/transport/http/response.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/transport/http/response.go:statusForCode",
+      "type": "function",
+      "name": "statusForCode",
+      "filePath": "internal/transport/http/response.go",
+      "startLine": 38,
+      "endLine": 49,
+      "summary": "Function statusForCode in internal/transport/http/response.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/transport/http/response.go:ErrorResponse",
+      "type": "class",
+      "name": "ErrorResponse",
+      "filePath": "internal/transport/http/response.go",
+      "startLine": 20,
+      "endLine": 22,
+      "summary": "Type ErrorResponse defined in internal/transport/http/response.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/debt/db/db.go",
+      "type": "file",
+      "name": "db.go",
+      "filePath": "internal/debt/db/db.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 2,
+        "classCount": 2
+      }
+    },
+    {
+      "id": "function:internal/debt/db/db.go:New",
+      "type": "function",
+      "name": "New",
+      "filePath": "internal/debt/db/db.go",
+      "startLine": 20,
+      "endLine": 22,
+      "summary": "Function New in internal/debt/db/db.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/debt/db/db.go:WithTx",
+      "type": "function",
+      "name": "WithTx",
+      "filePath": "internal/debt/db/db.go",
+      "startLine": 28,
+      "endLine": 32,
+      "summary": "Function WithTx in internal/debt/db/db.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/debt/db/db.go:DBTX",
+      "type": "class",
+      "name": "DBTX",
+      "filePath": "internal/debt/db/db.go",
+      "startLine": 14,
+      "endLine": 18,
+      "summary": "Type DBTX defined in internal/debt/db/db.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/debt/db/db.go:Queries",
+      "type": "class",
+      "name": "Queries",
+      "filePath": "internal/debt/db/db.go",
+      "startLine": 24,
+      "endLine": 26,
+      "summary": "Type Queries defined in internal/debt/db/db.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/debt/db/models.go",
+      "type": "file",
+      "name": "models.go",
+      "filePath": "internal/debt/db/models.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "id": "class:internal/debt/db/models.go:Debt",
+      "type": "class",
+      "name": "Debt",
+      "filePath": "internal/debt/db/models.go",
+      "startLine": 11,
+      "endLine": 17,
+      "summary": "Type Debt defined in internal/debt/db/models.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/debt/db/models.go:User",
+      "type": "class",
+      "name": "User",
+      "filePath": "internal/debt/db/models.go",
+      "startLine": 19,
+      "endLine": 24,
+      "summary": "Type User defined in internal/debt/db/models.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/debt/db/query.sql.go",
+      "type": "file",
+      "name": "query.sql.go",
+      "filePath": "internal/debt/db/query.sql.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 3,
+        "classCount": 3
+      }
+    },
+    {
+      "id": "function:internal/debt/db/query.sql.go:CountDebtsByBorrowerID",
+      "type": "function",
+      "name": "CountDebtsByBorrowerID",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 18,
+      "endLine": 23,
+      "summary": "Function CountDebtsByBorrowerID in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/debt/db/query.sql.go:CreateDebt",
+      "type": "function",
+      "name": "CreateDebt",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 37,
+      "endLine": 48,
+      "summary": "Function CreateDebt in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/debt/db/query.sql.go:GetDebtsByBorrowerID",
+      "type": "function",
+      "name": "GetDebtsByBorrowerID",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 79,
+      "endLine": 105,
+      "summary": "Function GetDebtsByBorrowerID in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/debt/db/query.sql.go:CreateDebtParams",
+      "type": "class",
+      "name": "CreateDebtParams",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 31,
+      "endLine": 35,
+      "summary": "Type CreateDebtParams defined in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/debt/db/query.sql.go:GetDebtsByBorrowerIDParams",
+      "type": "class",
+      "name": "GetDebtsByBorrowerIDParams",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 63,
+      "endLine": 67,
+      "summary": "Type GetDebtsByBorrowerIDParams defined in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/debt/db/query.sql.go:GetDebtsByBorrowerIDRow",
+      "type": "class",
+      "name": "GetDebtsByBorrowerIDRow",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 69,
+      "endLine": 77,
+      "summary": "Type GetDebtsByBorrowerIDRow defined in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/debt/repository.go",
+      "type": "file",
+      "name": "repository.go",
+      "filePath": "internal/debt/repository.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/debt/repository.go:NewRepository",
+      "type": "function",
+      "name": "NewRepository",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 16,
+      "endLine": 18,
+      "summary": "Function NewRepository in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/debt/repository.go:CreateDebt",
+      "type": "function",
+      "name": "CreateDebt",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 20,
+      "endLine": 30,
+      "summary": "Function CreateDebt in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/debt/repository.go:GetDebtsByBorrowerID",
+      "type": "function",
+      "name": "GetDebtsByBorrowerID",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 32,
+      "endLine": 49,
+      "summary": "Function GetDebtsByBorrowerID in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/debt/repository.go:CountDebtsByBorrowerID",
+      "type": "function",
+      "name": "CountDebtsByBorrowerID",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 51,
+      "endLine": 57,
+      "summary": "Function CountDebtsByBorrowerID in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/debt/repository.go:toDomain",
+      "type": "function",
+      "name": "toDomain",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 59,
+      "endLine": 66,
+      "summary": "Function toDomain in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/debt/repository.go:Repository",
+      "type": "class",
+      "name": "Repository",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 11,
+      "endLine": 14,
+      "summary": "Type Repository defined in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/user/db/db.go",
+      "type": "file",
+      "name": "db.go",
+      "filePath": "internal/user/db/db.go",
+      "language": "go",
+      "summary": "Go source file in internal/user/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 2,
+        "classCount": 2
+      }
+    },
+    {
+      "id": "function:internal/user/db/db.go:New",
+      "type": "function",
+      "name": "New",
+      "filePath": "internal/user/db/db.go",
+      "startLine": 20,
+      "endLine": 22,
+      "summary": "Function New in internal/user/db/db.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/user/db/db.go:WithTx",
+      "type": "function",
+      "name": "WithTx",
+      "filePath": "internal/user/db/db.go",
+      "startLine": 28,
+      "endLine": 32,
+      "summary": "Function WithTx in internal/user/db/db.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/user/db/db.go:DBTX",
+      "type": "class",
+      "name": "DBTX",
+      "filePath": "internal/user/db/db.go",
+      "startLine": 14,
+      "endLine": 18,
+      "summary": "Type DBTX defined in internal/user/db/db.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/user/db/db.go:Queries",
+      "type": "class",
+      "name": "Queries",
+      "filePath": "internal/user/db/db.go",
+      "startLine": 24,
+      "endLine": 26,
+      "summary": "Type Queries defined in internal/user/db/db.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/user/db/models.go",
+      "type": "file",
+      "name": "models.go",
+      "filePath": "internal/user/db/models.go",
+      "language": "go",
+      "summary": "Go source file in internal/user/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "id": "class:internal/user/db/models.go:Debt",
+      "type": "class",
+      "name": "Debt",
+      "filePath": "internal/user/db/models.go",
+      "startLine": 11,
+      "endLine": 17,
+      "summary": "Type Debt defined in internal/user/db/models.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/user/db/models.go:User",
+      "type": "class",
+      "name": "User",
+      "filePath": "internal/user/db/models.go",
+      "startLine": 19,
+      "endLine": 24,
+      "summary": "Type User defined in internal/user/db/models.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/user/db/query.sql.go",
+      "type": "file",
+      "name": "query.sql.go",
+      "filePath": "internal/user/db/query.sql.go",
+      "language": "go",
+      "summary": "Go source file in internal/user/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/user/db/query.sql.go:CreateUser",
+      "type": "function",
+      "name": "CreateUser",
+      "filePath": "internal/user/db/query.sql.go",
+      "startLine": 23,
+      "endLine": 33,
+      "summary": "Function CreateUser in internal/user/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/user/db/query.sql.go:GetUserByID",
+      "type": "function",
+      "name": "GetUserByID",
+      "filePath": "internal/user/db/query.sql.go",
+      "startLine": 40,
+      "endLine": 50,
+      "summary": "Function GetUserByID in internal/user/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/user/db/query.sql.go:GetUserByUsername",
+      "type": "function",
+      "name": "GetUserByUsername",
+      "filePath": "internal/user/db/query.sql.go",
+      "startLine": 57,
+      "endLine": 67,
+      "summary": "Function GetUserByUsername in internal/user/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/user/db/query.sql.go:CreateUserParams",
+      "type": "class",
+      "name": "CreateUserParams",
+      "filePath": "internal/user/db/query.sql.go",
+      "startLine": 18,
+      "endLine": 21,
+      "summary": "Type CreateUserParams defined in internal/user/db/query.sql.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:internal/user/repository.go",
+      "type": "file",
+      "name": "repository.go",
+      "filePath": "internal/user/repository.go",
+      "language": "go",
+      "summary": "Go source file in internal/user; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/user/repository.go:NewUserRepository",
+      "type": "function",
+      "name": "NewUserRepository",
+      "filePath": "internal/user/repository.go",
+      "startLine": 20,
+      "endLine": 22,
+      "summary": "Function NewUserRepository in internal/user/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/user/repository.go:CreateUser",
+      "type": "function",
+      "name": "CreateUser",
+      "filePath": "internal/user/repository.go",
+      "startLine": 24,
+      "endLine": 38,
+      "summary": "Function CreateUser in internal/user/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/user/repository.go:GetUserByUsername",
+      "type": "function",
+      "name": "GetUserByUsername",
+      "filePath": "internal/user/repository.go",
+      "startLine": 40,
+      "endLine": 49,
+      "summary": "Function GetUserByUsername in internal/user/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:internal/user/repository.go:toDomain",
+      "type": "function",
+      "name": "toDomain",
+      "filePath": "internal/user/repository.go",
+      "startLine": 51,
+      "endLine": 56,
+      "summary": "Function toDomain in internal/user/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:internal/user/repository.go:Repository",
+      "type": "class",
+      "name": "Repository",
+      "filePath": "internal/user/repository.go",
+      "startLine": 15,
+      "endLine": 18,
+      "summary": "Type Repository defined in internal/user/repository.go.",
+      "tags": [
+        "go",
+        "type"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:migrations/20260829095152_create_user_model.sql",
+      "type": "table",
+      "name": "20260829095152_create_user_model.sql",
+      "filePath": "migrations/20260829095152_create_user_model.sql",
+      "language": "sql",
+      "summary": "SQL migration defining a PostgreSQL schema change for the portfolio service.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    },
+    {
+      "id": "table:migrations/20260829131729_create_debt_model.sql",
+      "type": "table",
+      "name": "20260829131729_create_debt_model.sql",
+      "filePath": "migrations/20260829131729_create_debt_model.sql",
+      "language": "sql",
+      "summary": "SQL migration defining a PostgreSQL schema change for the portfolio service.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    },
+    {
+      "id": "table:migrations/20260829223906_create_item_type_model.sql",
+      "type": "table",
+      "name": "20260829223906_create_item_type_model.sql",
+      "filePath": "migrations/20260829223906_create_item_type_model.sql",
+      "language": "sql",
+      "summary": "SQL migration defining a PostgreSQL schema change for the portfolio service.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    },
+    {
+      "id": "table:migrations/20260829224132_create_item_model.sql",
+      "type": "table",
+      "name": "20260829224132_create_item_model.sql",
+      "filePath": "migrations/20260829224132_create_item_model.sql",
+      "language": "sql",
+      "summary": "SQL migration defining a PostgreSQL schema change for the portfolio service.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    },
+    {
+      "id": "pipeline:Makefile",
+      "type": "pipeline",
+      "name": "Makefile",
+      "filePath": "Makefile",
+      "language": "makefile",
+      "summary": "Developer command automation for local infrastructure, migrations, code generation, and tests.",
+      "tags": [
+        "makefile",
+        "infra"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 9
+      }
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "language": "markdown",
+      "summary": "Project documentation describing the Go portfolio service, its vertical slice layout, domain mapping, known gaps, and local development commands.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "id": "service:docker-compose.yml",
+      "type": "service",
+      "name": "docker-compose.yml",
+      "filePath": "docker-compose.yml",
+      "language": "yaml",
+      "summary": "Local infrastructure definition for the PostgreSQL development service.",
+      "tags": [
+        "yaml",
+        "infra"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "id": "config:go.mod",
+      "type": "config",
+      "name": "go.mod",
+      "filePath": "go.mod",
+      "language": "mod",
+      "summary": "Project config file: go.mod.",
+      "tags": [
+        "mod",
+        "config"
+      ],
+      "complexity": "simple",
+      "metrics": {}
+    },
+    {
+      "id": "config:go.sum",
+      "type": "config",
+      "name": "go.sum",
+      "filePath": "go.sum",
+      "language": "sum",
+      "summary": "Project config file: go.sum.",
+      "tags": [
+        "sum",
+        "config"
+      ],
+      "complexity": "simple",
+      "metrics": {}
+    },
+    {
+      "id": "config:sqlc.yaml",
+      "type": "config",
+      "name": "sqlc.yaml",
+      "filePath": "sqlc.yaml",
+      "language": "yaml",
+      "summary": "sqlc generation configuration connecting SQL sources to generated Go database code.",
+      "tags": [
+        "yaml",
+        "config"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "id": "config:docs/swagger.json",
+      "type": "config",
+      "name": "swagger.json",
+      "filePath": "docs/swagger.json",
+      "language": "json",
+      "summary": "Generated API documentation and Swagger assets.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "complex",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "id": "config:docs/swagger.yaml",
+      "type": "config",
+      "name": "swagger.yaml",
+      "filePath": "docs/swagger.yaml",
+      "language": "yaml",
+      "summary": "Generated API documentation and Swagger assets.",
+      "tags": [
+        "yaml",
+        "config"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "id": "schema:internal/debt/query.sql",
+      "type": "schema",
+      "name": "query.sql",
+      "filePath": "internal/debt/query.sql",
+      "language": "sql",
+      "summary": "SQL query source used by sqlc for a domain repository.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "id": "schema:internal/user/query.sql",
+      "type": "schema",
+      "name": "query.sql",
+      "filePath": "internal/user/query.sql",
+      "language": "sql",
+      "summary": "SQL query source used by sqlc for a domain repository.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "id": "file:web/static/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "web/static/index.html",
+      "language": "html",
+      "summary": "Static web page served by the application.",
+      "tags": [
+        "html",
+        "markup"
+      ],
+      "complexity": "complex",
+      "metrics": {}
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "function:cmd/api/main.go:main",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:docs/docs.go",
+      "target": "function:docs/docs.go:init",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/platform/config/config.go",
+      "target": "function:internal/platform/config/config.go:Load",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/platform/config/config.go",
+      "target": "class:internal/platform/config/config.go:Config",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/platform/postgres/postgres.go",
+      "target": "function:internal/platform/postgres/postgres.go:NewPool",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/middleware.go",
+      "target": "function:internal/transport/http/middleware.go:Logging",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/router.go",
+      "target": "function:internal/transport/http/router.go:NewRouter",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/router.go",
+      "target": "class:internal/transport/http/router.go:Module",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:docs/docs.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/debt/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/debt/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/debt/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/platform/config/config.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/platform/postgres/postgres.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/auth_middleware.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/debt_handler.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/middleware.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/porfto_handler.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/response.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/router.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/user_handler.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/user/auth.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/user/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/user/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/user/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/platform/config/config.go:Load",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/platform/postgres/postgres.go:NewPool",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/user/repository.go:NewUserRepository",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/user/service.go:NewUserService",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/transport/http/user_handler.go:NewUserHandler",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/debt/repository.go:NewRepository",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/debt/service.go:NewService",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/transport/http/debt_handler.go:NewDebtHandler",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/transport/http/router.go:NewRouter",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/router.go:NewRouter",
+      "target": "function:internal/transport/http/debt_handler.go:RegisterRoutes",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/router.go:NewRouter",
+      "target": "function:internal/transport/http/middleware.go:Logging",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "function:internal/transport/http/auth_middleware.go:RequireAuth",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "function:internal/transport/http/auth_middleware.go:UserIDFromContext",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "function:internal/transport/http/porfto_handler.go:NewPortfoHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "function:internal/transport/http/porfto_handler.go:RegisterRoutes",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "function:internal/transport/http/porfto_handler.go:Item",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "class:internal/transport/http/porfto_handler.go:PortfoHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "function:internal/transport/http/user_handler.go:NewUserHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "function:internal/transport/http/user_handler.go:RegisterRoutes",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "function:internal/transport/http/user_handler.go:Validate",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "function:internal/transport/http/user_handler.go:CreateUser",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "function:internal/transport/http/user_handler.go:Login",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "class:internal/transport/http/user_handler.go:UserHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "class:internal/transport/http/user_handler.go:CreateUserRequest",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "class:internal/transport/http/user_handler.go:CreateUserResponse",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "class:internal/transport/http/user_handler.go:LoginRequest",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "class:internal/transport/http/user_handler.go:LoginResponse",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/auth.go",
+      "target": "function:internal/user/auth.go:CreateToken",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/auth.go",
+      "target": "function:internal/user/auth.go:VerifyToken",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/auth.go",
+      "target": "class:internal/user/auth.go:Claims",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/entity.go",
+      "target": "class:internal/user/entity.go:User",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/entity.go",
+      "target": "class:internal/user/entity.go:CreateInput",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/service.go",
+      "target": "function:internal/user/service.go:NewUserService",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/service.go",
+      "target": "function:internal/user/service.go:CreateUser",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/service.go",
+      "target": "function:internal/user/service.go:Login",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/service.go",
+      "target": "class:internal/user/service.go:Service",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "file:internal/user/auth.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "file:internal/user/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "file:internal/user/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "file:internal/user/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/auth_middleware.go:RequireAuth",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/auth_middleware.go:RequireAuth",
+      "target": "function:internal/user/auth.go:VerifyToken",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "file:internal/user/auth.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "file:internal/user/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "file:internal/user/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "file:internal/user/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "file:internal/user/auth.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "file:internal/user/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "file:internal/user/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "file:internal/user/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:CreateUser",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:CreateUser",
+      "target": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:CreateUser",
+      "target": "function:internal/user/auth.go:CreateToken",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:CreateUser",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:CreateUser",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:Login",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:Login",
+      "target": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:Login",
+      "target": "function:internal/user/auth.go:CreateToken",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:Login",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:Login",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/entity.go",
+      "target": "file:internal/apperr/apperr.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/user/service.go:Login",
+      "target": "function:internal/user/repository.go:GetUserByUsername",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/apperr/apperr.go",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/apperr/apperr.go",
+      "target": "function:internal/apperr/apperr.go:New",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/apperr/apperr.go",
+      "target": "class:internal/apperr/apperr.go:Error",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/entity.go",
+      "target": "class:internal/debt/entity.go:Debt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "function:internal/debt/service.go:NewService",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "function:internal/debt/service.go:CreateDebt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "function:internal/debt/service.go:ListDebt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "class:internal/debt/service.go:Service",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "function:internal/transport/http/debt_handler.go:NewDebtHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "function:internal/transport/http/debt_handler.go:RegisterRoutes",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "function:internal/transport/http/debt_handler.go:CreateDebt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "class:internal/transport/http/debt_handler.go:DebtHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "class:internal/transport/http/debt_handler.go:CreateDebtRequest",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "class:internal/transport/http/debt_handler.go:CreateDebtResponse",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "class:internal/transport/http/debt_handler.go:GetDebtsResponse",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "function:internal/transport/http/response.go:statusForCode",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "class:internal/transport/http/response.go:ErrorResponse",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/entity.go",
+      "target": "file:internal/apperr/apperr.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "file:internal/user/auth.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "file:internal/user/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "file:internal/user/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "file:internal/user/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/debt/service.go:CreateDebt",
+      "target": "function:internal/user/repository.go:GetUserByUsername",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/debt/service.go:ListDebt",
+      "target": "function:internal/debt/repository.go:GetDebtsByBorrowerID",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/debt/service.go:ListDebt",
+      "target": "function:internal/debt/repository.go:CountDebtsByBorrowerID",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "file:internal/debt/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "file:internal/debt/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "file:internal/debt/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:RegisterRoutes",
+      "target": "function:internal/transport/http/auth_middleware.go:RequireAuth",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:CreateDebt",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:CreateDebt",
+      "target": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:CreateDebt",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/transport/http/auth_middleware.go:UserIDFromContext",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/debt/service.go:ListDebt",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "file:internal/apperr/apperr.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeJSON",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeError",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeServiceError",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeServiceError",
+      "target": "function:internal/transport/http/response.go:statusForCode",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeServiceError",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/db.go",
+      "target": "function:internal/debt/db/db.go:New",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/db.go",
+      "target": "function:internal/debt/db/db.go:WithTx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/db.go",
+      "target": "class:internal/debt/db/db.go:DBTX",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/db.go",
+      "target": "class:internal/debt/db/db.go:Queries",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/models.go",
+      "target": "class:internal/debt/db/models.go:Debt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/models.go",
+      "target": "class:internal/debt/db/models.go:User",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "function:internal/debt/db/query.sql.go:CountDebtsByBorrowerID",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "function:internal/debt/db/query.sql.go:CreateDebt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "function:internal/debt/db/query.sql.go:GetDebtsByBorrowerID",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "class:internal/debt/db/query.sql.go:CreateDebtParams",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "class:internal/debt/db/query.sql.go:GetDebtsByBorrowerIDParams",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "class:internal/debt/db/query.sql.go:GetDebtsByBorrowerIDRow",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "function:internal/debt/repository.go:NewRepository",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "function:internal/debt/repository.go:CreateDebt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "function:internal/debt/repository.go:GetDebtsByBorrowerID",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "function:internal/debt/repository.go:CountDebtsByBorrowerID",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "function:internal/debt/repository.go:toDomain",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "class:internal/debt/repository.go:Repository",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "file:internal/debt/db/db.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "file:internal/debt/db/models.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "file:internal/debt/db/query.sql.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/debt/repository.go:NewRepository",
+      "target": "function:internal/user/db/db.go:New",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/debt/repository.go:CreateDebt",
+      "target": "function:internal/debt/repository.go:toDomain",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/db.go",
+      "target": "function:internal/user/db/db.go:New",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/db.go",
+      "target": "function:internal/user/db/db.go:WithTx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/db.go",
+      "target": "class:internal/user/db/db.go:DBTX",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/db.go",
+      "target": "class:internal/user/db/db.go:Queries",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/models.go",
+      "target": "class:internal/user/db/models.go:Debt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/models.go",
+      "target": "class:internal/user/db/models.go:User",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/query.sql.go",
+      "target": "function:internal/user/db/query.sql.go:CreateUser",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/query.sql.go",
+      "target": "function:internal/user/db/query.sql.go:GetUserByID",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/query.sql.go",
+      "target": "function:internal/user/db/query.sql.go:GetUserByUsername",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/query.sql.go",
+      "target": "class:internal/user/db/query.sql.go:CreateUserParams",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "function:internal/user/repository.go:NewUserRepository",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "function:internal/user/repository.go:CreateUser",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "function:internal/user/repository.go:GetUserByUsername",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "function:internal/user/repository.go:toDomain",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "class:internal/user/repository.go:Repository",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "file:internal/user/db/db.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "file:internal/user/db/models.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "file:internal/user/db/query.sql.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/user/repository.go:NewUserRepository",
+      "target": "function:internal/user/db/db.go:New",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/user/repository.go:CreateUser",
+      "target": "function:internal/user/repository.go:toDomain",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/user/repository.go:GetUserByUsername",
+      "target": "function:internal/user/repository.go:toDomain",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:documentation-api",
+      "name": "Documentation and API Assets",
+      "description": "README, generated Swagger documentation, and static web assets that describe or expose the service.",
+      "nodeIds": [
+        "file:docs/docs.go",
+        "document:README.md",
+        "config:docs/swagger.json",
+        "config:docs/swagger.yaml",
+        "file:web/static/index.html"
+      ]
+    },
+    {
+      "id": "layer:application-composition",
+      "name": "Application Composition",
+      "description": "The executable entry point that loads configuration, connects infrastructure, constructs domain dependencies, and starts the HTTP server.",
+      "nodeIds": [
+        "file:cmd/api/main.go"
+      ]
+    },
+    {
+      "id": "layer:http-transport",
+      "name": "HTTP Transport",
+      "description": "HTTP routing, middleware, response handling, and domain handlers that translate requests into service calls.",
+      "nodeIds": [
+        "file:internal/transport/http/middleware.go",
+        "file:internal/transport/http/router.go",
+        "file:internal/transport/http/auth_middleware.go",
+        "file:internal/transport/http/porfto_handler.go",
+        "file:internal/transport/http/user_handler.go",
+        "file:internal/transport/http/debt_handler.go",
+        "file:internal/transport/http/response.go"
+      ]
+    },
+    {
+      "id": "layer:domain-services",
+      "name": "Domain Services",
+      "description": "User and debt entities, authentication, business services, and error types for the current vertical slices.",
+      "nodeIds": [
+        "file:internal/user/auth.go",
+        "file:internal/user/entity.go",
+        "file:internal/user/service.go",
+        "file:internal/debt/entity.go",
+        "file:internal/debt/service.go"
+      ]
+    },
+    {
+      "id": "layer:persistence",
+      "name": "Persistence and Generated Database Code",
+      "description": "Repositories, sqlc generated database code, and SQL query sources used to read and write PostgreSQL data.",
+      "nodeIds": [
+        "file:internal/debt/db/db.go",
+        "file:internal/debt/db/models.go",
+        "file:internal/debt/db/query.sql.go",
+        "file:internal/debt/repository.go",
+        "file:internal/user/db/db.go",
+        "file:internal/user/db/models.go",
+        "file:internal/user/db/query.sql.go",
+        "file:internal/user/repository.go",
+        "schema:internal/debt/query.sql",
+        "schema:internal/user/query.sql"
+      ]
+    },
+    {
+      "id": "layer:platform",
+      "name": "Platform and Database Schema",
+      "description": "Runtime configuration, PostgreSQL pool setup, migrations, and local database infrastructure.",
+      "nodeIds": [
+        "file:internal/platform/config/config.go",
+        "file:internal/platform/postgres/postgres.go",
+        "table:migrations/20260829095152_create_user_model.sql",
+        "table:migrations/20260829131729_create_debt_model.sql",
+        "table:migrations/20260829223906_create_item_type_model.sql",
+        "table:migrations/20260829224132_create_item_model.sql",
+        "service:docker-compose.yml"
+      ]
+    },
+    {
+      "id": "layer:tooling",
+      "name": "Build and Generation Tooling",
+      "description": "Module metadata, sqlc configuration, Make targets, and generated dependency metadata used by the development workflow.",
+      "nodeIds": [
+        "file:internal/apperr/apperr.go",
+        "pipeline:Makefile",
+        "config:go.mod",
+        "config:go.sum",
+        "config:sqlc.yaml"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Project Overview",
+      "description": "Start with the README to understand the service purpose, domain mapping, current layout, and known gaps.",
+      "nodeIds": [
+        "document:README.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Application Entry Point",
+      "description": "Follow the composition root as it loads configuration, creates the PostgreSQL pool, constructs repositories and services, mounts routes, and starts the server.",
+      "nodeIds": [
+        "file:cmd/api/main.go",
+        "file:internal/platform/config/config.go",
+        "file:internal/platform/postgres/postgres.go"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "HTTP Request Flow",
+      "description": "Inspect the router, middleware, and handlers that turn authenticated HTTP requests into user and debt service calls.",
+      "nodeIds": [
+        "file:internal/transport/http/router.go",
+        "file:internal/transport/http/middleware.go",
+        "file:internal/transport/http/auth_middleware.go",
+        "file:internal/transport/http/user_handler.go",
+        "file:internal/transport/http/debt_handler.go"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Domain Services",
+      "description": "Read the user and debt entities and services to see the current vertical slice boundaries and business operations.",
+      "nodeIds": [
+        "file:internal/user/entity.go",
+        "file:internal/user/service.go",
+        "file:internal/user/auth.go",
+        "file:internal/debt/entity.go",
+        "file:internal/debt/service.go",
+        "file:internal/apperr/apperr.go"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Persistence Boundary",
+      "description": "Trace repositories into sqlc generated code and SQL query sources, then compare the implementation with the configured generation layout.",
+      "nodeIds": [
+        "file:internal/user/repository.go",
+        "schema:internal/user/query.sql",
+        "file:internal/user/db/query.sql.go",
+        "file:internal/debt/repository.go",
+        "schema:internal/debt/query.sql",
+        "file:internal/debt/db/query.sql.go",
+        "config:sqlc.yaml"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Database Schema and Local Runtime",
+      "description": "Review migrations and Docker Compose to understand the PostgreSQL schema and local development environment.",
+      "nodeIds": [
+        "table:migrations/20260829095152_create_user_model.sql",
+        "table:migrations/20260829131729_create_debt_model.sql",
+        "table:migrations/20260829223906_create_item_type_model.sql",
+        "table:migrations/20260829224132_create_item_model.sql",
+        "service:docker-compose.yml"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "API Documentation and Static Assets",
+      "description": "Finish with generated Swagger assets and the static page served alongside the API.",
+      "nodeIds": [
+        "file:docs/docs.go",
+        "config:docs/swagger.json",
+        "config:docs/swagger.yaml",
+        "file:web/static/index.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "nodes": [
+    {
+      "id": "file:internal/debt/db/db.go",
+      "type": "file",
+      "name": "db.go",
+      "filePath": "internal/debt/db/db.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 2,
+        "classCount": 2
+      }
+    },
+    {
+      "id": "function:internal/debt/db/db.go:New",
+      "type": "function",
+      "name": "New",
+      "filePath": "internal/debt/db/db.go",
+      "startLine": 20,
+      "endLine": 22,
+      "summary": "Function New in internal/debt/db/db.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/debt/db/db.go:WithTx",
+      "type": "function",
+      "name": "WithTx",
+      "filePath": "internal/debt/db/db.go",
+      "startLine": 28,
+      "endLine": 32,
+      "summary": "Function WithTx in internal/debt/db/db.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/debt/db/db.go:DBTX",
+      "type": "class",
+      "name": "DBTX",
+      "filePath": "internal/debt/db/db.go",
+      "startLine": 14,
+      "endLine": 18,
+      "summary": "Type DBTX defined in internal/debt/db/db.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/debt/db/db.go:Queries",
+      "type": "class",
+      "name": "Queries",
+      "filePath": "internal/debt/db/db.go",
+      "startLine": 24,
+      "endLine": 26,
+      "summary": "Type Queries defined in internal/debt/db/db.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/debt/db/models.go",
+      "type": "file",
+      "name": "models.go",
+      "filePath": "internal/debt/db/models.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "id": "class:internal/debt/db/models.go:Debt",
+      "type": "class",
+      "name": "Debt",
+      "filePath": "internal/debt/db/models.go",
+      "startLine": 11,
+      "endLine": 17,
+      "summary": "Type Debt defined in internal/debt/db/models.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/debt/db/models.go:User",
+      "type": "class",
+      "name": "User",
+      "filePath": "internal/debt/db/models.go",
+      "startLine": 19,
+      "endLine": 24,
+      "summary": "Type User defined in internal/debt/db/models.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/debt/db/query.sql.go",
+      "type": "file",
+      "name": "query.sql.go",
+      "filePath": "internal/debt/db/query.sql.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 3,
+        "classCount": 3
+      }
+    },
+    {
+      "id": "function:internal/debt/db/query.sql.go:CountDebtsByBorrowerID",
+      "type": "function",
+      "name": "CountDebtsByBorrowerID",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 18,
+      "endLine": 23,
+      "summary": "Function CountDebtsByBorrowerID in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/debt/db/query.sql.go:CreateDebt",
+      "type": "function",
+      "name": "CreateDebt",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 37,
+      "endLine": 48,
+      "summary": "Function CreateDebt in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/debt/db/query.sql.go:GetDebtsByBorrowerID",
+      "type": "function",
+      "name": "GetDebtsByBorrowerID",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 79,
+      "endLine": 105,
+      "summary": "Function GetDebtsByBorrowerID in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/debt/db/query.sql.go:CreateDebtParams",
+      "type": "class",
+      "name": "CreateDebtParams",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 31,
+      "endLine": 35,
+      "summary": "Type CreateDebtParams defined in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/debt/db/query.sql.go:GetDebtsByBorrowerIDParams",
+      "type": "class",
+      "name": "GetDebtsByBorrowerIDParams",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 63,
+      "endLine": 67,
+      "summary": "Type GetDebtsByBorrowerIDParams defined in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/debt/db/query.sql.go:GetDebtsByBorrowerIDRow",
+      "type": "class",
+      "name": "GetDebtsByBorrowerIDRow",
+      "filePath": "internal/debt/db/query.sql.go",
+      "startLine": 69,
+      "endLine": 77,
+      "summary": "Type GetDebtsByBorrowerIDRow defined in internal/debt/db/query.sql.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/debt/repository.go",
+      "type": "file",
+      "name": "repository.go",
+      "filePath": "internal/debt/repository.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/debt/repository.go:NewRepository",
+      "type": "function",
+      "name": "NewRepository",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 16,
+      "endLine": 18,
+      "summary": "Function NewRepository in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/debt/repository.go:CreateDebt",
+      "type": "function",
+      "name": "CreateDebt",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 20,
+      "endLine": 30,
+      "summary": "Function CreateDebt in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/debt/repository.go:GetDebtsByBorrowerID",
+      "type": "function",
+      "name": "GetDebtsByBorrowerID",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 32,
+      "endLine": 49,
+      "summary": "Function GetDebtsByBorrowerID in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/debt/repository.go:CountDebtsByBorrowerID",
+      "type": "function",
+      "name": "CountDebtsByBorrowerID",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 51,
+      "endLine": 57,
+      "summary": "Function CountDebtsByBorrowerID in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/debt/repository.go:toDomain",
+      "type": "function",
+      "name": "toDomain",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 59,
+      "endLine": 66,
+      "summary": "Function toDomain in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/debt/repository.go:Repository",
+      "type": "class",
+      "name": "Repository",
+      "filePath": "internal/debt/repository.go",
+      "startLine": 11,
+      "endLine": 14,
+      "summary": "Type Repository defined in internal/debt/repository.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:internal/debt/db/db.go",
+      "target": "function:internal/debt/db/db.go:New",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/db.go",
+      "target": "function:internal/debt/db/db.go:WithTx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/db.go",
+      "target": "class:internal/debt/db/db.go:DBTX",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/db.go",
+      "target": "class:internal/debt/db/db.go:Queries",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/models.go",
+      "target": "class:internal/debt/db/models.go:Debt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/models.go",
+      "target": "class:internal/debt/db/models.go:User",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "function:internal/debt/db/query.sql.go:CountDebtsByBorrowerID",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "function:internal/debt/db/query.sql.go:CreateDebt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "function:internal/debt/db/query.sql.go:GetDebtsByBorrowerID",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "class:internal/debt/db/query.sql.go:CreateDebtParams",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "class:internal/debt/db/query.sql.go:GetDebtsByBorrowerIDParams",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/db/query.sql.go",
+      "target": "class:internal/debt/db/query.sql.go:GetDebtsByBorrowerIDRow",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "function:internal/debt/repository.go:NewRepository",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "function:internal/debt/repository.go:CreateDebt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "function:internal/debt/repository.go:GetDebtsByBorrowerID",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "function:internal/debt/repository.go:CountDebtsByBorrowerID",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "function:internal/debt/repository.go:toDomain",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "class:internal/debt/repository.go:Repository",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "file:internal/debt/db/db.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "file:internal/debt/db/models.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/repository.go",
+      "target": "file:internal/debt/db/query.sql.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/debt/repository.go:NewRepository",
+      "target": "function:internal/user/db/db.go:New",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/debt/repository.go:CreateDebt",
+      "target": "function:internal/debt/repository.go:toDomain",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    }
+  ]
+}

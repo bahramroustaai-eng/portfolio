@@ -1,0 +1,99 @@
+{
+  "nodes": [
+    {
+      "id": "config:docs/swagger.json",
+      "type": "config",
+      "name": "swagger.json",
+      "filePath": "docs/swagger.json",
+      "language": "json",
+      "summary": "Generated API documentation and Swagger assets.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "complex",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "id": "config:docs/swagger.yaml",
+      "type": "config",
+      "name": "swagger.yaml",
+      "filePath": "docs/swagger.yaml",
+      "language": "yaml",
+      "summary": "Generated API documentation and Swagger assets.",
+      "tags": [
+        "yaml",
+        "config"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "id": "schema:internal/debt/query.sql",
+      "type": "schema",
+      "name": "query.sql",
+      "filePath": "internal/debt/query.sql",
+      "language": "sql",
+      "summary": "SQL query source used by sqlc for a domain repository.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "id": "schema:internal/user/query.sql",
+      "type": "schema",
+      "name": "query.sql",
+      "filePath": "internal/user/query.sql",
+      "language": "sql",
+      "summary": "SQL query source used by sqlc for a domain repository.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "id": "file:web/static/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "web/static/index.html",
+      "language": "html",
+      "summary": "Static web page served by the application.",
+      "tags": [
+        "html",
+        "markup"
+      ],
+      "complexity": "complex",
+      "metrics": {}
+    }
+  ],
+  "edges": []
+}

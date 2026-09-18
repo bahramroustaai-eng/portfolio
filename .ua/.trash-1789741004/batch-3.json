@@ -1,0 +1,752 @@
+{
+  "nodes": [
+    {
+      "id": "file:internal/apperr/apperr.go",
+      "type": "file",
+      "name": "apperr.go",
+      "filePath": "internal/apperr/apperr.go",
+      "language": "go",
+      "summary": "Go source file in internal/apperr; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/apperr/apperr.go:Error",
+      "type": "function",
+      "name": "Error",
+      "filePath": "internal/apperr/apperr.go",
+      "startLine": 17,
+      "endLine": 17,
+      "summary": "Function Error in internal/apperr/apperr.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/apperr/apperr.go:New",
+      "type": "function",
+      "name": "New",
+      "filePath": "internal/apperr/apperr.go",
+      "startLine": 19,
+      "endLine": 21,
+      "summary": "Function New in internal/apperr/apperr.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/apperr/apperr.go:Error",
+      "type": "class",
+      "name": "Error",
+      "filePath": "internal/apperr/apperr.go",
+      "startLine": 12,
+      "endLine": 15,
+      "summary": "Type Error defined in internal/apperr/apperr.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/debt/entity.go",
+      "type": "file",
+      "name": "entity.go",
+      "filePath": "internal/debt/entity.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "class:internal/debt/entity.go:Debt",
+      "type": "class",
+      "name": "Debt",
+      "filePath": "internal/debt/entity.go",
+      "startLine": 10,
+      "endLine": 17,
+      "summary": "Type Debt defined in internal/debt/entity.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/debt/service.go",
+      "type": "file",
+      "name": "service.go",
+      "filePath": "internal/debt/service.go",
+      "language": "go",
+      "summary": "Go source file in internal/debt; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/debt/service.go:NewService",
+      "type": "function",
+      "name": "NewService",
+      "filePath": "internal/debt/service.go",
+      "startLine": 13,
+      "endLine": 15,
+      "summary": "Function NewService in internal/debt/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/debt/service.go:CreateDebt",
+      "type": "function",
+      "name": "CreateDebt",
+      "filePath": "internal/debt/service.go",
+      "startLine": 17,
+      "endLine": 41,
+      "summary": "Function CreateDebt in internal/debt/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/debt/service.go:ListDebt",
+      "type": "function",
+      "name": "ListDebt",
+      "filePath": "internal/debt/service.go",
+      "startLine": 43,
+      "endLine": 55,
+      "summary": "Function ListDebt in internal/debt/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/debt/service.go:Service",
+      "type": "class",
+      "name": "Service",
+      "filePath": "internal/debt/service.go",
+      "startLine": 8,
+      "endLine": 11,
+      "summary": "Type Service defined in internal/debt/service.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/transport/http/debt_handler.go",
+      "type": "file",
+      "name": "debt_handler.go",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 8,
+        "functionCount": 4,
+        "classCount": 4
+      }
+    },
+    {
+      "id": "function:internal/transport/http/debt_handler.go:NewDebtHandler",
+      "type": "function",
+      "name": "NewDebtHandler",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 14,
+      "endLine": 16,
+      "summary": "Function NewDebtHandler in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/debt_handler.go:RegisterRoutes",
+      "type": "function",
+      "name": "RegisterRoutes",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 18,
+      "endLine": 21,
+      "summary": "Function RegisterRoutes in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/debt_handler.go:CreateDebt",
+      "type": "function",
+      "name": "CreateDebt",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 47,
+      "endLine": 64,
+      "summary": "Function CreateDebt in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "type": "function",
+      "name": "GetDebts",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 77,
+      "endLine": 132,
+      "summary": "Function GetDebts in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/debt_handler.go:DebtHandler",
+      "type": "class",
+      "name": "DebtHandler",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 10,
+      "endLine": 12,
+      "summary": "Type DebtHandler defined in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/debt_handler.go:CreateDebtRequest",
+      "type": "class",
+      "name": "CreateDebtRequest",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 23,
+      "endLine": 27,
+      "summary": "Type CreateDebtRequest defined in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/debt_handler.go:CreateDebtResponse",
+      "type": "class",
+      "name": "CreateDebtResponse",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 29,
+      "endLine": 31,
+      "summary": "Type CreateDebtResponse defined in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/debt_handler.go:GetDebtsResponse",
+      "type": "class",
+      "name": "GetDebtsResponse",
+      "filePath": "internal/transport/http/debt_handler.go",
+      "startLine": 134,
+      "endLine": 141,
+      "summary": "Type GetDebtsResponse defined in internal/transport/http/debt_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/transport/http/response.go",
+      "type": "file",
+      "name": "response.go",
+      "filePath": "internal/transport/http/response.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/transport/http/response.go:writeJSON",
+      "type": "function",
+      "name": "writeJSON",
+      "filePath": "internal/transport/http/response.go",
+      "startLine": 12,
+      "endLine": 18,
+      "summary": "Function writeJSON in internal/transport/http/response.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/response.go:writeError",
+      "type": "function",
+      "name": "writeError",
+      "filePath": "internal/transport/http/response.go",
+      "startLine": 24,
+      "endLine": 26,
+      "summary": "Function writeError in internal/transport/http/response.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "function",
+      "name": "writeServiceError",
+      "filePath": "internal/transport/http/response.go",
+      "startLine": 28,
+      "endLine": 36,
+      "summary": "Function writeServiceError in internal/transport/http/response.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/response.go:statusForCode",
+      "type": "function",
+      "name": "statusForCode",
+      "filePath": "internal/transport/http/response.go",
+      "startLine": 38,
+      "endLine": 49,
+      "summary": "Function statusForCode in internal/transport/http/response.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/response.go:ErrorResponse",
+      "type": "class",
+      "name": "ErrorResponse",
+      "filePath": "internal/transport/http/response.go",
+      "startLine": 20,
+      "endLine": 22,
+      "summary": "Type ErrorResponse defined in internal/transport/http/response.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:internal/apperr/apperr.go",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/apperr/apperr.go",
+      "target": "function:internal/apperr/apperr.go:New",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/apperr/apperr.go",
+      "target": "class:internal/apperr/apperr.go:Error",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/entity.go",
+      "target": "class:internal/debt/entity.go:Debt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "function:internal/debt/service.go:NewService",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "function:internal/debt/service.go:CreateDebt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "function:internal/debt/service.go:ListDebt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "class:internal/debt/service.go:Service",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "function:internal/transport/http/debt_handler.go:NewDebtHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "function:internal/transport/http/debt_handler.go:RegisterRoutes",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "function:internal/transport/http/debt_handler.go:CreateDebt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "class:internal/transport/http/debt_handler.go:DebtHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "class:internal/transport/http/debt_handler.go:CreateDebtRequest",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "class:internal/transport/http/debt_handler.go:CreateDebtResponse",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "class:internal/transport/http/debt_handler.go:GetDebtsResponse",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "function:internal/transport/http/response.go:statusForCode",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "class:internal/transport/http/response.go:ErrorResponse",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/entity.go",
+      "target": "file:internal/apperr/apperr.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "file:internal/user/auth.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "file:internal/user/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "file:internal/user/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/debt/service.go",
+      "target": "file:internal/user/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/debt/service.go:CreateDebt",
+      "target": "function:internal/user/repository.go:GetUserByUsername",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/debt/service.go:CreateDebt",
+      "target": "function:internal/user/repository.go:GetUserByUsername",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/debt/service.go:ListDebt",
+      "target": "function:internal/debt/repository.go:GetDebtsByBorrowerID",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/debt/service.go:ListDebt",
+      "target": "function:internal/debt/repository.go:CountDebtsByBorrowerID",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "file:internal/debt/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "file:internal/debt/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/debt_handler.go",
+      "target": "file:internal/debt/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:RegisterRoutes",
+      "target": "function:internal/transport/http/auth_middleware.go:RequireAuth",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:CreateDebt",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:CreateDebt",
+      "target": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:CreateDebt",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/transport/http/auth_middleware.go:UserIDFromContext",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/debt/service.go:ListDebt",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/debt_handler.go:GetDebts",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/response.go",
+      "target": "file:internal/apperr/apperr.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeJSON",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeError",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeServiceError",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeServiceError",
+      "target": "function:internal/transport/http/response.go:statusForCode",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeServiceError",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeServiceError",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/response.go:writeServiceError",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    }
+  ]
+}

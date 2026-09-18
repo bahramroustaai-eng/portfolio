@@ -1,0 +1,270 @@
+{
+  "scriptCompleted": true,
+  "files": [
+    {
+      "path": "cmd/api/main.go",
+      "language": "go",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docker-compose.yml",
+      "language": "yaml",
+      "sizeLines": 17,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "docs/docs.go",
+      "language": "go",
+      "sizeLines": 334,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docs/swagger.json",
+      "language": "json",
+      "sizeLines": 307,
+      "fileCategory": "config"
+    },
+    {
+      "path": "docs/swagger.yaml",
+      "language": "yaml",
+      "sizeLines": 200,
+      "fileCategory": "config"
+    },
+    {
+      "path": "go.mod",
+      "language": "mod",
+      "sizeLines": 32,
+      "fileCategory": "config"
+    },
+    {
+      "path": "go.sum",
+      "language": "sum",
+      "sizeLines": 82,
+      "fileCategory": "config"
+    },
+    {
+      "path": "internal/apperr/apperr.go",
+      "language": "go",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/debt/db/db.go",
+      "language": "go",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/debt/db/models.go",
+      "language": "go",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/debt/db/query.sql.go",
+      "language": "go",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/debt/entity.go",
+      "language": "go",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/debt/query.sql",
+      "language": "sql",
+      "sizeLines": 19,
+      "fileCategory": "data"
+    },
+    {
+      "path": "internal/debt/repository.go",
+      "language": "go",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/debt/service.go",
+      "language": "go",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/platform/config/config.go",
+      "language": "go",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/platform/postgres/postgres.go",
+      "language": "go",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/transport/http/auth_middleware.go",
+      "language": "go",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/transport/http/debt_handler.go",
+      "language": "go",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/transport/http/middleware.go",
+      "language": "go",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/transport/http/porfto_handler.go",
+      "language": "go",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/transport/http/response.go",
+      "language": "go",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/transport/http/router.go",
+      "language": "go",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/transport/http/user_handler.go",
+      "language": "go",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/user/auth.go",
+      "language": "go",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/user/db/db.go",
+      "language": "go",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/user/db/models.go",
+      "language": "go",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/user/db/query.sql.go",
+      "language": "go",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/user/entity.go",
+      "language": "go",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/user/query.sql",
+      "language": "sql",
+      "sizeLines": 13,
+      "fileCategory": "data"
+    },
+    {
+      "path": "internal/user/repository.go",
+      "language": "go",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "internal/user/service.go",
+      "language": "go",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Makefile",
+      "language": "makefile",
+      "sizeLines": 30,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "migrations/20260829095152_create_user_model.sql",
+      "language": "sql",
+      "sizeLines": 10,
+      "fileCategory": "data"
+    },
+    {
+      "path": "migrations/20260829131729_create_debt_model.sql",
+      "language": "sql",
+      "sizeLines": 24,
+      "fileCategory": "data"
+    },
+    {
+      "path": "migrations/20260829223906_create_item_type_model.sql",
+      "language": "sql",
+      "sizeLines": 9,
+      "fileCategory": "data"
+    },
+    {
+      "path": "migrations/20260829224132_create_item_model.sql",
+      "language": "sql",
+      "sizeLines": 22,
+      "fileCategory": "data"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 87,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sqlc.yaml",
+      "language": "yaml",
+      "sizeLines": 41,
+      "fileCategory": "config"
+    },
+    {
+      "path": "web/static/index.html",
+      "language": "html",
+      "sizeLines": 511,
+      "fileCategory": "markup"
+    }
+  ],
+  "totalFiles": 40,
+  "filteredByIgnore": 21,
+  "estimatedComplexity": "moderate",
+  "stats": {
+    "filesScanned": 40,
+    "byCategory": {
+      "code": 25,
+      "infra": 2,
+      "config": 5,
+      "data": 6,
+      "docs": 1,
+      "markup": 1
+    },
+    "byLanguage": {
+      "go": 25,
+      "yaml": 3,
+      "json": 1,
+      "mod": 1,
+      "sum": 1,
+      "sql": 6,
+      "makefile": 1,
+      "markdown": 1,
+      "html": 1
+    }
+  }
+}

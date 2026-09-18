@@ -1,0 +1,435 @@
+{
+  "nodes": [
+    {
+      "id": "file:internal/user/db/db.go",
+      "type": "file",
+      "name": "db.go",
+      "filePath": "internal/user/db/db.go",
+      "language": "go",
+      "summary": "Go source file in internal/user/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 2,
+        "classCount": 2
+      }
+    },
+    {
+      "id": "function:internal/user/db/db.go:New",
+      "type": "function",
+      "name": "New",
+      "filePath": "internal/user/db/db.go",
+      "startLine": 20,
+      "endLine": 22,
+      "summary": "Function New in internal/user/db/db.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/user/db/db.go:WithTx",
+      "type": "function",
+      "name": "WithTx",
+      "filePath": "internal/user/db/db.go",
+      "startLine": 28,
+      "endLine": 32,
+      "summary": "Function WithTx in internal/user/db/db.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/user/db/db.go:DBTX",
+      "type": "class",
+      "name": "DBTX",
+      "filePath": "internal/user/db/db.go",
+      "startLine": 14,
+      "endLine": 18,
+      "summary": "Type DBTX defined in internal/user/db/db.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/user/db/db.go:Queries",
+      "type": "class",
+      "name": "Queries",
+      "filePath": "internal/user/db/db.go",
+      "startLine": 24,
+      "endLine": 26,
+      "summary": "Type Queries defined in internal/user/db/db.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/user/db/models.go",
+      "type": "file",
+      "name": "models.go",
+      "filePath": "internal/user/db/models.go",
+      "language": "go",
+      "summary": "Go source file in internal/user/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "id": "class:internal/user/db/models.go:Debt",
+      "type": "class",
+      "name": "Debt",
+      "filePath": "internal/user/db/models.go",
+      "startLine": 11,
+      "endLine": 17,
+      "summary": "Type Debt defined in internal/user/db/models.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/user/db/models.go:User",
+      "type": "class",
+      "name": "User",
+      "filePath": "internal/user/db/models.go",
+      "startLine": 19,
+      "endLine": 24,
+      "summary": "Type User defined in internal/user/db/models.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/user/db/query.sql.go",
+      "type": "file",
+      "name": "query.sql.go",
+      "filePath": "internal/user/db/query.sql.go",
+      "language": "go",
+      "summary": "Go source file in internal/user/db; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/user/db/query.sql.go:CreateUser",
+      "type": "function",
+      "name": "CreateUser",
+      "filePath": "internal/user/db/query.sql.go",
+      "startLine": 23,
+      "endLine": 33,
+      "summary": "Function CreateUser in internal/user/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/user/db/query.sql.go:GetUserByID",
+      "type": "function",
+      "name": "GetUserByID",
+      "filePath": "internal/user/db/query.sql.go",
+      "startLine": 40,
+      "endLine": 50,
+      "summary": "Function GetUserByID in internal/user/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/user/db/query.sql.go:GetUserByUsername",
+      "type": "function",
+      "name": "GetUserByUsername",
+      "filePath": "internal/user/db/query.sql.go",
+      "startLine": 57,
+      "endLine": 67,
+      "summary": "Function GetUserByUsername in internal/user/db/query.sql.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/user/db/query.sql.go:CreateUserParams",
+      "type": "class",
+      "name": "CreateUserParams",
+      "filePath": "internal/user/db/query.sql.go",
+      "startLine": 18,
+      "endLine": 21,
+      "summary": "Type CreateUserParams defined in internal/user/db/query.sql.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/user/repository.go",
+      "type": "file",
+      "name": "repository.go",
+      "filePath": "internal/user/repository.go",
+      "language": "go",
+      "summary": "Go source file in internal/user; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/user/repository.go:NewUserRepository",
+      "type": "function",
+      "name": "NewUserRepository",
+      "filePath": "internal/user/repository.go",
+      "startLine": 20,
+      "endLine": 22,
+      "summary": "Function NewUserRepository in internal/user/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/user/repository.go:CreateUser",
+      "type": "function",
+      "name": "CreateUser",
+      "filePath": "internal/user/repository.go",
+      "startLine": 24,
+      "endLine": 38,
+      "summary": "Function CreateUser in internal/user/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/user/repository.go:GetUserByUsername",
+      "type": "function",
+      "name": "GetUserByUsername",
+      "filePath": "internal/user/repository.go",
+      "startLine": 40,
+      "endLine": 49,
+      "summary": "Function GetUserByUsername in internal/user/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/user/repository.go:toDomain",
+      "type": "function",
+      "name": "toDomain",
+      "filePath": "internal/user/repository.go",
+      "startLine": 51,
+      "endLine": 56,
+      "summary": "Function toDomain in internal/user/repository.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/user/repository.go:Repository",
+      "type": "class",
+      "name": "Repository",
+      "filePath": "internal/user/repository.go",
+      "startLine": 15,
+      "endLine": 18,
+      "summary": "Type Repository defined in internal/user/repository.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:internal/user/db/db.go",
+      "target": "function:internal/user/db/db.go:New",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/db.go",
+      "target": "function:internal/user/db/db.go:WithTx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/db.go",
+      "target": "class:internal/user/db/db.go:DBTX",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/db.go",
+      "target": "class:internal/user/db/db.go:Queries",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/models.go",
+      "target": "class:internal/user/db/models.go:Debt",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/models.go",
+      "target": "class:internal/user/db/models.go:User",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/query.sql.go",
+      "target": "function:internal/user/db/query.sql.go:CreateUser",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/query.sql.go",
+      "target": "function:internal/user/db/query.sql.go:GetUserByID",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/query.sql.go",
+      "target": "function:internal/user/db/query.sql.go:GetUserByUsername",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/db/query.sql.go",
+      "target": "class:internal/user/db/query.sql.go:CreateUserParams",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "function:internal/user/repository.go:NewUserRepository",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "function:internal/user/repository.go:CreateUser",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "function:internal/user/repository.go:GetUserByUsername",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "function:internal/user/repository.go:toDomain",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "class:internal/user/repository.go:Repository",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "file:internal/user/db/db.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "file:internal/user/db/models.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/repository.go",
+      "target": "file:internal/user/db/query.sql.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/user/repository.go:NewUserRepository",
+      "target": "function:internal/user/db/db.go:New",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/user/repository.go:CreateUser",
+      "target": "function:internal/user/repository.go:toDomain",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/user/repository.go:GetUserByUsername",
+      "target": "function:internal/user/repository.go:toDomain",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    }
+  ]
+}

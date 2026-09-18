@@ -1,0 +1,85 @@
+{
+  "nodes": [
+    {
+      "id": "table:migrations/20260829095152_create_user_model.sql",
+      "type": "table",
+      "name": "20260829095152_create_user_model.sql",
+      "filePath": "migrations/20260829095152_create_user_model.sql",
+      "language": "sql",
+      "summary": "SQL migration defining a PostgreSQL schema change for the portfolio service.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    },
+    {
+      "id": "table:migrations/20260829131729_create_debt_model.sql",
+      "type": "table",
+      "name": "20260829131729_create_debt_model.sql",
+      "filePath": "migrations/20260829131729_create_debt_model.sql",
+      "language": "sql",
+      "summary": "SQL migration defining a PostgreSQL schema change for the portfolio service.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    },
+    {
+      "id": "table:migrations/20260829223906_create_item_type_model.sql",
+      "type": "table",
+      "name": "20260829223906_create_item_type_model.sql",
+      "filePath": "migrations/20260829223906_create_item_type_model.sql",
+      "language": "sql",
+      "summary": "SQL migration defining a PostgreSQL schema change for the portfolio service.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    },
+    {
+      "id": "table:migrations/20260829224132_create_item_model.sql",
+      "type": "table",
+      "name": "20260829224132_create_item_model.sql",
+      "filePath": "migrations/20260829224132_create_item_model.sql",
+      "language": "sql",
+      "summary": "SQL migration defining a PostgreSQL schema change for the portfolio service.",
+      "tags": [
+        "sql",
+        "data"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 1
+      }
+    }
+  ],
+  "edges": []
+}

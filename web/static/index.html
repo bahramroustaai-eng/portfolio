@@ -442,7 +442,7 @@
     const borrower = borrowerSelect.value;
     const amount = Number(document.getElementById('debt-amount').value);
     try {
-      await api('POST', '/api/v1/debt', { borrower, amount });
+      await api('POST', '/api/v1/debts', { borrower, amount });
       borrowerSelect.value = '';
       document.getElementById('debt-amount').value = '';
       showMsg(debtMsg, 'بدهی با موفقیت اضافه شد.', true);

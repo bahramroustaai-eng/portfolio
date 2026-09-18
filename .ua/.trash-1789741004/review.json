@@ -1,0 +1,42 @@
+{
+  "issues": [],
+  "warnings": [
+    "Node 'table:migrations/20260829095152_create_user_model.sql' has no edges",
+    "Node 'table:migrations/20260829131729_create_debt_model.sql' has no edges",
+    "Node 'table:migrations/20260829223906_create_item_type_model.sql' has no edges",
+    "Node 'table:migrations/20260829224132_create_item_model.sql' has no edges",
+    "Node 'pipeline:Makefile' has no edges",
+    "Node 'document:README.md' has no edges",
+    "Node 'service:docker-compose.yml' has no edges",
+    "Node 'config:go.mod' has no edges",
+    "Node 'config:go.sum' has no edges",
+    "Node 'config:sqlc.yaml' has no edges",
+    "Node 'config:docs/swagger.json' has no edges",
+    "Node 'config:docs/swagger.yaml' has no edges",
+    "Node 'schema:internal/debt/query.sql' has no edges",
+    "Node 'schema:internal/user/query.sql' has no edges",
+    "Node 'file:web/static/index.html' has no edges"
+  ],
+  "stats": {
+    "totalNodes": 127,
+    "totalEdges": 179,
+    "totalLayers": 7,
+    "tourSteps": 7,
+    "nodeTypes": {
+      "file": 26,
+      "function": 53,
+      "class": 34,
+      "table": 4,
+      "pipeline": 1,
+      "document": 1,
+      "service": 1,
+      "config": 5,
+      "schema": 2
+    },
+    "edgeTypes": {
+      "contains": 87,
+      "imports": 45,
+      "calls": 47
+    }
+  }
+}

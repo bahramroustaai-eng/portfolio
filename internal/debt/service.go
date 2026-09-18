@@ -2,6 +2,7 @@ package debt
 
 import (
 	"context"
+	"fmt"
 	"portfolio/internal/user"
 )
 
@@ -52,4 +53,23 @@ func (s *Service) ListDebt(ctx context.Context, userID int32, limit int32, offse
 	}
 
 	return debts, totalCount, nil
+}
+
+func (s *Service) PayDebt(ctx context.Context, userID int32, debtID int32, note *string) (DebtPayment, error) {
+	debt, err := s.repo.GetDebtByID(ctx, debtID)
+	if err != nil {
+		return DebtPayment{}, err
+	}
+	if debt.BorrowerID != userID {
+		return DebtPayment{}, fmt.Errorf("invalid user to pay debt")
+	}
+	_, err = s.repo.UpdateDebt(ctx, debt.ID, Pending, Paid)
+	if err != nil {
+		return DebtPayment{}, fmt.Errorf("failed to update debt: %w", err)
+	}
+	debtPayment, err := s.repo.CreateDebtPayment(ctx, int64(userID), int64(debt.LenderID), int64(debt.ID), int64(debt.Amount), note)
+	if err != nil {
+		return DebtPayment{}, err
+	}
+	return debtPayment, nil
 }

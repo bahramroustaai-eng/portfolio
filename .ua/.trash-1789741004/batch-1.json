@@ -1,0 +1,509 @@
+{
+  "nodes": [
+    {
+      "id": "file:cmd/api/main.go",
+      "type": "file",
+      "name": "main.go",
+      "filePath": "cmd/api/main.go",
+      "language": "go",
+      "summary": "Go source file in cmd/api; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "has-functions"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 17,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "id": "function:cmd/api/main.go:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "cmd/api/main.go",
+      "startLine": 27,
+      "endLine": 75,
+      "summary": "Function main in cmd/api/main.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "file:docs/docs.go",
+      "type": "file",
+      "name": "docs.go",
+      "filePath": "docs/docs.go",
+      "language": "go",
+      "summary": "Go source file in docs; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "has-functions"
+      ],
+      "complexity": "complex",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "id": "function:docs/docs.go:init",
+      "type": "function",
+      "name": "init",
+      "filePath": "docs/docs.go",
+      "startLine": 332,
+      "endLine": 334,
+      "summary": "Function init in docs/docs.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "file:internal/platform/config/config.go",
+      "type": "file",
+      "name": "config.go",
+      "filePath": "internal/platform/config/config.go",
+      "language": "go",
+      "summary": "Go source file in internal/platform/config; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/platform/config/config.go:Load",
+      "type": "function",
+      "name": "Load",
+      "filePath": "internal/platform/config/config.go",
+      "startLine": 16,
+      "endLine": 35,
+      "summary": "Function Load in internal/platform/config/config.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/platform/config/config.go:Config",
+      "type": "class",
+      "name": "Config",
+      "filePath": "internal/platform/config/config.go",
+      "startLine": 11,
+      "endLine": 14,
+      "summary": "Type Config defined in internal/platform/config/config.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/platform/postgres/postgres.go",
+      "type": "file",
+      "name": "postgres.go",
+      "filePath": "internal/platform/postgres/postgres.go",
+      "language": "go",
+      "summary": "Go source file in internal/platform/postgres; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "id": "function:internal/platform/postgres/postgres.go:NewPool",
+      "type": "function",
+      "name": "NewPool",
+      "filePath": "internal/platform/postgres/postgres.go",
+      "startLine": 11,
+      "endLine": 36,
+      "summary": "Function NewPool in internal/platform/postgres/postgres.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "file:internal/transport/http/middleware.go",
+      "type": "file",
+      "name": "middleware.go",
+      "filePath": "internal/transport/http/middleware.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "id": "function:internal/transport/http/middleware.go:Logging",
+      "type": "function",
+      "name": "Logging",
+      "filePath": "internal/transport/http/middleware.go",
+      "startLine": 9,
+      "endLine": 19,
+      "summary": "Function Logging in internal/transport/http/middleware.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "file:internal/transport/http/router.go",
+      "type": "file",
+      "name": "router.go",
+      "filePath": "internal/transport/http/router.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/transport/http/router.go:NewRouter",
+      "type": "function",
+      "name": "NewRouter",
+      "filePath": "internal/transport/http/router.go",
+      "startLine": 13,
+      "endLine": 22,
+      "summary": "Function NewRouter in internal/transport/http/router.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/router.go:Module",
+      "type": "class",
+      "name": "Module",
+      "filePath": "internal/transport/http/router.go",
+      "startLine": 9,
+      "endLine": 11,
+      "summary": "Type Module defined in internal/transport/http/router.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "function:cmd/api/main.go:main",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:docs/docs.go",
+      "target": "function:docs/docs.go:init",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/platform/config/config.go",
+      "target": "function:internal/platform/config/config.go:Load",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/platform/config/config.go",
+      "target": "class:internal/platform/config/config.go:Config",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/platform/postgres/postgres.go",
+      "target": "function:internal/platform/postgres/postgres.go:NewPool",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/middleware.go",
+      "target": "function:internal/transport/http/middleware.go:Logging",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/router.go",
+      "target": "function:internal/transport/http/router.go:NewRouter",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/router.go",
+      "target": "class:internal/transport/http/router.go:Module",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:docs/docs.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/debt/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/debt/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/debt/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/platform/config/config.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/platform/postgres/postgres.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/auth_middleware.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/debt_handler.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/middleware.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/porfto_handler.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/response.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/router.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/transport/http/user_handler.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/user/auth.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/user/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/user/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:cmd/api/main.go",
+      "target": "file:internal/user/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/platform/config/config.go:Load",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/platform/postgres/postgres.go:NewPool",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/user/repository.go:NewUserRepository",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/user/service.go:NewUserService",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/transport/http/user_handler.go:NewUserHandler",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/debt/repository.go:NewRepository",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/debt/service.go:NewService",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/transport/http/debt_handler.go:NewDebtHandler",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/transport/http/router.go:NewRouter",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:cmd/api/main.go:main",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/router.go:NewRouter",
+      "target": "function:internal/transport/http/debt_handler.go:RegisterRoutes",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/router.go:NewRouter",
+      "target": "function:internal/transport/http/middleware.go:Logging",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    }
+  ]
+}

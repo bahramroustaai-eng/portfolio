@@ -1,0 +1,839 @@
+{
+  "nodes": [
+    {
+      "id": "file:internal/transport/http/auth_middleware.go",
+      "type": "file",
+      "name": "auth_middleware.go",
+      "filePath": "internal/transport/http/auth_middleware.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "id": "function:internal/transport/http/auth_middleware.go:RequireAuth",
+      "type": "function",
+      "name": "RequireAuth",
+      "filePath": "internal/transport/http/auth_middleware.go",
+      "startLine": 14,
+      "endLine": 30,
+      "summary": "Function RequireAuth in internal/transport/http/auth_middleware.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/auth_middleware.go:UserIDFromContext",
+      "type": "function",
+      "name": "UserIDFromContext",
+      "filePath": "internal/transport/http/auth_middleware.go",
+      "startLine": 32,
+      "endLine": 35,
+      "summary": "Function UserIDFromContext in internal/transport/http/auth_middleware.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "file:internal/transport/http/porfto_handler.go",
+      "type": "file",
+      "name": "porfto_handler.go",
+      "filePath": "internal/transport/http/porfto_handler.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/transport/http/porfto_handler.go:NewPortfoHandler",
+      "type": "function",
+      "name": "NewPortfoHandler",
+      "filePath": "internal/transport/http/porfto_handler.go",
+      "startLine": 12,
+      "endLine": 14,
+      "summary": "Function NewPortfoHandler in internal/transport/http/porfto_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/porfto_handler.go:RegisterRoutes",
+      "type": "function",
+      "name": "RegisterRoutes",
+      "filePath": "internal/transport/http/porfto_handler.go",
+      "startLine": 16,
+      "endLine": 18,
+      "summary": "Function RegisterRoutes in internal/transport/http/porfto_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/porfto_handler.go:Item",
+      "type": "function",
+      "name": "Item",
+      "filePath": "internal/transport/http/porfto_handler.go",
+      "startLine": 20,
+      "endLine": 20,
+      "summary": "Function Item in internal/transport/http/porfto_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/porfto_handler.go:PortfoHandler",
+      "type": "class",
+      "name": "PortfoHandler",
+      "filePath": "internal/transport/http/porfto_handler.go",
+      "startLine": 8,
+      "endLine": 10,
+      "summary": "Type PortfoHandler defined in internal/transport/http/porfto_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/transport/http/user_handler.go",
+      "type": "file",
+      "name": "user_handler.go",
+      "filePath": "internal/transport/http/user_handler.go",
+      "language": "go",
+      "summary": "Go source file in internal/transport/http; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "moderate",
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 10,
+        "functionCount": 5,
+        "classCount": 5
+      }
+    },
+    {
+      "id": "function:internal/transport/http/user_handler.go:NewUserHandler",
+      "type": "function",
+      "name": "NewUserHandler",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 16,
+      "endLine": 18,
+      "summary": "Function NewUserHandler in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/user_handler.go:RegisterRoutes",
+      "type": "function",
+      "name": "RegisterRoutes",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 20,
+      "endLine": 23,
+      "summary": "Function RegisterRoutes in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/user_handler.go:Validate",
+      "type": "function",
+      "name": "Validate",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 36,
+      "endLine": 44,
+      "summary": "Function Validate in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/user_handler.go:CreateUser",
+      "type": "function",
+      "name": "CreateUser",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 59,
+      "endLine": 91,
+      "summary": "Function CreateUser in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/transport/http/user_handler.go:Login",
+      "type": "function",
+      "name": "Login",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 116,
+      "endLine": 143,
+      "summary": "Function Login in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/user_handler.go:UserHandler",
+      "type": "class",
+      "name": "UserHandler",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 12,
+      "endLine": 14,
+      "summary": "Type UserHandler defined in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/user_handler.go:CreateUserRequest",
+      "type": "class",
+      "name": "CreateUserRequest",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 25,
+      "endLine": 28,
+      "summary": "Type CreateUserRequest defined in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/user_handler.go:CreateUserResponse",
+      "type": "class",
+      "name": "CreateUserResponse",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 30,
+      "endLine": 34,
+      "summary": "Type CreateUserResponse defined in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/user_handler.go:LoginRequest",
+      "type": "class",
+      "name": "LoginRequest",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 93,
+      "endLine": 96,
+      "summary": "Type LoginRequest defined in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/transport/http/user_handler.go:LoginResponse",
+      "type": "class",
+      "name": "LoginResponse",
+      "filePath": "internal/transport/http/user_handler.go",
+      "startLine": 98,
+      "endLine": 102,
+      "summary": "Type LoginResponse defined in internal/transport/http/user_handler.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/user/auth.go",
+      "type": "file",
+      "name": "auth.go",
+      "filePath": "internal/user/auth.go",
+      "language": "go",
+      "summary": "Go source file in internal/user; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/user/auth.go:CreateToken",
+      "type": "function",
+      "name": "CreateToken",
+      "filePath": "internal/user/auth.go",
+      "startLine": 19,
+      "endLine": 35,
+      "summary": "Function CreateToken in internal/user/auth.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/user/auth.go:VerifyToken",
+      "type": "function",
+      "name": "VerifyToken",
+      "filePath": "internal/user/auth.go",
+      "startLine": 37,
+      "endLine": 53,
+      "summary": "Function VerifyToken in internal/user/auth.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/user/auth.go:Claims",
+      "type": "class",
+      "name": "Claims",
+      "filePath": "internal/user/auth.go",
+      "startLine": 13,
+      "endLine": 17,
+      "summary": "Type Claims defined in internal/user/auth.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/user/entity.go",
+      "type": "file",
+      "name": "entity.go",
+      "filePath": "internal/user/entity.go",
+      "language": "go",
+      "summary": "Go source file in internal/user; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "id": "class:internal/user/entity.go:User",
+      "type": "class",
+      "name": "User",
+      "filePath": "internal/user/entity.go",
+      "startLine": 16,
+      "endLine": 21,
+      "summary": "Type User defined in internal/user/entity.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "class:internal/user/entity.go:CreateInput",
+      "type": "class",
+      "name": "CreateInput",
+      "filePath": "internal/user/entity.go",
+      "startLine": 23,
+      "endLine": 26,
+      "summary": "Type CreateInput defined in internal/user/entity.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    },
+    {
+      "id": "file:internal/user/service.go",
+      "type": "file",
+      "name": "service.go",
+      "filePath": "internal/user/service.go",
+      "language": "go",
+      "summary": "Go source file in internal/user; extracted structural symbols and call graph are represented in this node's children and edges.",
+      "tags": [
+        "go",
+        "code",
+        "exports",
+        "has-functions",
+        "has-classes"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "id": "function:internal/user/service.go:NewUserService",
+      "type": "function",
+      "name": "NewUserService",
+      "filePath": "internal/user/service.go",
+      "startLine": 15,
+      "endLine": 17,
+      "summary": "Function NewUserService in internal/user/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/user/service.go:CreateUser",
+      "type": "function",
+      "name": "CreateUser",
+      "filePath": "internal/user/service.go",
+      "startLine": 19,
+      "endLine": 31,
+      "summary": "Function CreateUser in internal/user/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "function:internal/user/service.go:Login",
+      "type": "function",
+      "name": "Login",
+      "filePath": "internal/user/service.go",
+      "startLine": 33,
+      "endLine": 46,
+      "summary": "Function Login in internal/user/service.go.",
+      "tags": [
+        "go",
+        "function"
+      ]
+    },
+    {
+      "id": "class:internal/user/service.go:Service",
+      "type": "class",
+      "name": "Service",
+      "filePath": "internal/user/service.go",
+      "startLine": 11,
+      "endLine": 13,
+      "summary": "Type Service defined in internal/user/service.go.",
+      "tags": [
+        "go",
+        "type"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "function:internal/transport/http/auth_middleware.go:RequireAuth",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "function:internal/transport/http/auth_middleware.go:UserIDFromContext",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "function:internal/transport/http/porfto_handler.go:NewPortfoHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "function:internal/transport/http/porfto_handler.go:RegisterRoutes",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "function:internal/transport/http/porfto_handler.go:Item",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "class:internal/transport/http/porfto_handler.go:PortfoHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "function:internal/transport/http/user_handler.go:NewUserHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "function:internal/transport/http/user_handler.go:RegisterRoutes",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "function:internal/transport/http/user_handler.go:Validate",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "function:internal/transport/http/user_handler.go:CreateUser",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "function:internal/transport/http/user_handler.go:Login",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "class:internal/transport/http/user_handler.go:UserHandler",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "class:internal/transport/http/user_handler.go:CreateUserRequest",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "class:internal/transport/http/user_handler.go:CreateUserResponse",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "class:internal/transport/http/user_handler.go:LoginRequest",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "class:internal/transport/http/user_handler.go:LoginResponse",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/auth.go",
+      "target": "function:internal/user/auth.go:CreateToken",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/auth.go",
+      "target": "function:internal/user/auth.go:VerifyToken",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/auth.go",
+      "target": "class:internal/user/auth.go:Claims",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/entity.go",
+      "target": "class:internal/user/entity.go:User",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/entity.go",
+      "target": "class:internal/user/entity.go:CreateInput",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/service.go",
+      "target": "function:internal/user/service.go:NewUserService",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/service.go",
+      "target": "function:internal/user/service.go:CreateUser",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/service.go",
+      "target": "function:internal/user/service.go:Login",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/service.go",
+      "target": "class:internal/user/service.go:Service",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "file:internal/user/auth.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "file:internal/user/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "file:internal/user/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/auth_middleware.go",
+      "target": "file:internal/user/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/auth_middleware.go:RequireAuth",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/auth_middleware.go:RequireAuth",
+      "target": "function:internal/user/auth.go:VerifyToken",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/auth_middleware.go:RequireAuth",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "file:internal/user/auth.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "file:internal/user/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "file:internal/user/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/porfto_handler.go",
+      "target": "file:internal/user/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "file:internal/user/auth.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "file:internal/user/entity.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "file:internal/user/repository.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/transport/http/user_handler.go",
+      "target": "file:internal/user/service.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:CreateUser",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:CreateUser",
+      "target": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:CreateUser",
+      "target": "function:internal/user/auth.go:CreateToken",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:CreateUser",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:CreateUser",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:CreateUser",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:Login",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:Login",
+      "target": "function:internal/transport/http/response.go:writeServiceError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:Login",
+      "target": "function:internal/user/auth.go:CreateToken",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:Login",
+      "target": "function:internal/apperr/apperr.go:Error",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:Login",
+      "target": "function:internal/transport/http/response.go:writeError",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/transport/http/user_handler.go:Login",
+      "target": "function:internal/transport/http/response.go:writeJSON",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:internal/user/entity.go",
+      "target": "file:internal/apperr/apperr.go",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:internal/user/service.go:Login",
+      "target": "function:internal/user/repository.go:GetUserByUsername",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    }
+  ]
+}

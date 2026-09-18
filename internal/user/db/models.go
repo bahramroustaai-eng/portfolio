@@ -54,10 +54,22 @@ func (ns NullRiskLevel) Value() (driver.Value, error) {
 }
 
 type Debt struct {
+	ID          int32
+	LenderID    int32
+	BorrowerID  int32
+	Amount      int32
+	CreatedAt   time.Time
+	Description *string
+}
+
+type DebtPayment struct {
 	ID         int32
-	LenderID   int32
-	BorrowerID int32
-	Amount     int32
+	DebtID     int64
+	PayerID    int64
+	ReceiverID int64
+	Amount     int64
+	Note       *string
+	PaidAt     time.Time
 	CreatedAt  time.Time
 }
 

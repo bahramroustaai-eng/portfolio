@@ -1,0 +1,113 @@
+{
+  "nodes": [
+    {
+      "id": "pipeline:Makefile",
+      "type": "pipeline",
+      "name": "Makefile",
+      "filePath": "Makefile",
+      "language": "makefile",
+      "summary": "Developer command automation for local infrastructure, migrations, code generation, and tests.",
+      "tags": [
+        "makefile",
+        "infra"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 9
+      }
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "language": "markdown",
+      "summary": "Project documentation describing the Go portfolio service, its vertical slice layout, domain mapping, known gaps, and local development commands.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "id": "service:docker-compose.yml",
+      "type": "service",
+      "name": "docker-compose.yml",
+      "filePath": "docker-compose.yml",
+      "language": "yaml",
+      "summary": "Local infrastructure definition for the PostgreSQL development service.",
+      "tags": [
+        "yaml",
+        "infra"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "id": "config:go.mod",
+      "type": "config",
+      "name": "go.mod",
+      "filePath": "go.mod",
+      "language": "mod",
+      "summary": "Project config file: go.mod.",
+      "tags": [
+        "mod",
+        "config"
+      ],
+      "complexity": "simple",
+      "metrics": {}
+    },
+    {
+      "id": "config:go.sum",
+      "type": "config",
+      "name": "go.sum",
+      "filePath": "go.sum",
+      "language": "sum",
+      "summary": "Project config file: go.sum.",
+      "tags": [
+        "sum",
+        "config"
+      ],
+      "complexity": "simple",
+      "metrics": {}
+    },
+    {
+      "id": "config:sqlc.yaml",
+      "type": "config",
+      "name": "sqlc.yaml",
+      "filePath": "sqlc.yaml",
+      "language": "yaml",
+      "summary": "sqlc generation configuration connecting SQL sources to generated Go database code.",
+      "tags": [
+        "yaml",
+        "config"
+      ],
+      "complexity": "simple",
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    }
+  ],
+  "edges": []
+}
