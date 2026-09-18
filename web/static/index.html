@@ -117,6 +117,8 @@
   .navbar .brand-mark .logo { background: var(--accent); }
   .navbar .brand-mark span { color: var(--text); }
   .nav-right { display: flex; align-items: center; gap: 16px; }
+  .nav-pages { display: flex; gap: 8px; }
+  .nav-page-btn.active { color: #fff; background: var(--accent); border-color: var(--accent); }
   .avatar {
     width: 28px; height: 28px; border-radius: 50%; background: var(--accent-light); color: var(--accent);
     display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0;
@@ -283,6 +285,10 @@
         <span>پرتفولیو</span>
       </div>
       <div class="nav-right">
+        <div class="nav-pages">
+          <button type="button" class="btn-secondary nav-page-btn active" id="debts-page-btn">بدهی‌ها</button>
+          <button type="button" class="btn-secondary nav-page-btn" id="investment-page-btn">انواع دارایی</button>
+        </div>
         <div class="whoami">
           <div class="avatar" id="nav-avatar"></div>
           <span id="nav-username"></span>
@@ -291,7 +297,7 @@
       </div>
     </div>
 
-    <div class="dashboard-body">
+    <div class="dashboard-body" id="debts-page">
       <div class="page-header">
         <h1>بدهی‌ها</h1>
         <p>بدهی‌ها و طلب‌های شما در یک صفحه</p>
@@ -353,11 +359,42 @@
         </div>
       </div>
     </div>
+
+    <div class="dashboard-body hidden" id="investment-page">
+      <div class="page-header">
+        <h1>انواع دارایی</h1>
+        <p>دسته‌بندی دارایی‌هایی که برای سرمایه‌گذاری نگهداری می‌کنید</p>
+      </div>
+
+      <div class="card">
+        <h3>افزودن نوع دارایی</h3>
+        <form id="item-type-form" class="debt-form">
+          <div class="field">
+            <label for="item-type-name">نام دارایی</label>
+            <input id="item-type-name" name="name" placeholder="مثلاً طلا، نقره یا بیت‌کوین" required>
+          </div>
+          <button type="submit" class="btn-primary">افزودن نوع دارایی</button>
+        </form>
+        <div id="item-type-msg" class="msg" style="margin-top: 10px;"></div>
+      </div>
+
+      <div class="list-card">
+        <div class="list-header">
+          <span>دارایی‌های ثبت‌شده</span>
+          <span id="item-type-count"></span>
+        </div>
+        <div id="item-types-list"></div>
+      </div>
+    </div>
   </div>
 
 <script>
   const authScreen = document.getElementById('auth-screen');
   const dashboardScreen = document.getElementById('dashboard-screen');
+  const debtsPage = document.getElementById('debts-page');
+  const investmentPage = document.getElementById('investment-page');
+  const debtsPageButton = document.getElementById('debts-page-btn');
+  const investmentPageButton = document.getElementById('investment-page-btn');
   const tabs = document.querySelectorAll('.tab');
   const forms = { login: document.getElementById('login-form'), signup: document.getElementById('signup-form') };
   const authMsg = document.getElementById('auth-msg');
@@ -374,6 +411,11 @@
   const statIOweCount = document.getElementById('stat-i-owe-count');
   const statOwedToMeCount = document.getElementById('stat-owed-to-me-count');
   const borrowerSelect = document.getElementById('debt-borrower');
+  const itemTypeForm = document.getElementById('item-type-form');
+  const itemTypeName = document.getElementById('item-type-name');
+  const itemTypeMsg = document.getElementById('item-type-msg');
+  const itemTypesList = document.getElementById('item-types-list');
+  const itemTypeCount = document.getElementById('item-type-count');
 
   function switchTab(name) {
     tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
@@ -442,6 +484,20 @@
 
   document.getElementById('logout-btn').addEventListener('click', logout);
 
+  debtsPageButton.addEventListener('click', () => showAppPage('debts'));
+  investmentPageButton.addEventListener('click', () => {
+    showAppPage('investment');
+    loadItemTypes();
+  });
+
+  function showAppPage(page) {
+    const showInvestment = page === 'investment';
+    debtsPage.classList.toggle('hidden', showInvestment);
+    investmentPage.classList.toggle('hidden', !showInvestment);
+    debtsPageButton.classList.toggle('active', !showInvestment);
+    investmentPageButton.classList.toggle('active', showInvestment);
+  }
+
   forms.login.addEventListener('submit', async (e) => {
     e.preventDefault();
     const username = document.getElementById('login-username').value;
@@ -480,6 +536,18 @@
       loadDebts();
     } catch (err) {
       showMsg(debtMsg, err.message, false);
+    }
+  });
+
+  itemTypeForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+      await api('POST', '/api/v1/item-types', { name: itemTypeName.value });
+      itemTypeName.value = '';
+      showMsg(itemTypeMsg, 'نوع دارایی با موفقیت اضافه شد.', true);
+      loadItemTypes();
+    } catch (err) {
+      showMsg(itemTypeMsg, err.message, false);
     }
   });
 
@@ -537,6 +605,28 @@
       iOweList.innerHTML = '';
       owedToMeList.innerHTML = '';
       showMsg(debtMsg, err.message, false);
+    }
+  }
+
+  async function loadItemTypes() {
+    itemTypesList.innerHTML = '<div class="list-loading">در حال بارگذاری…</div>';
+    try {
+      const itemTypes = await api('GET', '/api/v1/item-types');
+      itemTypeCount.textContent = itemTypes.length.toLocaleString('fa-IR') + ' مورد';
+      itemTypesList.innerHTML = itemTypes.length
+        ? itemTypes.map(itemType => `
+            <div class="debt-row">
+              <div class="avatar">${initials(itemType.name)}</div>
+              <div class="who">
+                <div class="name">${escapeHtml(itemType.name)}</div>
+                <div class="sub">نوع دارایی سرمایه‌گذاری</div>
+              </div>
+            </div>`).join('')
+        : '<div class="list-empty">هنوز نوع دارایی ثبت نشده است.</div>';
+    } catch (err) {
+      itemTypesList.innerHTML = '';
+      itemTypeCount.textContent = '';
+      showMsg(itemTypeMsg, err.message, false);
     }
   }
 

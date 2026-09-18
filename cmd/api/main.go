@@ -10,6 +10,7 @@ import (
 	"portfolio/internal/debt"
 	"portfolio/internal/platform/config"
 	"portfolio/internal/platform/postgres"
+	"portfolio/internal/portfo"
 	transport "portfolio/internal/transport/http"
 	"portfolio/internal/user"
 	"syscall"
@@ -47,7 +48,11 @@ func main() {
 	debtSvc := debt.NewDebtService(debtRepo, userRepo)
 	debtHandler := transport.NewDebtHandler(debtSvc)
 
-	router := transport.NewRouter(userHandler, debtHandler)
+	portfoRepo := portfo.NewRepository(pool)
+	portfoSvc := portfo.NewService(portfoRepo)
+	portfolioHandler := transport.NewPortfolioHandler(portfoSvc)
+
+	router := transport.NewRouter(userHandler, debtHandler, portfolioHandler)
 
 	srv := http.Server{
 		Addr:         cfg.Addr,
