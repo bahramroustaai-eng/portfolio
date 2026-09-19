@@ -260,6 +260,99 @@
                 }
             }
         },
+        "/items": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "investment items"
+                ],
+                "summary": "List investment items",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/transport.ItemResponse"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "investment items"
+                ],
+                "summary": "Create new item",
+                "parameters": [
+                    {
+                        "description": "investment item payload",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/transport.CreateItemRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ItemResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/login": {
             "post": {
                 "consumes": [
@@ -449,6 +542,19 @@
                 "Canceled"
             ]
         },
+        "portfo.RiskLevel": {
+            "type": "string",
+            "enum": [
+                "low",
+                "medium",
+                "high"
+            ],
+            "x-enum-varnames": [
+                "RiskLevelLow",
+                "RiskLevelMedium",
+                "RiskLevelHigh"
+            ]
+        },
         "transport.CreateDebtRequest": {
             "type": "object",
             "properties": {
@@ -464,6 +570,35 @@
             "type": "object",
             "properties": {
                 "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "transport.CreateItemRequest": {
+            "type": "object",
+            "properties": {
+                "affected_profit": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price_per_unit": {
+                    "type": "integer"
+                },
+                "risk_level": {
+                    "$ref": "#/definitions/portfo.RiskLevel"
+                },
+                "ticker": {
+                    "type": "string"
+                },
+                "total_cost": {
+                    "type": "integer"
+                },
+                "type_id": {
+                    "type": "integer"
+                },
+                "unit": {
                     "type": "integer"
                 }
             }
@@ -573,6 +708,41 @@
                 },
                 "username": {
                     "type": "string"
+                }
+            }
+        },
+        "transport.ItemResponse": {
+            "type": "object",
+            "properties": {
+                "affected_profit": {
+                    "type": "boolean"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price_per_unit": {
+                    "type": "integer"
+                },
+                "risk_level": {
+                    "$ref": "#/definitions/portfo.RiskLevel"
+                },
+                "ticker": {
+                    "type": "string"
+                },
+                "total_cost": {
+                    "type": "integer"
+                },
+                "type_id": {
+                    "type": "integer"
+                },
+                "unit": {
+                    "type": "integer"
                 }
             }
         },

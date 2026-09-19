@@ -121,12 +121,14 @@ type Item struct {
 	ID           int32
 	Name         string
 	TypeID       *int32
-	TotalCost    int32
+	TotalCost    int64
 	Unit         int32
 	Ticker       *string
 	AffectProfit *bool
 	RiskLevel    RiskLevel
 	CreatedAt    time.Time
+	PricePerUnit int64
+	UserID       int32
 }
 
 type ItemType struct {

@@ -159,6 +159,11 @@
   .debt-form .field.amount { width: 130px; flex: none; }
   .debt-form .field input, .debt-form .field select { padding: 10px 12px; font-size: 14px; }
   .debt-form .btn-primary { padding: 10px 18px; font-size: 14px; white-space: nowrap; flex: none; }
+  .investment-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .investment-form .field { min-width: 0; }
+  .investment-form .field.checkbox { display: flex; align-items: center; gap: 8px; padding-top: 30px; }
+  .investment-form .field.checkbox input { width: auto; }
+  .investment-form .btn-primary { align-self: end; }
 
   .list-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
   .list-header { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
@@ -378,12 +383,66 @@
         <div id="item-type-msg" class="msg" style="margin-top: 10px;"></div>
       </div>
 
+      <div class="card">
+        <h3>ثبت سرمایه‌گذاری</h3>
+        <form id="item-form" class="investment-form">
+          <div class="field">
+            <label for="item-name">نام سرمایه‌گذاری</label>
+            <input id="item-name" name="name" placeholder="مثلاً طلای آب‌شده" required>
+          </div>
+          <div class="field">
+            <label for="item-type">نوع دارایی</label>
+            <select id="item-type" name="type_id" required>
+              <option value="">ابتدا نوع دارایی را انتخاب کنید</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="item-total-cost">هزینه کل</label>
+            <input id="item-total-cost" name="total_cost" type="number" min="1" step="1" required>
+          </div>
+          <div class="field">
+            <label for="item-unit">تعداد / مقدار</label>
+            <input id="item-unit" name="unit" type="number" min="1" step="1" required>
+          </div>
+          <div class="field">
+            <label for="item-price-per-unit">قیمت هر واحد</label>
+            <input id="item-price-per-unit" name="price_per_unit" type="number" min="1" step="1" required>
+          </div>
+          <div class="field">
+            <label for="item-ticker">نماد بازار</label>
+            <input id="item-ticker" name="ticker" placeholder="مثلاً BTC">
+          </div>
+          <div class="field">
+            <label for="item-risk-level">سطح ریسک</label>
+            <select id="item-risk-level" name="risk_level" required>
+              <option value="low">کم</option>
+              <option value="medium">متوسط</option>
+              <option value="high">زیاد</option>
+            </select>
+          </div>
+          <label class="field checkbox" for="item-affected-profit">
+            <input id="item-affected-profit" name="affected_profit" type="checkbox">
+            <span>در محاسبه سود لحاظ شود</span>
+          </label>
+          <button type="submit" class="btn-primary">ثبت سرمایه‌گذاری</button>
+        </form>
+        <div id="item-msg" class="msg" style="margin-top: 10px;"></div>
+      </div>
+
       <div class="list-card">
         <div class="list-header">
           <span>دارایی‌های ثبت‌شده</span>
           <span id="item-type-count"></span>
         </div>
         <div id="item-types-list"></div>
+      </div>
+
+      <div class="list-card" style="margin-top: 24px;">
+        <div class="list-header">
+          <span>سرمایه‌گذاری‌های من</span>
+          <span id="item-count"></span>
+        </div>
+        <div id="items-list"></div>
       </div>
     </div>
   </div>
@@ -414,8 +473,20 @@
   const itemTypeForm = document.getElementById('item-type-form');
   const itemTypeName = document.getElementById('item-type-name');
   const itemTypeMsg = document.getElementById('item-type-msg');
+  const itemForm = document.getElementById('item-form');
+  const itemName = document.getElementById('item-name');
+  const itemTypeSelect = document.getElementById('item-type');
+  const itemTotalCost = document.getElementById('item-total-cost');
+  const itemUnit = document.getElementById('item-unit');
+  const itemPricePerUnit = document.getElementById('item-price-per-unit');
+  const itemTicker = document.getElementById('item-ticker');
+  const itemRiskLevel = document.getElementById('item-risk-level');
+  const itemAffectedProfit = document.getElementById('item-affected-profit');
+  const itemMsg = document.getElementById('item-msg');
   const itemTypesList = document.getElementById('item-types-list');
   const itemTypeCount = document.getElementById('item-type-count');
+  const itemsList = document.getElementById('items-list');
+  const itemCount = document.getElementById('item-count');
 
   function switchTab(name) {
     tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
@@ -488,6 +559,7 @@
   investmentPageButton.addEventListener('click', () => {
     showAppPage('investment');
     loadItemTypes();
+    loadItems();
   });
 
   function showAppPage(page) {
@@ -548,6 +620,27 @@
       loadItemTypes();
     } catch (err) {
       showMsg(itemTypeMsg, err.message, false);
+    }
+  });
+
+  itemForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+      await api('POST', '/api/v1/items', {
+        name: itemName.value,
+        type_id: Number(itemTypeSelect.value),
+        total_cost: Number(itemTotalCost.value),
+        unit: Number(itemUnit.value),
+        price_per_unit: Number(itemPricePerUnit.value),
+        ticker: itemTicker.value,
+        affected_profit: itemAffectedProfit.checked,
+        risk_level: itemRiskLevel.value,
+      });
+      itemForm.reset();
+      showMsg(itemMsg, 'سرمایه‌گذاری با موفقیت ثبت شد.', true);
+      loadItems();
+    } catch (err) {
+      showMsg(itemMsg, err.message, false);
     }
   });
 
@@ -613,6 +706,13 @@
     try {
       const itemTypes = await api('GET', '/api/v1/item-types');
       itemTypeCount.textContent = itemTypes.length.toLocaleString('fa-IR') + ' مورد';
+      itemTypeSelect.innerHTML = '<option value="">نوع دارایی را انتخاب کنید</option>';
+      itemTypes.forEach(itemType => {
+        const option = document.createElement('option');
+        option.value = itemType.id;
+        option.textContent = itemType.name;
+        itemTypeSelect.appendChild(option);
+      });
       itemTypesList.innerHTML = itemTypes.length
         ? itemTypes.map(itemType => `
             <div class="debt-row">
@@ -626,7 +726,34 @@
     } catch (err) {
       itemTypesList.innerHTML = '';
       itemTypeCount.textContent = '';
+      itemTypeSelect.innerHTML = '<option value="">بارگذاری انواع دارایی ناموفق بود</option>';
       showMsg(itemTypeMsg, err.message, false);
+    }
+  }
+
+  async function loadItems() {
+    itemsList.innerHTML = '<div class="list-loading">در حال بارگذاری…</div>';
+    try {
+      const items = await api('GET', '/api/v1/items');
+      itemCount.textContent = items.length.toLocaleString('fa-IR') + ' مورد';
+      itemsList.innerHTML = items.length
+        ? items.map(item => `
+            <div class="debt-row">
+              <div class="avatar">${initials(item.name)}</div>
+              <div class="who">
+                <div class="name">${escapeHtml(item.name)}</div>
+                <div class="sub">تعداد: ${Number(item.unit).toLocaleString('fa-IR')} · قیمت واحد: ${Number(item.price_per_unit).toLocaleString('fa-IR')}</div>
+              </div>
+              <div class="amount">
+                <span class="remaining">هزینه کل: ${Number(item.total_cost).toLocaleString('fa-IR')}</span>
+                <span class="paid">ریسک: ${escapeHtml(item.risk_level)}</span>
+              </div>
+            </div>`).join('')
+        : '<div class="list-empty">هنوز سرمایه‌گذاری ثبت نشده است.</div>';
+    } catch (err) {
+      itemsList.innerHTML = '';
+      itemCount.textContent = '';
+      showMsg(itemMsg, err.message, false);
     }
   }
 

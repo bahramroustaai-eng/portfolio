@@ -31,6 +31,16 @@ definitions:
     - Pending
     - Paid
     - Canceled
+  portfo.RiskLevel:
+    enum:
+    - low
+    - medium
+    - high
+    type: string
+    x-enum-varnames:
+    - RiskLevelLow
+    - RiskLevelMedium
+    - RiskLevelHigh
   transport.CreateDebtRequest:
     properties:
       amount:
@@ -41,6 +51,25 @@ definitions:
   transport.CreateDebtResponse:
     properties:
       id:
+        type: integer
+    type: object
+  transport.CreateItemRequest:
+    properties:
+      affected_profit:
+        type: boolean
+      name:
+        type: string
+      price_per_unit:
+        type: integer
+      risk_level:
+        $ref: '#/definitions/portfo.RiskLevel'
+      ticker:
+        type: string
+      total_cost:
+        type: integer
+      type_id:
+        type: integer
+      unit:
         type: integer
     type: object
   transport.CreateItemTypeRequest:
@@ -112,6 +141,29 @@ definitions:
         type: integer
       username:
         type: string
+    type: object
+  transport.ItemResponse:
+    properties:
+      affected_profit:
+        type: boolean
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      price_per_unit:
+        type: integer
+      risk_level:
+        $ref: '#/definitions/portfo.RiskLevel'
+      ticker:
+        type: string
+      total_cost:
+        type: integer
+      type_id:
+        type: integer
+      unit:
+        type: integer
     type: object
   transport.ItemTypeResponse:
     properties:
@@ -309,6 +361,64 @@ paths:
       summary: Create an investment item type
       tags:
       - investment item types
+  /items:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/transport.ItemResponse'
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List investment items
+      tags:
+      - investment items
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: investment item payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/transport.CreateItemRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/transport.ItemResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/transport.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create new item
+      tags:
+      - investment items
   /login:
     post:
       consumes:

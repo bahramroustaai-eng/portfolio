@@ -7,7 +7,55 @@ package db
 
 import (
 	"context"
+	"time"
 )
+
+const createItem = `-- name: CreateItem :one
+INSERT INTO items(user_id, name, type_id, total_cost, unit, price_per_unit, ticker, affect_profit, risk_level)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+RETURNING id, name, type_id, total_cost, unit, ticker, affect_profit, risk_level, created_at, price_per_unit, user_id
+`
+
+type CreateItemParams struct {
+	UserID       int32
+	Name         string
+	TypeID       *int32
+	TotalCost    int64
+	Unit         int32
+	PricePerUnit int64
+	Ticker       *string
+	AffectProfit *bool
+	RiskLevel    RiskLevel
+}
+
+func (q *Queries) CreateItem(ctx context.Context, arg CreateItemParams) (Item, error) {
+	row := q.db.QueryRow(ctx, createItem,
+		arg.UserID,
+		arg.Name,
+		arg.TypeID,
+		arg.TotalCost,
+		arg.Unit,
+		arg.PricePerUnit,
+		arg.Ticker,
+		arg.AffectProfit,
+		arg.RiskLevel,
+	)
+	var i Item
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.TypeID,
+		&i.TotalCost,
+		&i.Unit,
+		&i.Ticker,
+		&i.AffectProfit,
+		&i.RiskLevel,
+		&i.CreatedAt,
+		&i.PricePerUnit,
+		&i.UserID,
+	)
+	return i, err
+}
 
 const createItemType = `-- name: CreateItemType :one
 INSERT INTO item_types(name)
@@ -38,6 +86,59 @@ func (q *Queries) ListItemTypes(ctx context.Context) ([]ItemType, error) {
 	for rows.Next() {
 		var i ItemType
 		if err := rows.Scan(&i.ID, &i.Name); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listItemsByUserID = `-- name: ListItemsByUserID :many
+SELECT id, user_id, name, type_id, total_cost, unit, ticker, affect_profit, risk_level, created_at, price_per_unit
+FROM items
+WHERE user_id = $1
+ORDER BY created_at DESC
+`
+
+type ListItemsByUserIDRow struct {
+	ID           int32
+	UserID       int32
+	Name         string
+	TypeID       *int32
+	TotalCost    int64
+	Unit         int32
+	Ticker       *string
+	AffectProfit *bool
+	RiskLevel    RiskLevel
+	CreatedAt    time.Time
+	PricePerUnit int64
+}
+
+func (q *Queries) ListItemsByUserID(ctx context.Context, userID int32) ([]ListItemsByUserIDRow, error) {
+	rows, err := q.db.Query(ctx, listItemsByUserID, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListItemsByUserIDRow
+	for rows.Next() {
+		var i ListItemsByUserIDRow
+		if err := rows.Scan(
+			&i.ID,
+			&i.UserID,
+			&i.Name,
+			&i.TypeID,
+			&i.TotalCost,
+			&i.Unit,
+			&i.Ticker,
+			&i.AffectProfit,
+			&i.RiskLevel,
+			&i.CreatedAt,
+			&i.PricePerUnit,
+		); err != nil {
 			return nil, err
 		}
 		items = append(items, i)
